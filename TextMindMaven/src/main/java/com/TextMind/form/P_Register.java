@@ -4,10 +4,19 @@
  */
 package com.TextMind.form;
 
+import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.event.EventMessage;
 import com.TextMind.event.PublicEvent;
 import com.TextMind.model.Model_Message;
 import com.TextMind.model.Model_Register;
+import io.socket.emitter.Emitter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -21,7 +30,80 @@ public class P_Register extends javax.swing.JPanel {
     public P_Register() {
         initComponents();
     }
+    
+     public void validateInfor() throws JSONException{
+        String name = txtName.getText().trim();
+        String email = txtEmail.getText().trim();
+        String password = (new String(txtPassword.getPassword())).trim();
+        String username = txtUsername.getText().trim();
+        String confirmPassword = (new String(txtConfirm.getPassword())).trim();
+        String pattermPassword = "^[A-Za-z0-9]{8,}$";
+        if(name.isBlank() || email.isBlank() || password.isBlank() || username.isBlank() || confirmPassword.isBlank()){
+            JOptionPane.showMessageDialog(this, "Please fill all input field");
+            return ;
+        }
+        if(!EmailValidator.getInstance().isValid(email)){
+            JOptionPane.showMessageDialog(this, "Email is wrong format");
+            txtEmail.grabFocus();
+            return ;
+        }
 
+        if(!password.matches(pattermPassword) || !username.matches(pattermPassword)){
+            JOptionPane.showMessageDialog(this, "Password is at least 8 word and contain only alpha bet and number");
+            txtPassword.grabFocus();
+            return ;
+        }
+        
+        if(!username.matches(pattermPassword)){
+            JOptionPane.showMessageDialog(this, "username is at least 8 word and contain only alpha bet and number");
+            txtUsername.grabFocus();
+            return;
+        }
+        
+        if(!password.equals(confirmPassword)){
+            JOptionPane.showMessageDialog(this, "Password do not match with confirm");
+            txtConfirm.grabFocus();
+            return ;
+        }
+
+                
+        JSONObject data = new JSONObject();
+        String randomString = RandomStringUtils.randomAlphanumeric(6);
+        data.put("username", username);
+        data.put("password", password);
+        data.put("email", email);
+        data.put("name", name);
+        data.put("random", randomString);
+                
+        getSocket().emit("signUpCheck", data);
+        getSocket().once("signUpValidate"+randomString,new Emitter.Listener() {
+            @Override
+            public void call(Object... os) {
+                boolean isSignUpValid = (boolean) os[0];
+                // Handle the logic based on the received boolean value
+                if (!isSignUpValid) {
+                    JOptionPane.showMessageDialog(null, "Sign up error, username or email already exist in database");
+                    return;
+                } 
+                else{
+                    JOptionPane.showMessageDialog(null, "Sign up success");
+                    resetField();
+                    PublicEvent.getInstance().getEventLogin().goLogin();
+                    return;
+                }
+            }
+        });
+        
+        return ;
+    }
+     
+     private void resetField(){
+        txtName.setText("");
+        txtEmail.setText("");
+        txtPassword.setText("");
+        txtUsername.setText("");
+        txtConfirm.setText("");
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,7 +254,8 @@ public class P_Register extends javax.swing.JPanel {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-//        String username = txtUsername.getText().trim() ;
+        try {
+            //        String username = txtUsername.getText().trim() ;
 //        String password = String.valueOf(txtPassword.getPassword()) ;
 //        String confirmPassword = String.valueOf(txtConfirm.getPassword());
 //        if (username.equals("")) {
@@ -195,7 +278,11 @@ public class P_Register extends javax.swing.JPanel {
 //                
 //            });
 //        }        
-          PublicEvent.getInstance().getEventLogin().register();
+//          PublicEvent.getInstance().getEventLogin().register();
+            validateInfor() ;
+        } catch (JSONException ex) {
+            Logger.getLogger(P_Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
