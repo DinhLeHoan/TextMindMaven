@@ -30,6 +30,7 @@ com\TextMind\event\EventMain.class
 com\TextMind\main\Login$2.class
 com\TextMind\main\Login$1.class
 com\TextMind\DAO\UserDAO$1.class
+com\TextMind\form\P_Register$5.class
 com\TextMind\form\View_Image$1.class
 com\TextMind\event\EventChat.class
 com\TextMind\form\Menu_Left$1.class
@@ -37,6 +38,7 @@ com\TextMind\swing\Progress$ProgressType.class
 com\TextMind\event\EventMessage.class
 com\TextMind\main\main$5.class
 com\TextMind\swing\blurHash\Util.class
+com\TextMind\form\P_Register$4.class
 com\TextMind\main\Login.class
 com\TextMind\form\Chat.class
 com\TextMind\component\Chat_Body$2.class
@@ -71,9 +73,11 @@ com\TextMind\swing\ScrollBar.class
 com\TextMind\main\Login$6.class
 com\TextMind\main\Login$3.class
 com\TextMind\form\Menu_Left.class
+com\TextMind\DAO\UserDAO$2.class
 com\TextMind\form\P_Register$1.class
 com\TextMind\main\Login$5.class
 com\TextMind\swing\ActiveStatus.class
+com\TextMind\form\Menu_Left$4.class
 com\TextMind\component\Chat_Bottom$1.class
 com\TextMind\component\Chat_Left_With_Profile.class
 com\TextMind\component\Chat_Body.class
