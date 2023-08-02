@@ -37,23 +37,23 @@ public class Menu_Right extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(249, 249, 249));
 
+        txtName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtName.setForeground(new java.awt.Color(0, 153, 204));
+        txtName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtName.setText("Menu_Right_Note");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(txtName)
-                .addContainerGap(79, Short.MAX_VALUE))
+            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
+                .addContainerGap()
                 .addComponent(txtName)
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addContainerGap(549, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
