@@ -59,6 +59,7 @@ public class Chat_Body extends javax.swing.JPanel {
         body.add(item, "wrap, w 100::80%");
         body.repaint();
         body.revalidate();
+        scrollToBottom();
     }
 
     public void addItemLeft(String text, String user, String[] image) {
