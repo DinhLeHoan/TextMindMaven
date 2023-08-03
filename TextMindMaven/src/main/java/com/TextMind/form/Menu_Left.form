@@ -52,7 +52,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuMessActionPerformed"/>
           </Events>
         </Component>
-        <Component class="com.TextMind.component.MenuButton" name="menuGroup">
+        <Component class="com.TextMind.component.MenuButton" name="menuFind">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/group.png"/>
@@ -68,7 +68,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGroupActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuFindActionPerformed"/>
           </Events>
         </Component>
         <Component class="com.TextMind.component.MenuButton" name="menuBox">

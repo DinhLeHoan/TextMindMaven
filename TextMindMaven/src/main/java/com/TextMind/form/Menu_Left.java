@@ -4,16 +4,19 @@
  */
 package com.TextMind.form;
 
+import com.TextMind.Auth.Auth;
 import com.TextMind.DAO.UserDAO;
 import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.component.Item_People;
 import com.TextMind.entity.User;
+import com.TextMind.swing.FindAndAdd;
 import com.TextMind.swing.ScrollBar;
 import io.socket.emitter.Emitter;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +35,24 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         initComponents();
         init() ;
         listFriend.setListUpdateListener((UserDAO.ListUpdateListener) this);
-        
+        getSocket().on("FindResult" + Auth.user.getuID(), new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    boolean isValid = (boolean) args[0];
+                    // Handle the result here
+                    if (isValid) {
+                        // User with the entered name does not exist, proceed with adding the user
+                        // Code to add the user to Firestore or perform any other action
+                                listFriend = new UserDAO();
+                                System.out.println("addddd");
+                                showMess();
+                        // For example:
+                        
+                    } else {
+                        // User with the entered name already exists
+                    }
+                }
+            });
     }
     
     private void init() {
@@ -55,11 +75,10 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         refreshMenuList();
     }
 
-    private void showGroup() {
+    private void showFindFriend() {
         menuList.removeAll();
-        for (int i = 0; i < 15; i++) {
-//            menuList.add(new Item_People("Group " + i), "wrap");
-        }
+        FindAndAdd fad = new FindAndAdd();
+        menuList.add(fad);
         refreshMenuList();
     }
 
@@ -126,7 +145,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
 
         menu = new javax.swing.JLayeredPane();
         menuMess = new com.TextMind.component.MenuButton();
-        menuGroup = new com.TextMind.component.MenuButton();
+        menuFind = new com.TextMind.component.MenuButton();
         menuBox = new com.TextMind.component.MenuButton();
         sp = new javax.swing.JScrollPane();
         menuList = new javax.swing.JLayeredPane();
@@ -143,16 +162,16 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         });
         menu.add(menuMess);
 
-        menuGroup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
-        menuGroup.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/groupSelected.png"))); // NOI18N
-        menuGroup.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
-        menuGroup.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/groupSelected.png"))); // NOI18N
-        menuGroup.addActionListener(new java.awt.event.ActionListener() {
+        menuFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
+        menuFind.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/groupSelected.png"))); // NOI18N
+        menuFind.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
+        menuFind.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/groupSelected.png"))); // NOI18N
+        menuFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuGroupActionPerformed(evt);
+                menuFindActionPerformed(evt);
             }
         });
-        menu.add(menuGroup);
+        menu.add(menuFind);
 
         menuBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/letter.png"))); // NOI18N
         menuBox.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/letterSelected.png"))); // NOI18N
@@ -200,25 +219,25 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     private void menuBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBoxActionPerformed
         if (!menuBox.isSelected()) {
             menuMess.setSelected(false);
-            menuGroup.setSelected(false);
+            menuFind.setSelected(false);
             menuBox.setSelected(true);
             showBox();
         }
     }//GEN-LAST:event_menuBoxActionPerformed
 
-    private void menuGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGroupActionPerformed
-        if (!menuGroup.isSelected()) {
+    private void menuFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFindActionPerformed
+        if (!menuFind.isSelected()) {
             menuMess.setSelected(false);
-            menuGroup.setSelected(true);
+            menuFind.setSelected(true);
             menuBox.setSelected(false);
-            showGroup();
+            showFindFriend();
         }
-    }//GEN-LAST:event_menuGroupActionPerformed
+    }//GEN-LAST:event_menuFindActionPerformed
 
     private void menuMessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMessActionPerformed
         if (!menuMess.isSelected()) {
             menuMess.setSelected(true);
-            menuGroup.setSelected(false);
+            menuFind.setSelected(false);
             menuBox.setSelected(false);
             showMess();
         }
@@ -228,7 +247,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane menu;
     private com.TextMind.component.MenuButton menuBox;
-    private com.TextMind.component.MenuButton menuGroup;
+    private com.TextMind.component.MenuButton menuFind;
     private javax.swing.JLayeredPane menuList;
     private com.TextMind.component.MenuButton menuMess;
     private javax.swing.JScrollPane sp;
