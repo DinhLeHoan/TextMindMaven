@@ -7,6 +7,8 @@ package com.TextMind.form;
 import com.TextMind.Auth.Auth;
 import com.TextMind.DAO.UserDAO;
 import static com.TextMind.Socket.SocketManager.getSocket;
+import com.TextMind.component.Friend_Found;
+import com.TextMind.component.Friend_Request;
 import com.TextMind.component.Item_People;
 import com.TextMind.entity.User;
 import com.TextMind.swing.FindAndAdd;
@@ -77,15 +79,18 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
 
     private void showFindFriend() {
         menuList.removeAll();
-        FindAndAdd fad = new FindAndAdd();
-        menuList.add(fad);
+//        FindAndAdd fad = new FindAndAdd();
+//        menuList.add(fad);
+        for (int i = 0; i < 10; i++) {
+            menuList.add(new Friend_Found("Name " + i), "wrap");
+        }
         refreshMenuList();
     }
 
     private void showBox() {
         menuList.removeAll();
         for (int i = 0; i < 10; i++) {
-//            menuList.add(new Item_People("Box " + i), "wrap");
+            menuList.add(new Friend_Request("Box " + i), "wrap");
         }
         refreshMenuList();
     }
@@ -176,7 +181,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         menuBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request40.png"))); // NOI18N
         menuBox.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/request40Selec.png"))); // NOI18N
         menuBox.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/request40.png"))); // NOI18N
-        menuBox.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request40.png"))); // NOI18N
+        menuBox.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request40Selec.png"))); // NOI18N
         menuBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuBoxActionPerformed(evt);

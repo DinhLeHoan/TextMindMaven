@@ -4,6 +4,9 @@
  */
 package com.TextMind.component;
 
+import com.TextMind.main.Login;
+import com.TextMind.main.ReportUser;
+import com.TextMind.main.main;
 import java.awt.Color;
 
 /**
@@ -45,7 +48,7 @@ public class Chat_Title extends javax.swing.JPanel {
         layer = new javax.swing.JLayeredPane();
         lblName = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnReport = new javax.swing.JButton();
 
         layer.setLayout(new java.awt.GridLayout(0, 1));
 
@@ -58,10 +61,15 @@ public class Chat_Title extends javax.swing.JPanel {
         lblStatus.setText("Active Now");
         layer.add(lblStatus);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
+        btnReport.setBorderPainted(false);
+        btnReport.setContentAreaFilled(false);
+        btnReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,23 +78,28 @@ public class Chat_Title extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(layer, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(15, 15, 15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
+                .addComponent(btnReport)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(layer)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(btnReport)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
+        ReportUser rp = new ReportUser(main.getFrames()[0], true) ;
+        rp.setVisible(true);
+    }//GEN-LAST:event_btnReportActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnReport;
     private javax.swing.JLayeredPane layer;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStatus;

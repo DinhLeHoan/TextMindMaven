@@ -1,0 +1,155 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package com.TextMind.component;
+
+import com.TextMind.Emoji.Emoji;
+import com.TextMind.Emoji.Model_Emoji;
+import com.TextMind.main.main;
+import com.TextMind.swing.ScrollBar;
+import com.TextMind.swing.WrapLayout;
+import com.sun.tools.javac.Main;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+import net.miginfocom.swing.MigLayout;
+
+/**
+ *
+ * @author khang
+ */
+public class Panel_More extends javax.swing.JPanel {
+    private JPanel panelHeader;
+    private JPanel panelDetail;
+    /**
+     * Creates new form Panel_More
+     */
+    public Panel_More() {
+        initComponents();
+        init() ;
+    }
+    
+    private void init() {
+        setLayout(new MigLayout("fillx"));
+        panelHeader = new JPanel();
+        panelHeader.setLayout(new BoxLayout(panelHeader, BoxLayout.LINE_AXIS));
+        panelHeader.add(getButtonFile());
+        panelHeader.add(getEmojiStyle1());
+        panelHeader.add(getEmojiStyle2());
+        add(panelHeader, "w 100%, h 30!, wrap");
+        panelDetail = new JPanel();
+        panelDetail.setLayout(new WrapLayout(WrapLayout.LEFT));   
+        JScrollPane sp = new JScrollPane(panelDetail);
+        sp.setBorder(null);
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        sp.setVerticalScrollBar(new ScrollBar());
+        add(sp, "w 100%, h 100%");
+    }
+    
+    private JButton getButtonFile() {
+        OptionButton btn = new OptionButton();
+        btn.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/camera.png")).getImage().getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH)));
+//        btn.setIcon(new ImageIcon(getClass().getResource("/images/camera.png")));
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                JFileChooser fc = new JFileChooser();
+                fc.showOpenDialog(main.getFrames()[0]);
+                //  Update next
+            }
+        });
+        return btn;
+    }
+    
+    private JButton getEmojiStyle1() {
+        OptionButton btn = new OptionButton();
+//        btn.setIcon(new ImageIcon(getClass().getResource("/images/camera.png")));
+        btn.setIcon(Emoji.getInstance().getImoji(1).toSize(25, 25).getIcon());
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                clearSelected();
+                btn.setSelected(true);
+                panelDetail.removeAll();
+                for (Model_Emoji d : Emoji.getInstance().getStyle1()) {
+                    JButton c = new JButton(d.getIcon());
+                    c.setName(d.getId() + "");
+                    c.setBorder(new EmptyBorder(3, 3, 3, 3));
+                    c.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    c.setContentAreaFilled(false);
+                    panelDetail.add(c);
+                }
+                panelDetail.repaint();
+                panelDetail.revalidate();
+            }
+        });
+        return btn;
+    }
+
+    private JButton getEmojiStyle2() {
+        OptionButton btn = new OptionButton();
+//        btn.setIcon(new ImageIcon(getClass().getResource("/images/camera.png")));
+        btn.setIcon(Emoji.getInstance().getImoji(11).toSize(25, 25).getIcon());
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                clearSelected();
+                btn.setSelected(true);
+                panelDetail.removeAll();
+                for (Model_Emoji d : Emoji.getInstance().getStyle2()) {
+                    JButton c = new JButton(d.getIcon());
+                    c.setName(d.getId() + "");
+                    c.setBorder(new EmptyBorder(3, 3, 3, 3));
+                    c.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    c.setContentAreaFilled(false);
+                    panelDetail.add(c);
+                }
+                panelDetail.repaint();
+                panelDetail.revalidate();
+            }
+        });
+        return btn;
+    }
+    
+    private void clearSelected() {
+        for (Component c : panelHeader.getComponents()) {
+            if (c instanceof OptionButton) {
+                ((OptionButton) c).setSelected(false);
+            }
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 466, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 114, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+}

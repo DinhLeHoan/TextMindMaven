@@ -26,7 +26,8 @@ import net.miginfocom.swing.MigLayout;
  * @author KHOA
  */
 public class Chat_Bottom extends javax.swing.JPanel {
-
+    private MigLayout mig;
+    private Panel_More panelMore;
     /**
      * Creates new form Chat_Title
      */
@@ -36,7 +37,8 @@ public class Chat_Bottom extends javax.swing.JPanel {
     }
     
     private void init() {
-        setLayout(new MigLayout("fillx, filly", "0[fill]0[]0[]2", "2[fill]2"));
+        mig = new MigLayout("fillx, filly", "0[fill]0[]0[]2", "2[fill]2[]0") ;
+        setLayout(mig);
         JScrollPane scroll = new JScrollPane();
         scroll.setBorder(null);
         JIMSendTextPane txt = new JIMSendTextPane();
@@ -44,6 +46,9 @@ public class Chat_Bottom extends javax.swing.JPanel {
             @Override
             public void keyTyped(KeyEvent ke) {
                 refresh();
+                if (ke.getKeyChar() == 10 && ke.isControlDown()) {
+                    eventSend(txt) ;
+                }
             }
         });
         txt.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -56,7 +61,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
         add(sb);
         add(scroll, "w 100%");
         JPanel panel = new JPanel();
-        panel.setLayout(new MigLayout("filly", "0[]0", "0[bottom]0"));
+        panel.setLayout(new MigLayout("filly", "0[]3[]0", "0[bottom]0"));
         panel.setPreferredSize(new Dimension(30, 28));
         panel.setBackground(Color.WHITE);
         JButton btn = new JButton();
@@ -67,7 +72,40 @@ public class Chat_Bottom extends javax.swing.JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String text = txt.getText().trim();
+                eventSend(txt) ;
+            }
+        });
+        JButton btnMore = new JButton();
+        btnMore.setBorder(null);
+        btnMore.setContentAreaFilled(false);
+        btnMore.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnMore.setIcon(new ImageIcon(getClass().getResource("/images/more.png")));
+        btnMore.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if (panelMore.isVisible()) {
+                    btnMore.setIcon(new ImageIcon(getClass().getResource("/images/more.png")));
+                    panelMore.setVisible(false);
+                    mig.setComponentConstraints(panelMore, "dock south,h 0!");
+                    revalidate();
+                } else {
+                    btnMore.setIcon(new ImageIcon(getClass().getResource("/images/moreSelect.png")));
+                    panelMore.setVisible(true);
+                    mig.setComponentConstraints(panelMore, "dock south,h 170!");
+                    revalidate();
+                }
+            }
+        });
+        panel.add(btnMore);
+        panel.add(btn);
+        add(panel, "wrap");
+        panelMore = new Panel_More() ;
+        panelMore.setVisible(false);
+        add(panelMore, "dock south,h 0!");
+    }
+    
+    private void eventSend(JIMSendTextPane txt) {
+        String text = txt.getText().trim();
                 if (!text.equals("")) {
                     PublicEvent.getInstance().getEventChat().sendMessage(text);
                     txt.setText("");
@@ -76,10 +114,6 @@ public class Chat_Bottom extends javax.swing.JPanel {
                 } else {
                     txt.grabFocus();
                 }
-            }
-        });
-        panel.add(btn);
-        add(panel);
     }
 
     private void refresh() {

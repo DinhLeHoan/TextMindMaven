@@ -83,7 +83,7 @@
               <Image iconType="3" name="/images/request40.png"/>
             </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/request40.png"/>
+              <Image iconType="3" name="/images/request40Selec.png"/>
             </Property>
           </Properties>
           <Events>
