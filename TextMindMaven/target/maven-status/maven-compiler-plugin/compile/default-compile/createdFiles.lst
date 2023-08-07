@@ -6,12 +6,13 @@ com\TextMind\component\Chat_Right.class
 com\TextMind\event\PublicEvent.class
 com\TextMind\swing\blurHash\Base83.class
 com\TextMind\form\P_Login$1.class
+com\TextMind\swing\PanelRound.class
 com\TextMind\main\Login$4.class
 com\TextMind\main\main$3.class
 com\TextMind\model\Model_Message.class
 com\TextMind\swing\Progress.class
-com\TextMind\form\P_Login$4.class
 com\TextMind\form\View_Image.class
+com\TextMind\swing\MyPasswordField.class
 com\TextMind\component\Chat_Body$1.class
 com\TextMind\model\Model_Register.class
 com\TextMind\main\main$6.class
@@ -28,9 +29,9 @@ com\TextMind\form\P_Login$3.class
 com\TextMind\form\Login1$1$1.class
 com\TextMind\event\EventMain.class
 com\TextMind\main\Login$2.class
+com\TextMind\swing\FindAndAdd$1.class
 com\TextMind\main\Login$1.class
 com\TextMind\DAO\UserDAO$1.class
-com\TextMind\form\P_Register$5.class
 com\TextMind\form\View_Image$1.class
 com\TextMind\event\EventChat.class
 com\TextMind\form\Menu_Left$1.class
@@ -38,7 +39,7 @@ com\TextMind\swing\Progress$ProgressType.class
 com\TextMind\event\EventMessage.class
 com\TextMind\main\main$5.class
 com\TextMind\swing\blurHash\Util.class
-com\TextMind\form\P_Register$4.class
+com\TextMind\swing\FindAndAdd$2.class
 com\TextMind\main\Login.class
 com\TextMind\form\Chat.class
 com\TextMind\component\Chat_Body$2.class
@@ -71,6 +72,7 @@ com\TextMind\form\P_Register$2.class
 com\TextMind\form\Menu_Left$3.class
 com\TextMind\swing\ScrollBar.class
 com\TextMind\main\Login$6.class
+com\TextMind\swing\MyTextField.class
 com\TextMind\main\Login$3.class
 com\TextMind\form\Menu_Left.class
 com\TextMind\DAO\UserDAO$2.class
@@ -79,6 +81,7 @@ com\TextMind\main\Login$5.class
 com\TextMind\swing\ActiveStatus.class
 com\TextMind\form\Menu_Left$4.class
 com\TextMind\component\Chat_Bottom$1.class
+com\TextMind\swing\FindAndAdd.class
 com\TextMind\component\Chat_Left_With_Profile.class
 com\TextMind\component\Chat_Body.class
 com\TextMind\form\Home.class
@@ -86,6 +89,7 @@ com\TextMind\component\Chat_Title.class
 com\TextMind\swing\ComponentResizer.class
 com\TextMind\main\main$2.class
 com\TextMind\form\Login1$1.class
+com\TextMind\form\Menu_Left$5.class
 com\TextMind\swing\ModernScrollBarUI$InvisibleScrollBarButton.class
 com\TextMind\main\main$8.class
 com\TextMind\swing\PictureBox.class

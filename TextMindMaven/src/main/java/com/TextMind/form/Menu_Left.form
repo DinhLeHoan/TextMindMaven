@@ -16,16 +16,16 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="menu" max="32767" attributes="0"/>
           <Component id="sp" alignment="0" max="32767" attributes="0"/>
+          <Component id="menu" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="menu" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="sp" max="32767" attributes="0"/>
+              <Component id="menu" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <Component id="sp" min="-2" pref="524" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,10 +41,10 @@
         <Component class="com.TextMind.component.MenuButton" name="menuMess">
           <Properties>
             <Property name="iconSelected" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/messSelected.png"/>
+              <Image iconType="3" name="/images/chat40Selec.png"/>
             </Property>
             <Property name="iconSimple" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/mess.png"/>
+              <Image iconType="3" name="/images/chat40.png"/>
             </Property>
             <Property name="selected" type="boolean" value="true"/>
           </Properties>
@@ -55,16 +55,16 @@
         <Component class="com.TextMind.component.MenuButton" name="menuFind">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/group.png"/>
+              <Image iconType="3" name="/images/search40.png"/>
             </Property>
             <Property name="iconSelected" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/groupSelected.png"/>
+              <Image iconType="3" name="/images/search40Selec.png"/>
             </Property>
             <Property name="iconSimple" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/group.png"/>
+              <Image iconType="3" name="/images/search40.png"/>
             </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/groupSelected.png"/>
+              <Image iconType="3" name="/images/search40Selec.png"/>
             </Property>
           </Properties>
           <Events>
@@ -74,16 +74,16 @@
         <Component class="com.TextMind.component.MenuButton" name="menuBox">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/letter.png"/>
+              <Image iconType="3" name="/images/request40.png"/>
             </Property>
             <Property name="iconSelected" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/letterSelected.png"/>
+              <Image iconType="3" name="/images/request40Selec.png"/>
             </Property>
             <Property name="iconSimple" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/letter.png"/>
+              <Image iconType="3" name="/images/request40.png"/>
             </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/letterSelected.png"/>
+              <Image iconType="3" name="/images/request40.png"/>
             </Property>
           </Properties>
           <Events>

@@ -152,8 +152,8 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
 
         menu.setLayout(new java.awt.GridLayout(1, 3));
 
-        menuMess.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/messSelected.png"))); // NOI18N
-        menuMess.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/mess.png"))); // NOI18N
+        menuMess.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/chat40Selec.png"))); // NOI18N
+        menuMess.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/chat40.png"))); // NOI18N
         menuMess.setSelected(true);
         menuMess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,10 +162,10 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         });
         menu.add(menuMess);
 
-        menuFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
-        menuFind.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/groupSelected.png"))); // NOI18N
-        menuFind.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
-        menuFind.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/groupSelected.png"))); // NOI18N
+        menuFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search40.png"))); // NOI18N
+        menuFind.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/search40Selec.png"))); // NOI18N
+        menuFind.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/search40.png"))); // NOI18N
+        menuFind.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search40Selec.png"))); // NOI18N
         menuFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFindActionPerformed(evt);
@@ -173,10 +173,10 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         });
         menu.add(menuFind);
 
-        menuBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/letter.png"))); // NOI18N
-        menuBox.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/letterSelected.png"))); // NOI18N
-        menuBox.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/letter.png"))); // NOI18N
-        menuBox.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/letterSelected.png"))); // NOI18N
+        menuBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request40.png"))); // NOI18N
+        menuBox.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/request40Selec.png"))); // NOI18N
+        menuBox.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/images/request40.png"))); // NOI18N
+        menuBox.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/request40.png"))); // NOI18N
         menuBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuBoxActionPerformed(evt);
@@ -204,15 +204,15 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu)
             .addComponent(sp)
+            .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sp))
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(sp, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
