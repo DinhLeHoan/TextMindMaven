@@ -29,6 +29,7 @@ import org.json.JSONObject;
 public class P_Register extends javax.swing.JPanel {
     MyTextField txtName = new MyTextField();
     MyTextField txtEmail = new MyTextField();
+    MyTextField txtEmailConfirm = new MyTextField();
     MyTextField txtUsername = new MyTextField();
     MyPasswordField txtPassword = new MyPasswordField();
     MyPasswordField txtConfirm = new MyPasswordField();
@@ -42,10 +43,10 @@ public class P_Register extends javax.swing.JPanel {
         
     }
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "30[]15[]10[]10[]10[]10[]push"));
+        login.setLayout(new MigLayout("wrap", "push[center]push", "10[]15[]10[]10[]10[]10[]10[]5[]push"));
         JLabel label = new JLabel("Register");
         label.setFont(new Font("sansserif", 1, 30));
-        label.setForeground(new Color(7, 164, 121));
+        label.setForeground(new Color(204, 255, 255));
         login.add(label);
 
         txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
@@ -61,7 +62,18 @@ public class P_Register extends javax.swing.JPanel {
         txtPassword.setHint("Password");
         login.add(txtPassword, "w 90%");
         txtConfirm.setHint("Password confirm");
-        login.add(txtPassword, "w 90%");
+        login.add(txtConfirm, "w 90%");
+        txtConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
+        
+        txtEmailConfirm.setHint("Verify code");
+        txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        login.add(txtEmailConfirm, "w 90%");
+        
+        lblError.setText("LOGIN FAILS, WRONG USERNAME OR PASSWORD");
+        lblError.setHorizontalAlignment(JLabel.CENTER);
+        lblError.setVerticalAlignment(JLabel.CENTER);
+        login.add(lblError, "w 80%, h 40");
+    
         
         btnRegister.setText("Register");
         btnRegister.setBackground(new Color(0, 130, 130));
@@ -161,6 +173,7 @@ public class P_Register extends javax.swing.JPanel {
         login = new javax.swing.JPanel();
         btnRegister = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
+        lblError = new javax.swing.JLabel();
 
         login.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -183,6 +196,11 @@ public class P_Register extends javax.swing.JPanel {
             }
         });
 
+        lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblError.setForeground(new java.awt.Color(255, 255, 102));
+        lblError.setText("#Error");
+        lblError.setToolTipText("");
+
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
@@ -193,11 +211,17 @@ public class P_Register extends javax.swing.JPanel {
                     .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                     .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addComponent(lblError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin)
@@ -256,6 +280,7 @@ public class P_Register extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JLabel lblError;
     private javax.swing.JPanel login;
     // End of variables declaration//GEN-END:variables
 }

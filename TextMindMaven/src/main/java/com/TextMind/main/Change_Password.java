@@ -4,24 +4,78 @@
  */
 package com.TextMind.main;
 
+import com.TextMind.swing.MyPasswordField;
+import com.TextMind.swing.MyTextField;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import net.miginfocom.swing.MigLayout;
+
 /**
  *
  * @author khang
  */
 public class Change_Password extends javax.swing.JDialog {
+
+    MyTextField txtEmail = new MyTextField();
+    MyTextField txtVerify = new MyTextField();
+    MyPasswordField txtOldPassword = new MyPasswordField();
+    MyPasswordField txtNewPassword = new MyPasswordField();
+
     private int pX;
     private int pY;
+
     /**
      * Creates new form ReportUser
      */
     public Change_Password(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        init() ;
+        initForm();
+        init();
     }
-    
+
     private void init() {
-        setLocationRelativeTo(null) ;
+        setLocationRelativeTo(null);
+    }
+
+    public void initForm() {
+        title.setText("CHANGE PASSWORD");
+        title.setFont(new Font("sansserif", 1, 30));
+        title.setForeground(new Color(204, 255, 255));
+        changePass.setLayout(new MigLayout("wrap", "push[center]push", "0[]15[]10[]10[]10[]10[]10[]10[]push"));
+        changePass.add(title2);
+        changePass.add(btnChange);
+        changePass.add(btnClose);
+
+        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        txtEmail.setHint("Email");
+        changePass.add(txtEmail, "w 90%");
+//
+        txtOldPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
+        txtOldPassword.setHint("Old Password");
+        changePass.add(txtOldPassword, "w 90%");
+
+        txtNewPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
+        txtNewPassword.setHint("New Password");
+
+        txtVerify.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        txtVerify.setHint("Verify code");
+
+        btnSend.setBackground(new Color(255, 130, 130));
+        btnSend.setForeground(new Color(250, 250, 250));
+        btnChange.setBackground(new Color(255, 130, 130));
+        btnChange.setForeground(new Color(250, 250, 250));
+        btnClose.setBackground(new Color(255, 130, 130));
+        btnClose.setForeground(new Color(250, 250, 250));
+        
+        changePass.add(txtVerify, "w 90%");
+        changePass.add(btnSend, "w 40%, h 40");
+        changePass.add(txtNewPassword, "w 90%");
+        changePass.add(btnClose, "w 40%, h 40");
+        changePass.add(btnChange, "w 40%, h 40");
+
     }
 
     /**
@@ -33,13 +87,20 @@ public class Change_Password extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        changePass = new javax.swing.JPanel();
         title2 = new javax.swing.JPanel();
         btnClose2 = new javax.swing.JButton();
+        title = new javax.swing.JLabel();
+        btnChange = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnSend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        title2.setBackground(new java.awt.Color(229, 229, 229));
+        changePass.setBackground(new java.awt.Color(255, 204, 204));
+
+        title2.setBackground(new java.awt.Color(255, 153, 153));
         title2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 title2MouseDragged(evt);
@@ -61,39 +122,82 @@ public class Change_Password extends javax.swing.JDialog {
             }
         });
 
+        title.setText("...");
+
         javax.swing.GroupLayout title2Layout = new javax.swing.GroupLayout(title2);
         title2.setLayout(title2Layout);
         title2Layout.setHorizontalGroup(
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
-                .addGap(0, 529, Short.MAX_VALUE)
-                .addComponent(btnClose2))
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnClose2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         title2Layout.setVerticalGroup(
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnClose2))
+            .addGroup(title2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnClose2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        btnChange.setText("CHANGE");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
+
+        btnClose.setText("CLOSE");
+
+        btnSend.setText("SEND CODE");
+
+        javax.swing.GroupLayout changePassLayout = new javax.swing.GroupLayout(changePass);
+        changePass.setLayout(changePassLayout);
+        changePassLayout.setHorizontalGroup(
+            changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changePassLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSend)
+                .addGap(18, 18, 18)
+                .addComponent(btnChange)
+                .addGap(18, 18, 18)
+                .addComponent(btnClose)
+                .addGap(23, 23, 23))
+        );
+        changePassLayout.setVerticalGroup(
+            changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(changePassLayout.createSequentialGroup()
+                .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
+                .addGroup(changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChange)
+                    .addComponent(btnClose)
+                    .addComponent(btnSend))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(title2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(changePass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 280, Short.MAX_VALUE))
+                .addComponent(changePass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClose2ActionPerformed
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_btnClose2ActionPerformed
 
     private void title2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2MouseDragged
@@ -104,6 +208,10 @@ public class Change_Password extends javax.swing.JDialog {
         pX = evt.getX();
         pY = evt.getY();
     }//GEN-LAST:event_title2MousePressed
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChangeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,7 +257,12 @@ public class Change_Password extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChange;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnClose2;
+    private javax.swing.JButton btnSend;
+    private javax.swing.JPanel changePass;
+    private javax.swing.JLabel title;
     private javax.swing.JPanel title2;
     // End of variables declaration//GEN-END:variables
 }

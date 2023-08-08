@@ -15,6 +15,7 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Label;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,6 +32,7 @@ public class P_Login extends javax.swing.JPanel {
 
     MyTextField txtUsername = new MyTextField();
     MyPasswordField txtPassword = new MyPasswordField();
+    
     Button cmd = new Button();
 
     /**
@@ -61,30 +63,38 @@ public class P_Login extends javax.swing.JPanel {
         return null;
     }
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "30[]35[]10[]50[]25[]push"));
-        JLabel label = new JLabel("Sign In");
-        label.setFont(new Font("sansserif", 1, 30));
-        label.setForeground(new Color(204, 255, 255));
-        login.add(label);
+    login.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]45[]45[]10[]push"));
+    JLabel label = new JLabel("Sign In");
+    label.setFont(new Font("sansserif", 1, 30));
+    label.setForeground(new Color(204, 255, 255));
+    login.add(label);
 
-        txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-        txtUsername.setHint("Username");
-        
-        login.add(txtUsername, "w 90%");
+    txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+    txtUsername.setHint("Username");
+    
+    login.add(txtUsername, "w 90%");
 
-        txtPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
-        txtPassword.setHint("Password");
-        login.add(txtPassword, "w 90%");
+    txtPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
+    txtPassword.setHint("Password");
+    login.add(txtPassword, "w 90%");
 
-        btnLogin.setText("Login");
-        btnLogin.setBackground(new Color(0, 130, 130));
-        btnLogin.setForeground(new Color(250, 250, 250));
-        login.add(btnLogin, "w 40%, h 40");
-        btnRegister.setText("Register");
-        btnRegister.setBackground(new Color(0, 130, 130));
-        btnRegister.setForeground(new Color(250, 250, 250));
-        login.add(btnRegister, "w 40%, h 40");
-    }
+    lblError.setText("LOGIN FAILS, WRONG USERNAME OR PASSWORD");
+
+    lblError.setHorizontalAlignment(JLabel.CENTER);
+    lblError.setVerticalAlignment(JLabel.CENTER);
+    login.add(lblError, "w 80%, h 40");
+    
+    btnLogin.setText("Login");
+    btnLogin.setBackground(new Color(0, 130, 130));
+    btnLogin.setForeground(new Color(250, 250, 250));
+    login.add(btnLogin, "w 40%, h 40");
+    btnRegister.setText("Register");
+    btnRegister.setBackground(new Color(0, 130, 130));
+    btnRegister.setForeground(new Color(250, 250, 250));
+    login.add(btnRegister, "w 40%, h 40");
+    
+}
+
                                   
     
     
@@ -138,6 +148,7 @@ public class P_Login extends javax.swing.JPanel {
         login = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
+        lblError = new javax.swing.JLabel();
 
         login.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -160,6 +171,11 @@ public class P_Login extends javax.swing.JPanel {
             }
         });
 
+        lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblError.setForeground(new java.awt.Color(255, 255, 102));
+        lblError.setText("#Error");
+        lblError.setToolTipText("");
+
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
@@ -170,11 +186,17 @@ public class P_Login extends javax.swing.JPanel {
                     .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                     .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(loginLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin)
                 .addGap(14, 14, 14)
                 .addComponent(btnRegister)
@@ -211,6 +233,7 @@ public class P_Login extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JLabel lblError;
     private javax.swing.JPanel login;
     // End of variables declaration//GEN-END:variables
 }
