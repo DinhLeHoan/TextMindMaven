@@ -54,6 +54,12 @@ public class Login extends javax.swing.JFrame {
             public void goLogin() {
                 slide.show(0);
             }
+
+            @Override
+            public void reLogin() {
+                setVisible(true) ;
+
+            }
         });
         P_Login login = new P_Login() ;
         P_Register register = new P_Register() ;

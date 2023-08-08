@@ -56,6 +56,11 @@ public class Login1 extends javax.swing.JPanel {
             public void goLogin() {
                 slide.show(0);
             }
+
+            @Override
+            public void reLogin() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
         });
         P_Login login = new P_Login() ;
         P_Register register = new P_Register() ;

@@ -29,7 +29,8 @@ import org.json.JSONException;
  */
 public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateListener {
     private UserDAO listFriend;
-    
+    private ArrayList<String> listFriendOnline = new ArrayList<>();
+
     /**
      * Creates new form Menu_Left
      */
@@ -37,6 +38,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         initComponents();
         init() ;
         listFriend.setListUpdateListener((UserDAO.ListUpdateListener) this);
+        
         getSocket().on("FindResult" + Auth.user.getuID(), new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
@@ -46,7 +48,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                         // User with the entered name does not exist, proceed with adding the user
                         // Code to add the user to Firestore or perform any other action
                                 listFriend = new UserDAO();
-                                System.out.println("addddd");
                                 showMess();
                         // For example:
                         
@@ -55,32 +56,58 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                     }
                 }
             });
+        
+        
     }
     
     private void init() {
         listFriend = new UserDAO();
         sp.setVerticalScrollBar(new ScrollBar());
         menuList.setLayout(new MigLayout("fillx", "0[]0", "0[]0"));
+        getSocket().on("getSignInStatus", new Emitter.Listener() {
+            @Override
+            public void call(Object... os) {
+                JSONArray jsonArray = (JSONArray) os[0];
+                listFriendOnline.clear();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    try {
+                        String uIDFriend = jsonArray.getString(i);
+                        if (!listFriendOnline.contains(uIDFriend)) {
+                            System.out.println(uIDFriend+" is online");
+                            listFriendOnline.add(uIDFriend);
+                        }
+                    } catch (JSONException ex) {
+                        System.out.println(ex);
+                    }
+
+                }
+                updateOnlineFriends(listFriendOnline);
+            }
+            
+        });
     }
 
     private void showMess() {
         menuList.removeAll();
         for (User friendData : listFriend.getListFriend()) {
             Item_People friend = new Item_People(friendData);
-            if(listFriend.getListFriendOnline().contains(friendData.getuID()))
+            if(listFriendOnline.contains(friendData.getuID()))
             {   
-                System.out.println(friendData.getName());
                 friend.setActive(true);
+            }
+            else{
+                friend.setActive(false);
             }
             menuList.add(friend, "wrap");
         }
         refreshMenuList();
+
     }
 
     private void showFindFriend() {
         menuList.removeAll();
-//        FindAndAdd fad = new FindAndAdd();
-//        menuList.add(fad);
+        FindAndAdd fad = new FindAndAdd();
+        menuList.add(fad);
         for (int i = 0; i < 10; i++) {
             menuList.add(new Friend_Found("Name " + i), "wrap");
         }
@@ -103,36 +130,16 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     
     public void onListUpdated() {
         showMess();
-        getSocket().on("getSignInStatus", new Emitter.Listener() {
-            @Override
-            public void call(Object... os) {
-                ArrayList<String> listOnline = new ArrayList<>();
-                JSONArray jsonArray = (JSONArray) os[0];
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    try {
-                        String uIDFriend = jsonArray.getString(i);
-                        if (!listFriend.getListFriend().contains(uIDFriend)) {
-                            System.out.println(uIDFriend);
-                            listOnline.add(uIDFriend);
-                        }
-                    } catch (JSONException ex) {
-                        Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-                updateOnlineFriends(listOnline);
-            }
-        });
     }
     
-    public void updateOnlineFriends(ArrayList<String> onlineFriends) {
+    private void updateOnlineFriends(ArrayList<String> onlineFriends) {
         for (Component component : menuList.getComponents()) {
             if (component instanceof Item_People) {
                 
                 Item_People friend = (Item_People) component;
                 String friendID = friend.getFriend().getuID();
                 // Check if the friend's ID is in the online list
-                boolean isOnline = onlineFriends.contains(friendID);
+                boolean isOnline = listFriendOnline.contains(friendID);
                 friend.setActive(isOnline);
             }
         }
@@ -244,6 +251,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             menuMess.setSelected(true);
             menuFind.setSelected(false);
             menuBox.setSelected(false);
+            getSocket().emit("signInStatus", Auth.user.getuID());
             showMess();
         }
     }//GEN-LAST:event_menuMessActionPerformed

@@ -16,4 +16,7 @@ public interface EventMain {
     public void initChat();
     
      public void selectUser(User user);
+     
+    public void signOut();
+
 }

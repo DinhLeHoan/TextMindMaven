@@ -5,6 +5,8 @@
 package com.TextMind.form;
 
 import com.TextMind.Auth.Auth;
+import static com.TextMind.Socket.SocketManager.getSocket;
+import com.TextMind.event.PublicEvent;
 import com.TextMind.main.Change_Password;
 import com.TextMind.main.Login;
 import com.TextMind.main.main;
@@ -26,6 +28,13 @@ public class Menu_Right extends javax.swing.JPanel {
     private void init(){
         txtName.setText(Auth.user.getName());
     }
+    
+    private void signOut(){
+        getSocket().emit("signOutStatus", Auth.user.getuID());
+
+        PublicEvent.getInstance().getEventMain().signOut();
+        PublicEvent.getInstance().getEventLogin().reLogin();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,8 +46,8 @@ public class Menu_Right extends javax.swing.JPanel {
     private void initComponents() {
 
         txtName = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnChangePass = new javax.swing.JButton();
+        btnSignOut = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(249, 249, 249));
 
@@ -47,17 +56,17 @@ public class Menu_Right extends javax.swing.JPanel {
         txtName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtName.setText("Menu_Right_Note");
 
-        jButton1.setText("Đổi mật khẩu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnChangePass.setText("Đổi mật khẩu");
+        btnChangePass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnChangePassActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Đăng xuất");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSignOut.setText("Đăng xuất");
+        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSignOutActionPerformed(evt);
             }
         });
 
@@ -69,9 +78,9 @@ public class Menu_Right extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnChangePass)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnSignOut)
                         .addGap(8, 8, 8)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -81,26 +90,26 @@ public class Menu_Right extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(txtName)
                 .addGap(31, 31, 31)
-                .addComponent(jButton1)
+                .addComponent(btnChangePass)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnSignOut)
                 .addContainerGap(454, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnChangePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePassActionPerformed
         Change_Password cp = new Change_Password(main.getFrames()[0], true) ;
         cp.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnChangePassActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
+        signOut();
+    }//GEN-LAST:event_btnSignOutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnChangePass;
+    private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }

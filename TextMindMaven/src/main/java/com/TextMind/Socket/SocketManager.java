@@ -17,8 +17,8 @@ public class SocketManager {
     public static Socket getSocket() {
         if (socket == null) {
             try {
-                socket = IO.socket("https://texttomind.onrender.com");
-//                  socket = IO.socket("http://localhost:3000/");
+//                socket = IO.socket("https://texttomind.onrender.com");
+                  socket = IO.socket("http://localhost:3000/");
                   socket.open();
             } catch (Exception e) {
                 e.printStackTrace();

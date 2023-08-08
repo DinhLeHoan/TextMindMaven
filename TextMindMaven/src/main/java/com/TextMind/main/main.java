@@ -4,6 +4,8 @@
  */
 package com.TextMind.main;
 
+import com.TextMind.Auth.Auth;
+import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.entity.User;
 import com.TextMind.event.EventImageView;
 import com.TextMind.event.EventMain;
@@ -76,6 +78,11 @@ public class main extends javax.swing.JFrame {
             @Override
             public void selectUser(User user) {
                 home.setUser(user);
+            }
+
+            @Override
+            public void signOut() {
+                setVisible(false);
             }
         });
         PublicEvent.getInstance().addEventImageView(new EventImageView() {
@@ -237,6 +244,7 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_titleMouseDragged
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        getSocket().emit("signOutStatus", Auth.user.getuID());
         System.exit(0) ;
     }//GEN-LAST:event_btnCloseActionPerformed
 
