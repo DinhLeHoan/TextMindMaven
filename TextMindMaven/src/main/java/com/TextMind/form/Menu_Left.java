@@ -11,6 +11,8 @@ import com.TextMind.component.Friend_Found;
 import com.TextMind.component.Friend_Request;
 import com.TextMind.component.Item_People;
 import com.TextMind.entity.User;
+import com.TextMind.event.EventMenuLeft;
+import com.TextMind.event.PublicEvent;
 import com.TextMind.swing.FindAndAdd;
 import com.TextMind.swing.ScrollBar;
 import io.socket.emitter.Emitter;
@@ -22,6 +24,7 @@ import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -42,18 +45,26 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         getSocket().on("FindResult" + Auth.user.getuID(), new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
-                    boolean isValid = (boolean) args[0];
-                    // Handle the result here
-                    if (isValid) {
-                        // User with the entered name does not exist, proceed with adding the user
-                        // Code to add the user to Firestore or perform any other action
-                                listFriend = new UserDAO();
-                                showMess();
-                        // For example:
-                        
-                    } else {
-                        // User with the entered name already exists
+                    String jsonString = args[0].toString();
+                try {                  
+                    JSONArray jsonArray = new JSONArray(jsonString);
+                    if(jsonArray.length()==0){
+                        showFindFriend();
+                        return;
                     }
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        User found = new User();
+                        String name = jsonObject.optString("name");
+                        String uID = jsonObject.optString("uID");
+                        found.setName(name);
+                        found.setuID(uID);
+                        Friend_Found ff = new Friend_Found(found);
+                        menuList.add(ff, "wrap");
+                    }
+                } catch (JSONException e) {
+                    menuList.removeAll();
+                }
                 }
             });
         
@@ -85,6 +96,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             }
             
         });
+        
     }
 
     private void showMess() {
@@ -108,9 +120,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         menuList.removeAll();
         FindAndAdd fad = new FindAndAdd();
         menuList.add(fad);
-        for (int i = 0; i < 10; i++) {
-            menuList.add(new Friend_Found("Name " + i), "wrap");
-        }
         refreshMenuList();
     }
 
@@ -145,6 +154,8 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         }
         refreshMenuList();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
