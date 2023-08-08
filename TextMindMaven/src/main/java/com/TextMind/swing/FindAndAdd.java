@@ -5,6 +5,7 @@
 package com.TextMind.swing;
 import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
+import com.TextMind.entity.User;
 import io.socket.emitter.Emitter;
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,28 +62,12 @@ public class FindAndAdd extends JPanel {
 
             // Send the username to the server through Socket.IO
             JSONObject data = new JSONObject();
-            data.put("name", username);
+            data.put("nameOrMail", username);
             data.put("uID", Auth.user.getuID());
             getSocket().emit("findAndAdd", data);
 
             // Listen for the validation result from the server
-            getSocket().once("FindResult" + Auth.user.getuID(), new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    boolean isValid = (boolean) args[0];
-                    // Handle the result here
-                    if (!isValid) {
-                        // User with the entered name does not exist, proceed with adding the user
-                        // Code to add the user to Firestore or perform any other action
-
-                        // For example:
-                        JOptionPane.showMessageDialog(null, "Do not exist anyone with this name");
-                    } else {
-                        // User with the entered name already exists
-                        JOptionPane.showMessageDialog(null, "Added");
-                    }
-                }
-            });
+            
         }
     }
 
