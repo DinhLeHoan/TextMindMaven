@@ -15,6 +15,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
@@ -32,7 +34,7 @@ public class FindAndAdd extends JPanel {
         setLayout(new GridBagLayout());
 
         textField = new JTextField(10); // Adjust the number of columns based on your font and other factors
-        textField.setPreferredSize(new Dimension(200, 24)); // Set the preferred size to 200 pixels wide and 24 pixels high
+//        textField.setPreferredSize(new Dimension(200, 24)); // Set the preferred size to 200 pixels wide and 24 pixels high
         btnFindAndAdd = new JButton("Find and Add");
         btnFindAndAdd.setBackground(new Color(0, 102, 204));
         btnFindAndAdd.setForeground(new Color(250, 250, 250));
@@ -41,11 +43,25 @@ public class FindAndAdd extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 0, 10); // Top padding
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         add(textField, gbc);
 
         gbc.gridy = 1;
         gbc.insets = new Insets(5, 10, 10, 10); // Bottom padding
         add(btnFindAndAdd, gbc);
+        
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                if (ke.getKeyChar() == 10) {
+                    try {
+                        findFriend();
+                    } catch (JSONException ex) {
+                        System.out.println("Err");
+                    }
+                }
+            }
+        });
 
         // Add action listener to the button
         btnFindAndAdd.addActionListener(new ActionListener() {
@@ -59,8 +75,8 @@ public class FindAndAdd extends JPanel {
             }
         });
     }
-
-    private void btnFindAndAddActionPerformed(java.awt.event.ActionEvent evt) throws JSONException {
+    
+    private void findFriend() throws JSONException {
         if (!textField.getText().isBlank()) {
             String username = textField.getText().trim();
 
@@ -72,6 +88,10 @@ public class FindAndAdd extends JPanel {
 
             // Listen for the validation result from the server
         }
+    }
+
+    private void btnFindAndAddActionPerformed(java.awt.event.ActionEvent evt) throws JSONException  {
+        findFriend() ;
     }
 
     // Your other methods and code here...

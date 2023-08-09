@@ -6,6 +6,7 @@ package com.TextMind.event;
 
 import com.TextMind.model.Model_Register;
 
+
 /**
  *
  * @author KHOA

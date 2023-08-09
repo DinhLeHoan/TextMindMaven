@@ -12,6 +12,8 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -73,7 +75,7 @@ public class P_Register extends javax.swing.JPanel {
         txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
         login.add(txtEmailConfirm, "w 90%");
 
-        lblError.setText("REGISTER");
+        lblError.setText("");
         lblError.setHorizontalAlignment(JLabel.CENTER);
         lblError.setVerticalAlignment(JLabel.CENTER);
         login.add(lblError, "w 80%, h 40");
@@ -88,6 +90,12 @@ public class P_Register extends javax.swing.JPanel {
         btnLogin.setForeground(new Color(250, 250, 250));
         login.add(btnLogin, "w 40%, h 40");
         
+        enterDown(txtName) ;
+        enterDown(txtEmail) ;
+        enterDown(txtEmailConfirm) ;
+        enterDown(txtUsername) ;
+        enterDown(txtPassword) ;
+        enterDown(txtConfirm) ;        
     }
 
     public void validateInfor() throws JSONException {
@@ -98,29 +106,34 @@ public class P_Register extends javax.swing.JPanel {
         String confirmPassword = (new String(txtConfirm.getPassword())).trim();
         String pattermPassword = "^[A-Za-z0-9]{8,}$";
         if (name.isBlank() || email.isBlank() || password.isBlank() || username.isBlank() || confirmPassword.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Please fill all input field");
+//            JOptionPane.showMessageDialog(this, "Please fill all input field");
+            lblError.setText("Please fill all input field");
             return;
         }
         if (!EmailValidator.getInstance().isValid(email)) {
-            JOptionPane.showMessageDialog(this, "Email is wrong format");
+//            JOptionPane.showMessageDialog(this, "Email is wrong format");
+            lblError.setText("Mail is wrong format");
             txtEmail.grabFocus();
             return;
         }
 
         if (!password.matches(pattermPassword) || !username.matches(pattermPassword)) {
-            JOptionPane.showMessageDialog(this, "Password or Username is at least 8 word and contain only alpha bet and number");
+//            JOptionPane.showMessageDialog(this, "Password or Username is at least 8 word and contain only alpha bet and number");
+            lblError.setText("Password or Username is at least 8 word and contain only alpha bet and number");
             txtPassword.grabFocus();
             return;
         }
 
         if (!username.matches(pattermPassword)) {
-            JOptionPane.showMessageDialog(this, "username is at least 8 word and contain only alpha bet and number");
+//            JOptionPane.showMessageDialog(this, "username is at least 8 word and contain only alpha bet and number");
+            lblError.setText("Username is at least 8 word and contain only alpha bet and number");
             txtUsername.grabFocus();
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "Password do not match with confirm");
+//            JOptionPane.showMessageDialog(this, "Password do not match with confirm");
+            lblError.setText("Password do not match with confirm");
             txtConfirm.grabFocus();
             return;
         }
@@ -140,10 +153,12 @@ public class P_Register extends javax.swing.JPanel {
                 boolean isSignUpValid = (boolean) os[0];
                 // Handle the logic based on the received boolean value
                 if (!isSignUpValid) {
-                    JOptionPane.showMessageDialog(null, "Sign up error, username or email already exist in database");
+//                    JOptionPane.showMessageDialog(null, "Sign up error, username or email already exist in database");
+                    lblError.setText("Sign up error, username or email already exist in database");
                     return;
                 } else {
-                    JOptionPane.showMessageDialog(null, "Sign up success");
+//                    JOptionPane.showMessageDialog(null, "Sign up success");
+                    lblError.setText("Sign up success");                    
                     resetField();
                     PublicEvent.getInstance().getEventLogin().goLogin();
                     return;
@@ -160,6 +175,36 @@ public class P_Register extends javax.swing.JPanel {
         txtPassword.setText("");
         txtUsername.setText("");
         txtConfirm.setText("");
+    }
+    
+    private void enterDown(MyTextField txt) {
+        txt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                if (ke.getKeyChar() == 10) {
+                    try {
+                        validateInfor() ;
+                    } catch (JSONException ex) {
+                        lblError.setText("Error");
+                    }
+                }
+            }
+        });
+    }
+    
+    private void enterDown(MyPasswordField txt) {
+        txt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                if (ke.getKeyChar() == 10) {
+                    try {
+                        validateInfor() ;
+                    } catch (JSONException ex) {
+                        lblError.setText("Error");
+                    }
+                }
+            }
+        });
     }
 
     /**

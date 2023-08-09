@@ -76,8 +76,8 @@ public class Chat_Title extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStatus)
-                    .addComponent(lblName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addGap(318, 318, 318)
                 .addComponent(btnReport)
                 .addContainerGap())
         );

@@ -122,7 +122,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     private void showFindFriend() {
         menuList.removeAll();
         FindAndAdd fad = new FindAndAdd();
-        menuList.add(fad);
+        menuList.add(fad, "wrap");
         refreshMenuList();
     }
 

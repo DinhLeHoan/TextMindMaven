@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.RenderingHints;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JTextPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BoxView;
@@ -96,6 +98,18 @@ public class JIMSendTextPane extends JTextPane {
     public JIMSendTextPane() {
         super();
         this.setEditorKit(new WarpEditorKit());
+        
+//        addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//                if (e.getKeyChar() == 10 && e.isControlDown()) {
+//                    // Xử lý sự kiện Ctrl + Enter
+//                    int caretPosition = getCaretPosition();
+//                    replaceSelection("\n");
+//                    setCaretPosition(caretPosition + 1);
+//                }
+//            }
+//        });
     }
     
     @Override

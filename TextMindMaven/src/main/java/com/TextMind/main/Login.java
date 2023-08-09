@@ -60,7 +60,6 @@ public class Login extends javax.swing.JFrame {
             @Override
             public void reLogin() {
                 setVisible(true) ;
-
             }
         });
         P_Login login = new P_Login() ;

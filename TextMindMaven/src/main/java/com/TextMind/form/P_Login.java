@@ -19,6 +19,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import java.awt.Label;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -95,7 +97,7 @@ public class P_Login extends javax.swing.JPanel {
         txtPassword.setHint("Password");
         login.add(txtPassword, "w 90%");
 
-        lblError.setText("LOGIN");
+        lblError.setText("");
 
         lblError.setHorizontalAlignment(JLabel.CENTER);
         lblError.setVerticalAlignment(JLabel.CENTER);
@@ -110,6 +112,24 @@ public class P_Login extends javax.swing.JPanel {
         btnRegister.setBackground(new Color(0, 102, 204));
         btnRegister.setForeground(new Color(250, 250, 250));
         login.add(btnRegister, "w 40%, h 40");
+        
+        txtPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                if (ke.getKeyChar() == 10) {
+                    login() ;
+                }
+            }
+        });
+        
+        txtUsername.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                if (ke.getKeyChar() == 10) {
+                    login() ;
+                }
+            }
+        });
 
     }
 
@@ -137,7 +157,8 @@ public class P_Login extends javax.swing.JPanel {
         // Handle sign-in error event
         getSocket().on("signInError", args -> {
             String errorMessage = (String) args[0];
-            System.out.println(errorMessage);
+//            System.out.println(errorMessage);
+            lblError.setText(errorMessage);
         });
 
         getSocket().on(getSocket().EVENT_CONNECT, (Object... os) -> {
@@ -145,8 +166,12 @@ public class P_Login extends javax.swing.JPanel {
         });
     }
 
-    public void buttonEntered() {
-
+    public void login() {
+        if (validateLogin() != null) {
+            getSocket().emit("signIn", validateLogin().getUsername() + " : " + validateLogin().getPassword());
+        } else {
+            System.out.println("null");
+        }
     }
 
     /**
@@ -231,16 +256,11 @@ public class P_Login extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
-
+        
     }//GEN-LAST:event_btnLoginKeyPressed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if (validateLogin() != null) {
-            getSocket().emit("signIn", validateLogin().getUsername() + " : " + validateLogin().getPassword());
-        } else {
-            System.out.println("null");
-        }
-
+        login() ;
     }//GEN-LAST:event_btnLoginActionPerformed
 
 
