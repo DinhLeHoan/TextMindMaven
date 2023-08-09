@@ -10,6 +10,7 @@ import com.TextMind.swing.MyTextField;
 import io.socket.emitter.Emitter;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
  * @author KHOA
  */
 public class P_Register extends javax.swing.JPanel {
+
     MyTextField txtName = new MyTextField();
     MyTextField txtEmail = new MyTextField();
     MyTextField txtEmailConfirm = new MyTextField();
@@ -34,14 +36,16 @@ public class P_Register extends javax.swing.JPanel {
     MyPasswordField txtPassword = new MyPasswordField();
     MyPasswordField txtConfirm = new MyPasswordField();
     Button cmd = new Button();
+
     /**
      * Creates new form P_Login
      */
     public P_Register() {
         initComponents();
         initLogin();
-        
+        login.start();
     }
+
     private void initLogin() {
         login.setLayout(new MigLayout("wrap", "push[center]push", "10[]15[]10[]10[]10[]10[]10[]5[]push"));
         JLabel label = new JLabel("Register");
@@ -64,65 +68,63 @@ public class P_Register extends javax.swing.JPanel {
         txtConfirm.setHint("Password confirm");
         login.add(txtConfirm, "w 90%");
         txtConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
-        
+
         txtEmailConfirm.setHint("Verify code");
         txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
         login.add(txtEmailConfirm, "w 90%");
-        
-        lblError.setText("LOGIN FAILS, WRONG USERNAME OR PASSWORD");
+
+        lblError.setText("REGISTER");
         lblError.setHorizontalAlignment(JLabel.CENTER);
         lblError.setVerticalAlignment(JLabel.CENTER);
         login.add(lblError, "w 80%, h 40");
-    
-        
+
         btnRegister.setText("Register");
-        btnRegister.setBackground(new Color(0, 130, 130));
+        btnRegister.setBackground(new Color(0, 102, 204));
         btnRegister.setForeground(new Color(250, 250, 250));
+//        btnRegister.setBorder(new RoundedBorder(10));
         login.add(btnRegister, "w 40%, h 40");
         btnLogin.setText("Login");
-        btnLogin.setBackground(new Color(0, 130, 130));
+        btnLogin.setBackground(new Color(0, 102, 204));
         btnLogin.setForeground(new Color(250, 250, 250));
         login.add(btnLogin, "w 40%, h 40");
         
     }
-    
-    
-     public void validateInfor() throws JSONException{
+
+    public void validateInfor() throws JSONException {
         String name = txtName.getText().trim();
         String email = txtEmail.getText().trim();
         String password = (new String(txtPassword.getPassword())).trim();
         String username = txtUsername.getText().trim();
         String confirmPassword = (new String(txtConfirm.getPassword())).trim();
         String pattermPassword = "^[A-Za-z0-9]{8,}$";
-        if(name.isBlank() || email.isBlank() || password.isBlank() || username.isBlank() || confirmPassword.isBlank()){
+        if (name.isBlank() || email.isBlank() || password.isBlank() || username.isBlank() || confirmPassword.isBlank()) {
             JOptionPane.showMessageDialog(this, "Please fill all input field");
-            return ;
+            return;
         }
-        if(!EmailValidator.getInstance().isValid(email)){
+        if (!EmailValidator.getInstance().isValid(email)) {
             JOptionPane.showMessageDialog(this, "Email is wrong format");
             txtEmail.grabFocus();
-            return ;
+            return;
         }
 
-        if(!password.matches(pattermPassword) || !username.matches(pattermPassword)){
+        if (!password.matches(pattermPassword) || !username.matches(pattermPassword)) {
             JOptionPane.showMessageDialog(this, "Password or Username is at least 8 word and contain only alpha bet and number");
             txtPassword.grabFocus();
-            return ;
+            return;
         }
-        
-        if(!username.matches(pattermPassword)){
+
+        if (!username.matches(pattermPassword)) {
             JOptionPane.showMessageDialog(this, "username is at least 8 word and contain only alpha bet and number");
             txtUsername.grabFocus();
             return;
         }
-        
-        if(!password.equals(confirmPassword)){
+
+        if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Password do not match with confirm");
             txtConfirm.grabFocus();
-            return ;
+            return;
         }
 
-                
         JSONObject data = new JSONObject();
         String randomString = RandomStringUtils.randomAlphanumeric(6);
         data.put("username", username);
@@ -130,9 +132,9 @@ public class P_Register extends javax.swing.JPanel {
         data.put("email", email);
         data.put("name", name);
         data.put("random", randomString);
-                
+
         getSocket().emit("signUpCheck", data);
-        getSocket().once("signUpValidate"+randomString,new Emitter.Listener() {
+        getSocket().once("signUpValidate" + randomString, new Emitter.Listener() {
             @Override
             public void call(Object... os) {
                 boolean isSignUpValid = (boolean) os[0];
@@ -140,8 +142,7 @@ public class P_Register extends javax.swing.JPanel {
                 if (!isSignUpValid) {
                     JOptionPane.showMessageDialog(null, "Sign up error, username or email already exist in database");
                     return;
-                } 
-                else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Sign up success");
                     resetField();
                     PublicEvent.getInstance().getEventLogin().goLogin();
@@ -149,17 +150,17 @@ public class P_Register extends javax.swing.JPanel {
                 }
             }
         });
-        
-        return ;
+
+        return;
     }
-     
-     private void resetField(){
+
+    private void resetField() {
         txtName.setText("");
         txtEmail.setText("");
         txtPassword.setText("");
         txtUsername.setText("");
         txtConfirm.setText("");
-     }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -170,12 +171,15 @@ public class P_Register extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        login = new javax.swing.JPanel();
+        login = new com.TextMind.Helper.CurvesPanel();
+        lblError = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
-        lblError = new javax.swing.JLabel();
 
-        login.setBackground(new java.awt.Color(0, 153, 153));
+        lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblError.setForeground(new java.awt.Color(255, 0, 0));
+        lblError.setText("#Error");
+        lblError.setToolTipText("");
 
         btnRegister.setForeground(new java.awt.Color(46, 163, 0));
         btnRegister.setText("Register");
@@ -196,11 +200,6 @@ public class P_Register extends javax.swing.JPanel {
             }
         });
 
-        lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblError.setForeground(new java.awt.Color(255, 255, 102));
-        lblError.setText("#Error");
-        lblError.setToolTipText("");
-
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
@@ -208,24 +207,23 @@ public class P_Register extends javax.swing.JPanel {
             .addGroup(loginLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
+                    .addGroup(loginLayout.createSequentialGroup()
+                        .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 89, Short.MAX_VALUE))
+                    .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
+            .addGroup(loginLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addComponent(lblError)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin)
-                .addGap(12, 12, 12))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -236,7 +234,7 @@ public class P_Register extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -266,7 +264,7 @@ public class P_Register extends javax.swing.JPanel {
 //            });
 //        }        
 //          PublicEvent.getInstance().getEventLogin().register();
-            validateInfor() ;
+            validateInfor();
         } catch (JSONException ex) {
             Logger.getLogger(P_Register.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -281,6 +279,6 @@ public class P_Register extends javax.swing.JPanel {
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel lblError;
-    private javax.swing.JPanel login;
+    private com.TextMind.Helper.CurvesPanel login;
     // End of variables declaration//GEN-END:variables
 }

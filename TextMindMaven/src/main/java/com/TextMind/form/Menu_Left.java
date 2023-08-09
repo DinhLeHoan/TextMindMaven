@@ -16,6 +16,7 @@ import com.TextMind.event.PublicEvent;
 import com.TextMind.swing.FindAndAdd;
 import com.TextMind.swing.ScrollBar;
 import io.socket.emitter.Emitter;
+import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -70,6 +71,8 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         
         
     }
+    
+    
     
     private void init() {
         listFriend = new UserDAO();
@@ -173,6 +176,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         sp = new javax.swing.JScrollPane();
         menuList = new javax.swing.JLayeredPane();
 
+        menu.setBackground(new java.awt.Color(0, 153, 255));
         menu.setLayout(new java.awt.GridLayout(1, 3));
 
         menuMess.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/images/chat40Selec.png"))); // NOI18N
@@ -209,6 +213,9 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
 
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        menuList.setBackground(new java.awt.Color(150, 202, 255));
+        menuList.setForeground(new java.awt.Color(153, 204, 255));
 
         javax.swing.GroupLayout menuListLayout = new javax.swing.GroupLayout(menuList);
         menuList.setLayout(menuListLayout);

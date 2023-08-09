@@ -15,6 +15,9 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import java.awt.Label;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -41,8 +44,9 @@ public class P_Login extends javax.swing.JPanel {
     public P_Login() {
         initComponents();
         init();
-
+        setOpaque(false);
         initLogin();
+        login.start();
     }
     private User validateLogin() {
         try {
@@ -78,21 +82,22 @@ public class P_Login extends javax.swing.JPanel {
     txtPassword.setHint("Password");
     login.add(txtPassword, "w 90%");
 
-    lblError.setText("LOGIN FAILS, WRONG USERNAME OR PASSWORD");
+    lblError.setText("LOGIN");
 
     lblError.setHorizontalAlignment(JLabel.CENTER);
     lblError.setVerticalAlignment(JLabel.CENTER);
     login.add(lblError, "w 80%, h 40");
     
     btnLogin.setText("Login");
-    btnLogin.setBackground(new Color(0, 130, 130));
+    btnLogin.setBackground(new Color(0, 102, 204));
     btnLogin.setForeground(new Color(250, 250, 250));
+    
     login.add(btnLogin, "w 40%, h 40");
     btnRegister.setText("Register");
-    btnRegister.setBackground(new Color(0, 130, 130));
+    btnRegister.setBackground(new Color(0, 102, 204));
     btnRegister.setForeground(new Color(250, 250, 250));
     login.add(btnRegister, "w 40%, h 40");
-    
+
 }
 
                                   
@@ -145,12 +150,15 @@ public class P_Login extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        login = new javax.swing.JPanel();
+        login = new com.TextMind.Helper.CurvesPanel();
+        lblError = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
-        lblError = new javax.swing.JLabel();
 
-        login.setBackground(new java.awt.Color(0, 153, 153));
+        lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblError.setForeground(new java.awt.Color(255, 51, 51));
+        lblError.setText("#Error");
+        lblError.setToolTipText("");
 
         btnLogin.setForeground(new java.awt.Color(0, 132, 245));
         btnLogin.setText("Login");
@@ -158,6 +166,11 @@ public class P_Login extends javax.swing.JPanel {
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
+            }
+        });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginKeyPressed(evt);
             }
         });
 
@@ -171,36 +184,26 @@ public class P_Login extends javax.swing.JPanel {
             }
         });
 
-        lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblError.setForeground(new java.awt.Color(255, 255, 102));
-        lblError.setText("#Error");
-        lblError.setToolTipText("");
-
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(loginLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
+            .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+            .addGroup(loginLayout.createSequentialGroup()
                 .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(33, 33, 33)
                 .addComponent(btnLogin)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegister)
-                .addContainerGap())
+                .addGap(0, 130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -215,25 +218,30 @@ public class P_Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if(validateLogin()!=null){
-            getSocket().emit("signIn", validateLogin().getUsername()+" : "+validateLogin().getPassword());            
-        }
-        else{
-            System.out.println("null");
-        }
-        
-    }//GEN-LAST:event_btnLoginActionPerformed
-
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         PublicEvent.getInstance().getEventLogin().goRegister();
     }//GEN-LAST:event_btnRegisterActionPerformed
 
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
+
+    }//GEN-LAST:event_btnLoginKeyPressed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if(validateLogin()!=null){
+            getSocket().emit("signIn", validateLogin().getUsername()+" : "+validateLogin().getPassword());
+        }
+        else{
+            System.out.println("null");
+        }
+
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel lblError;
-    private javax.swing.JPanel login;
+    private com.TextMind.Helper.CurvesPanel login;
     // End of variables declaration//GEN-END:variables
 }

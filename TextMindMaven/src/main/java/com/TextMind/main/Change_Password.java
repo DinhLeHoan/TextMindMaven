@@ -87,20 +87,18 @@ public class Change_Password extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        changePass = new javax.swing.JPanel();
+        changePass = new com.TextMind.Helper.GradientPanel();
         title2 = new javax.swing.JPanel();
         btnClose2 = new javax.swing.JButton();
         title = new javax.swing.JLabel();
+        btnSend = new javax.swing.JButton();
         btnChange = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
-        btnSend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        changePass.setBackground(new java.awt.Color(255, 204, 204));
-
-        title2.setBackground(new java.awt.Color(255, 153, 153));
+        title2.setBackground(new java.awt.Color(51, 153, 255));
         title2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 title2MouseDragged(evt);
@@ -129,19 +127,23 @@ public class Change_Password extends javax.swing.JDialog {
         title2Layout.setHorizontalGroup(
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnClose2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(btnClose2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         title2Layout.setVerticalGroup(
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(title2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnClose2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGroup(title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClose2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        btnSend.setText("SEND CODE");
 
         btnChange.setText("CHANGE");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
@@ -152,32 +154,30 @@ public class Change_Password extends javax.swing.JDialog {
 
         btnClose.setText("CLOSE");
 
-        btnSend.setText("SEND CODE");
-
         javax.swing.GroupLayout changePassLayout = new javax.swing.GroupLayout(changePass);
         changePass.setLayout(changePassLayout);
         changePassLayout.setHorizontalGroup(
             changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changePassLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(changePassLayout.createSequentialGroup()
+                .addGap(215, 215, 215)
                 .addComponent(btnSend)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnChange)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnClose)
-                .addGap(23, 23, 23))
+                .addGap(26, 26, 26))
         );
         changePassLayout.setVerticalGroup(
             changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(changePassLayout.createSequentialGroup()
                 .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
                 .addGroup(changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSend)
                     .addComponent(btnChange)
-                    .addComponent(btnClose)
-                    .addComponent(btnSend))
-                .addContainerGap())
+                    .addComponent(btnClose))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,9 +188,7 @@ public class Change_Password extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(changePass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(changePass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -261,7 +259,7 @@ public class Change_Password extends javax.swing.JDialog {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnClose2;
     private javax.swing.JButton btnSend;
-    private javax.swing.JPanel changePass;
+    private com.TextMind.Helper.GradientPanel changePass;
     private javax.swing.JLabel title;
     private javax.swing.JPanel title2;
     // End of variables declaration//GEN-END:variables
