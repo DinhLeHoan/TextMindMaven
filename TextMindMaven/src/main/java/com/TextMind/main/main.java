@@ -12,6 +12,7 @@ import com.TextMind.event.EventMain;
 import com.TextMind.event.PublicEvent;
 import com.TextMind.swing.ComponentResizer;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.Icon;
@@ -30,6 +31,7 @@ public class main extends javax.swing.JFrame {
     public main() {
         initComponents();
         init() ;
+        title.setBackground(new Color(102, 178, 255));
     }
     
     private void init() {

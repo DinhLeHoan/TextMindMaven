@@ -54,6 +54,11 @@ public class Chat_Title extends javax.swing.JPanel {
         btnReport.setBorderPainted(false);
         btnReport.setContentAreaFilled(false);
         btnReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportActionPerformed(evt);
+            }
+        });
 
         lblName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
@@ -72,19 +77,21 @@ public class Chat_Title extends javax.swing.JPanel {
                 .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStatus)
                     .addComponent(lblName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 402, Short.MAX_VALUE)
-                .addComponent(btnReport))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
+                .addComponent(btnReport)
+                .addContainerGap())
         );
         gradientPanelB1Layout.setVerticalGroup(
             gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradientPanelB1Layout.createSequentialGroup()
-                .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(gradientPanelB1Layout.createSequentialGroup()
-                        .addComponent(lblName)
-                        .addGap(1, 1, 1)
-                        .addComponent(lblStatus))
-                    .addComponent(btnReport))
+                .addComponent(lblName)
+                .addGap(1, 1, 1)
+                .addComponent(lblStatus)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradientPanelB1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnReport)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -100,6 +107,11 @@ public class Chat_Title extends javax.swing.JPanel {
             .addComponent(gradientPanelB1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
+        
+        
+    }//GEN-LAST:event_btnReportActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -12,6 +12,7 @@ import com.TextMind.form.P_Login;
 import com.TextMind.form.P_Register;
 import com.TextMind.model.Model_Register;
 import io.socket.client.Socket;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -28,6 +29,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         init() ;
         this.setLocationRelativeTo(null);
+        title2.setBackground(new Color(102, 178, 255));
     }
     
     private void init() {
