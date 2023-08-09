@@ -45,21 +45,18 @@ public class Chat_Title extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        layer = new javax.swing.JLayeredPane();
-        lblName = new javax.swing.JLabel();
+        layer = new com.TextMind.Helper.GradientPanel();
         lblStatus = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         btnReport = new javax.swing.JButton();
 
-        layer.setLayout(new java.awt.GridLayout(0, 1));
-
-        lblName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblName.setForeground(new java.awt.Color(71, 71, 71));
-        lblName.setText("Name");
-        layer.add(lblName);
-
+        lblStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblStatus.setForeground(new java.awt.Color(0, 204, 0));
         lblStatus.setText("Active Now");
-        layer.add(lblStatus);
+
+        lblName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setText("Name");
 
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         btnReport.setBorderPainted(false);
@@ -71,24 +68,42 @@ public class Chat_Title extends javax.swing.JPanel {
             }
         });
 
+        javax.swing.GroupLayout layerLayout = new javax.swing.GroupLayout(layer);
+        layer.setLayout(layerLayout);
+        layerLayout.setHorizontalGroup(
+            layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addComponent(btnReport)
+                .addContainerGap())
+        );
+        layerLayout.setVerticalGroup(
+            layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layerLayout.createSequentialGroup()
+                .addGroup(layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layerLayout.createSequentialGroup()
+                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblStatus))
+                    .addGroup(layerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnReport)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(layer, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
-                .addComponent(btnReport)
-                .addContainerGap())
+            .addComponent(layer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layer)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnReport)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(layer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -100,7 +115,7 @@ public class Chat_Title extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReport;
-    private javax.swing.JLayeredPane layer;
+    private com.TextMind.Helper.GradientPanel layer;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStatus;
     // End of variables declaration//GEN-END:variables
