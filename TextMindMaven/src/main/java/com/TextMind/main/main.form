@@ -107,9 +107,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="848" max="-2" attributes="0"/>
-                          <Component id="btnMinimize" max="32767" attributes="0"/>
+                          <Component id="btnMinimize" pref="33" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="btnClose" max="32767" attributes="0"/>
+                          <Component id="btnClose" pref="33" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       </Group>
                   </Group>
