@@ -35,7 +35,7 @@ public class P_Login extends javax.swing.JPanel {
 
     MyTextField txtUsername = new MyTextField();
     MyPasswordField txtPassword = new MyPasswordField();
-    
+
     Button cmd = new Button();
 
     /**
@@ -48,16 +48,18 @@ public class P_Login extends javax.swing.JPanel {
         initLogin();
         login.start();
     }
+
     private User validateLogin() {
         try {
             if (txtUsername != null && txtPassword != null) {
                 String username = txtUsername.getText();
                 String password = new String(txtPassword.getPassword());
 
-                if (!username.trim().isEmpty() && !password.trim().isEmpty()) {
+                // Kiểm tra username và password có đủ độ dài và không chứa kí tự đặc biệt
+                if (isValidUsername(username) && isValidPassword(password)) {
                     return new User(username, password);
                 } else {
-                    JOptionPane.showMessageDialog(null,"Username or password is blank!", "Alert",JOptionPane.WARNING_MESSAGE);
+                    lblError.setText("Invalid username or password!");
                 }
             }
         } catch (Exception e) {
@@ -66,45 +68,51 @@ public class P_Login extends javax.swing.JPanel {
 
         return null;
     }
+
+    private boolean isValidUsername(String username) {
+        // Kiểm tra độ dài của username (>= 6 kí tự) và không chứa kí tự đặc biệt
+        return username.length() >= 6 && username.matches("^[a-zA-Z0-9]*$");
+    }
+
+    private boolean isValidPassword(String password) {
+        // Kiểm tra độ dài của password (>= 6 kí tự) và không chứa kí tự đặc biệt
+        return password.length() >= 6 && password.matches("^[a-zA-Z0-9]*$");
+    }
+
     private void initLogin() {
-    login.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]45[]45[]10[]push"));
-    JLabel label = new JLabel("Sign In");
-    label.setFont(new Font("sansserif", 1, 30));
-    label.setForeground(new Color(204, 255, 255));
-    login.add(label);
+        login.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]45[]45[]10[]push"));
+        JLabel label = new JLabel("Sign In");
+        label.setFont(new Font("sansserif", 1, 30));
+        label.setForeground(new Color(204, 255, 255));
+        login.add(label);
 
-    txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-    txtUsername.setHint("Username");
-    
-    login.add(txtUsername, "w 90%");
+        txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        txtUsername.setHint("Username");
 
-    txtPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
-    txtPassword.setHint("Password");
-    login.add(txtPassword, "w 90%");
+        login.add(txtUsername, "w 90%");
 
-    lblError.setText("LOGIN");
+        txtPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
+        txtPassword.setHint("Password");
+        login.add(txtPassword, "w 90%");
 
-    lblError.setHorizontalAlignment(JLabel.CENTER);
-    lblError.setVerticalAlignment(JLabel.CENTER);
-    login.add(lblError, "w 80%, h 40");
-    
-    btnLogin.setText("Login");
-    btnLogin.setBackground(new Color(0, 102, 204));
-    btnLogin.setForeground(new Color(250, 250, 250));
-    
-    login.add(btnLogin, "w 40%, h 40");
-    btnRegister.setText("Register");
-    btnRegister.setBackground(new Color(0, 102, 204));
-    btnRegister.setForeground(new Color(250, 250, 250));
-    login.add(btnRegister, "w 40%, h 40");
+        lblError.setText("LOGIN");
 
-}
+        lblError.setHorizontalAlignment(JLabel.CENTER);
+        lblError.setVerticalAlignment(JLabel.CENTER);
+        login.add(lblError, "w 80%, h 40");
 
-                                  
-    
-    
-    
-    
+        btnLogin.setText("Login");
+        btnLogin.setBackground(new Color(0, 102, 204));
+        btnLogin.setForeground(new Color(250, 250, 250));
+
+        login.add(btnLogin, "w 40%, h 40");
+        btnRegister.setText("Register");
+        btnRegister.setBackground(new Color(0, 102, 204));
+        btnRegister.setForeground(new Color(250, 250, 250));
+        login.add(btnRegister, "w 40%, h 40");
+
+    }
+
     private void init() {
         getSocket().on("signInSuccess", new Emitter.Listener() {
             @Override
@@ -136,9 +144,9 @@ public class P_Login extends javax.swing.JPanel {
             System.out.println("connection");
         });
     }
-    
-    public void buttonEntered(){
-        
+
+    public void buttonEntered() {
+
     }
 
     /**
@@ -227,16 +235,14 @@ public class P_Login extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLoginKeyPressed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if(validateLogin()!=null){
-            getSocket().emit("signIn", validateLogin().getUsername()+" : "+validateLogin().getPassword());
-        }
-        else{
+        if (validateLogin() != null) {
+            getSocket().emit("signIn", validateLogin().getUsername() + " : " + validateLogin().getPassword());
+        } else {
             System.out.println("null");
         }
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;

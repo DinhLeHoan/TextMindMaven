@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.TextMind.swing;
+
 import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.entity.User;
@@ -21,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class FindAndAdd extends JPanel {
+
     private JTextField textField;
     private JButton btnFindAndAdd;
 
@@ -32,6 +34,8 @@ public class FindAndAdd extends JPanel {
         textField = new JTextField(10); // Adjust the number of columns based on your font and other factors
         textField.setPreferredSize(new Dimension(200, 24)); // Set the preferred size to 200 pixels wide and 24 pixels high
         btnFindAndAdd = new JButton("Find and Add");
+        btnFindAndAdd.setBackground(new Color(0, 102, 204));
+        btnFindAndAdd.setForeground(new Color(250, 250, 250));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -67,13 +71,8 @@ public class FindAndAdd extends JPanel {
             getSocket().emit("findAndAdd", data);
 
             // Listen for the validation result from the server
-            
         }
     }
 
-
     // Your other methods and code here...
 }
-
-
-
