@@ -52,7 +52,7 @@ public class UserDAO {
         return listFriend;
     }
 
-    private void fillList() {
+    public void fillList() {
         listFriend.clear();
         getSocket().emit("getListFriend", Auth.user.getuID());
         getSocket().on("pushListFriend", new Emitter.Listener() {

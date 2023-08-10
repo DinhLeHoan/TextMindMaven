@@ -99,6 +99,14 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                 }
                 }
             });
+            
+            getSocket().on("newFriend" + Auth.user.getuID(), new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    listFriend.fillList();
+                    showMess();
+                }
+            });
     }
     
     

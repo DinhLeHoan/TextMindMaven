@@ -53,7 +53,7 @@ public class Chat extends javax.swing.JPanel {
                     messDataSend.put("message", text.trim());
                     messDataSend.put("name", Auth.user.getName());
                     Date now = new Date();
-                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm a");
                     
                     chatBody.addItemRight(messDataSend.getString("message"),sdf.format(now));
                 } catch (JSONException ex) {
