@@ -63,11 +63,11 @@ public class Change_Password extends javax.swing.JDialog {
         txtVerify.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
         txtVerify.setHint("Verify code");
 
-        btnSend.setBackground(new Color(255, 130, 130));
+        btnSend.setBackground(new Color(0, 102, 204));
         btnSend.setForeground(new Color(250, 250, 250));
-        btnChange.setBackground(new Color(255, 130, 130));
+        btnChange.setBackground(new Color(0, 102, 204));
         btnChange.setForeground(new Color(250, 250, 250));
-        btnClose.setBackground(new Color(255, 130, 130));
+        btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
         
         changePass.add(txtVerify, "w 90%");

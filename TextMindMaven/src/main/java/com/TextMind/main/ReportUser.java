@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.TextMind.main;
 
@@ -11,35 +11,33 @@ import java.awt.Font;
  *
  * @author ducan
  */
-public class ReportUser extends javax.swing.JFrame {
+public class ReportUser extends javax.swing.JDialog {
 
     private int pX;
     private int pY;
-    
-    public ReportUser() {
-        init();
+
+    /**
+     * Creates new form NewJDialog
+     */
+    public ReportUser(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        init();
         setLocationRelativeTo(null);
     }
-    
-    public void init() {
-        
-    }
 
-    public void initForm() {
-        title.setText("REPORT");
-        title.setFont(new Font("sansserif", 1, 30));
-        title.setForeground(new Color(204, 255, 255));
-        title2.add(title);
-        
-        btnReport.setBackground(new Color(255, 130, 130));
+    public void init() {
+        lblTitle.setText("REPORT");
+        lblTitle.setFont(new Font("sansserif", 1, 30));
+        lblTitle.setForeground(new Color(204, 255, 255));
+
+        btnReport.setBackground(new Color(0, 102, 204));
         btnReport.setForeground(new Color(250, 250, 250));
         report.add(btnReport, "w 40%, h 40");
-        
-        btnClose.setBackground(new Color(255, 130, 130));
+
+        btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
         report.add(btnClose, "w 40%, h 40");
-        
     }
 
     /**
@@ -52,62 +50,20 @@ public class ReportUser extends javax.swing.JFrame {
     private void initComponents() {
 
         report = new javax.swing.JPanel();
-        title2 = new javax.swing.JPanel();
-        btnClose52 = new javax.swing.JButton();
-        title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDetails = new javax.swing.JTextPane();
         btnReport = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
+        title2 = new javax.swing.JPanel();
+        btnMinimize2 = new javax.swing.JButton();
+        btnClose2 = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         report.setBackground(new java.awt.Color(153, 204, 255));
-
-        title2.setBackground(new java.awt.Color(0, 153, 255));
-        title2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                title2title2MouseDragged(evt);
-            }
-        });
-        title2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                title2title2MousePressed(evt);
-            }
-        });
-
-        btnClose52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        btnClose52.setBorder(null);
-        btnClose52.setContentAreaFilled(false);
-        btnClose52.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClose52.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClose52btnClose2ActionPerformed(evt);
-            }
-        });
-
-        title.setText("...");
-
-        javax.swing.GroupLayout title2Layout = new javax.swing.GroupLayout(title2);
-        title2.setLayout(title2Layout);
-        title2Layout.setHorizontalGroup(
-            title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
-                .addContainerGap(112, Short.MAX_VALUE)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
-                .addComponent(btnClose52, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        title2Layout.setVerticalGroup(
-            title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(title2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnClose52, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(title, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -125,12 +81,63 @@ public class ReportUser extends javax.swing.JFrame {
 
         btnClose.setText("CLOSE");
 
+        title2.setBackground(new java.awt.Color(102, 153, 255));
+        title2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                title2MouseDragged(evt);
+            }
+        });
+        title2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                title2MousePressed(evt);
+            }
+        });
+
+        btnMinimize2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minimize.png"))); // NOI18N
+        btnMinimize2.setBorder(null);
+        btnMinimize2.setContentAreaFilled(false);
+        btnMinimize2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        btnClose2.setBorder(null);
+        btnClose2.setContentAreaFilled(false);
+        btnClose2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClose2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClose2ActionPerformed(evt);
+            }
+        });
+
+        lblTitle.setText("...");
+
+        javax.swing.GroupLayout title2Layout = new javax.swing.GroupLayout(title2);
+        title2.setLayout(title2Layout);
+        title2Layout.setHorizontalGroup(
+            title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
+                .addContainerGap(154, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(btnMinimize2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnClose2)
+                .addContainerGap())
+        );
+        title2Layout.setVerticalGroup(
+            title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(title2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClose2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnMinimize2, javax.swing.GroupLayout.Alignment.TRAILING)))
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
         report.setLayout(reportLayout);
         reportLayout.setHorizontalGroup(
             reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(reportLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -138,10 +145,11 @@ public class ReportUser extends javax.swing.JFrame {
                     .addGroup(reportLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnReport)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnClose))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
+            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         reportLayout.setVerticalGroup(
             reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,11 +159,11 @@ public class ReportUser extends javax.swing.JFrame {
                 .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnClose)
                     .addComponent(btnReport))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,27 +174,30 @@ public class ReportUser extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnClose52btnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClose52btnClose2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClose52btnClose2ActionPerformed
-
-    private void title2title2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2title2MouseDragged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_title2title2MouseDragged
-
-    private void title2title2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2title2MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_title2title2MousePressed
-
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReportActionPerformed
+
+    private void title2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2MouseDragged
+        this.setLocation(this.getLocation().x + evt.getX() - pX, this.getLocation().y + evt.getY() - pY);
+    }//GEN-LAST:event_title2MouseDragged
+
+    private void title2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2MousePressed
+        pX = evt.getX();
+        pY = evt.getY();
+    }//GEN-LAST:event_title2MousePressed
+
+    private void btnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClose2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnClose2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,25 +226,31 @@ public class ReportUser extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReportUser().setVisible(true);
+                ReportUser dialog = new ReportUser(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnClose52;
+    private javax.swing.JButton btnClose2;
+    private javax.swing.JButton btnMinimize2;
     private javax.swing.JButton btnReport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel report;
-    private javax.swing.JLabel title;
     private javax.swing.JPanel title2;
     private javax.swing.JTextPane txtDetails;
     // End of variables declaration//GEN-END:variables

@@ -11,6 +11,7 @@ import com.TextMind.main.Change_Password;
 import com.TextMind.main.Login;
 import com.TextMind.main.main;
 import java.awt.Color;
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -24,14 +25,18 @@ public class Menu_Right extends javax.swing.JPanel {
     public Menu_Right() {
         initComponents();
         init();
+        
+        menuRight.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]45[]45[]10[]push"));
         menuRight.start();
+        
         btnChangePass.setText("Change Password");
         btnChangePass.setBackground(new Color(0, 102, 204));
         btnChangePass.setForeground(new Color(250, 250, 250));
-        
+        menuRight.add(btnChangePass);
         btnSignOut.setText("Sign Out");
         btnSignOut.setBackground(new Color(0, 102, 204));
         btnSignOut.setForeground(new Color(250, 250, 250));
+        menuRight.add(btnSignOut);
     }
 
     private void init() {
@@ -86,7 +91,7 @@ public class Menu_Right extends javax.swing.JPanel {
             menuRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnChangePass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSignOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
         );
         menuRightLayout.setVerticalGroup(
             menuRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +109,9 @@ public class Menu_Right extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(menuRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
