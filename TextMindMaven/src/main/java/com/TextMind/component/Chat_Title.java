@@ -109,7 +109,8 @@ public class Chat_Title extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
-        
+        ReportUser rp = new ReportUser(main.getFrames()[0], true);
+        rp.setVisible(true);
         
     }//GEN-LAST:event_btnReportActionPerformed
 

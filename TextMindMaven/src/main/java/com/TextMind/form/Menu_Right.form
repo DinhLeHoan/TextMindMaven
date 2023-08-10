@@ -21,10 +21,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="menuRight" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="menuRight" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -39,9 +36,9 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="btnChangePass" max="32767" attributes="0"/>
-              <Component id="btnSignOut" alignment="0" max="32767" attributes="0"/>
-              <Component id="txtName" alignment="1" pref="225" max="32767" attributes="0"/>
+              <Component id="btnChangePass" min="-2" pref="243" max="-2" attributes="0"/>
+              <Component id="btnSignOut" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+              <Component id="txtName" alignment="1" min="-2" pref="243" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

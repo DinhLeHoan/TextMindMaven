@@ -56,7 +56,6 @@ public class ReportUser extends javax.swing.JDialog {
         btnReport = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         title2 = new javax.swing.JPanel();
-        btnMinimize2 = new javax.swing.JButton();
         btnClose2 = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
@@ -93,11 +92,6 @@ public class ReportUser extends javax.swing.JDialog {
             }
         });
 
-        btnMinimize2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minimize.png"))); // NOI18N
-        btnMinimize2.setBorder(null);
-        btnMinimize2.setContentAreaFilled(false);
-        btnMinimize2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         btnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         btnClose2.setBorder(null);
         btnClose2.setContentAreaFilled(false);
@@ -117,9 +111,7 @@ public class ReportUser extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
                 .addContainerGap(154, Short.MAX_VALUE)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(btnMinimize2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(98, 98, 98)
                 .addComponent(btnClose2)
                 .addContainerGap())
         );
@@ -127,9 +119,7 @@ public class ReportUser extends javax.swing.JDialog {
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(title2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClose2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnMinimize2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addComponent(btnClose2))
             .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -163,7 +153,7 @@ public class ReportUser extends javax.swing.JDialog {
                 .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnClose)
                     .addComponent(btnReport))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,9 +164,7 @@ public class ReportUser extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -196,7 +184,7 @@ public class ReportUser extends javax.swing.JDialog {
     }//GEN-LAST:event_title2MousePressed
 
     private void btnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClose2ActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_btnClose2ActionPerformed
 
     /**
@@ -245,7 +233,6 @@ public class ReportUser extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnClose2;
-    private javax.swing.JButton btnMinimize2;
     private javax.swing.JButton btnReport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -44,6 +44,7 @@ public class Change_Password extends javax.swing.JDialog {
         title.setText("CHANGE PASSWORD");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(204, 255, 255));
+        title.setBackground(new Color(51, 153, 255));        
         changePass.setLayout(new MigLayout("wrap", "push[center]push", "0[]15[]10[]10[]10[]10[]10[]10[]push"));
         changePass.add(title2);
         changePass.add(btnChange);
@@ -120,16 +121,14 @@ public class Change_Password extends javax.swing.JDialog {
             }
         });
 
-        title.setText("...");
-
         javax.swing.GroupLayout title2Layout = new javax.swing.GroupLayout(title2);
         title2.setLayout(title2Layout);
         title2Layout.setHorizontalGroup(
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(btnClose2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -158,13 +157,13 @@ public class Change_Password extends javax.swing.JDialog {
         changePass.setLayout(changePassLayout);
         changePassLayout.setHorizontalGroup(
             changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(changePassLayout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(btnSend)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnChange)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnClose)
                 .addGap(26, 26, 26))
         );
