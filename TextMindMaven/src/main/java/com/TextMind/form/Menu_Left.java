@@ -46,6 +46,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         getSocket().on("FindResult" + Auth.user.getuID(), new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
+                    showFindFriend();
                     String jsonString = args[0].toString();
                 try {                  
                     JSONArray jsonArray = new JSONArray(jsonString);
@@ -62,6 +63,9 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                             found.setName(name);
                             found.setuID(uID);
                             Friend_Found ff = new Friend_Found(found);
+                            if(!listFriend.checkDeducate(uID)){
+                                ff.setDisableSend();
+                            }
                             menuList.add(ff, "wrap");
                         }
                     }

@@ -63,7 +63,9 @@ public class Friend_Found extends javax.swing.JPanel {
         });
     }
     
-    
+    public void setDisableSend(){
+        this.btnAddFriend.setEnabled(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

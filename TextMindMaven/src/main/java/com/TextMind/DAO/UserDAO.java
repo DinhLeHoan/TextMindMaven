@@ -106,7 +106,7 @@ public class UserDAO {
         });
     }
     
-    private boolean checkDeducate(String uID){
+    public boolean checkDeducate(String uID){
         for(User friend : listFriend){
             if(uID.equalsIgnoreCase(friend.getuID())){
                 return false;
@@ -115,5 +115,5 @@ public class UserDAO {
         return true;
     }
     
-    
+
 }
