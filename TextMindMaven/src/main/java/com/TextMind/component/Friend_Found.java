@@ -4,12 +4,15 @@
  */
 package com.TextMind.component;
 
+import com.TextMind.Auth.Auth;
+import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.entity.User;
 import com.TextMind.event.PublicEvent;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import org.json.JSONObject;
 
 /**
  *
@@ -73,19 +76,19 @@ public class Friend_Found extends javax.swing.JPanel {
 
         gradientPanel1 = new com.TextMind.Helper.GradientPanel();
         imageAvatar1 = new com.TextMind.swing.ImageAvatar();
-        jButton1 = new javax.swing.JButton();
+        btnAddFriend = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
 
         imageAvatar1.setBorderSize(1);
         imageAvatar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/userNonActive.png"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddFriend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        btnAddFriend.setBorderPainted(false);
+        btnAddFriend.setContentAreaFilled(false);
+        btnAddFriend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddFriend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddFriendActionPerformed(evt);
             }
         });
 
@@ -103,7 +106,7 @@ public class Friend_Found extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddFriend, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         gradientPanel1Layout.setVerticalGroup(
@@ -113,7 +116,7 @@ public class Friend_Found extends javax.swing.JPanel {
                 .addGroup(gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblName)
                     .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddFriend, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -134,15 +137,22 @@ public class Friend_Found extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnAddFriendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFriendActionPerformed
+        JSONObject requestFriend = new JSONObject();
+        try {
+            requestFriend.put("uidTo", friend.getuID());
+            requestFriend.put("uidFrom", Auth.user.getuID());
+            getSocket().emit("sendRequestFriend", requestFriend);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btnAddFriendActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddFriend;
     private com.TextMind.Helper.GradientPanel gradientPanel1;
     private com.TextMind.swing.ImageAvatar imageAvatar1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblName;
     // End of variables declaration//GEN-END:variables
 }
