@@ -4,12 +4,15 @@
  */
 package com.TextMind.component;
 
+import com.TextMind.Auth.Auth;
+import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.entity.User;
 import com.TextMind.event.PublicEvent;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import org.json.JSONObject;
 
 /**
  *
@@ -156,10 +159,31 @@ public class Friend_Request extends javax.swing.JPanel {
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
+        JSONObject requestFriend = new JSONObject();
+        try {
+            requestFriend.put("uidFrom", friend.getuID());
+            requestFriend.put("uidTo", Auth.user.getuID());
+            requestFriend.put("result", true);
+            getSocket().emit("acceptOrDenyFriend", requestFriend);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        setVisible(false);
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
         // TODO add your handling code here:
+                JSONObject requestFriend = new JSONObject();
+        try {
+            requestFriend.put("uidFrom", friend.getuID());
+            requestFriend.put("uidTo", Auth.user.getuID());
+            requestFriend.put("result", false);
+            getSocket().emit("acceptOrDenyFriend", requestFriend);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        setVisible(false);
+
     }//GEN-LAST:event_btnDenyActionPerformed
 
 

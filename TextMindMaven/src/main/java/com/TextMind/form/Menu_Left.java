@@ -36,7 +36,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     private UserDAO listFriend;
     private ArrayList<String> listFriendOnline = new ArrayList<>();
     private Timer refreshTimer;
-    private boolean isMenuBoxSelected = false;
     /**
      * Creates new form Menu_Left
      */
@@ -130,7 +129,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         });
         
         refreshTimer = new Timer(500, e -> {
-            if (isMenuBoxSelected) {
+            if (menuBox.isSelected()) {
                 getFriendRQ();
             }
         });
@@ -163,7 +162,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
 
     private void showBox() {
         menuList.removeAll();
-        isMenuBoxSelected = true; // Set the flag
         getFriendRQ();
         refreshMenuList();
         startRefreshTimer();
@@ -176,9 +174,11 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     }
 
     private void stopRefreshTimer() {
+        menuList.removeAll();
         if (refreshTimer.isRunning()) {
             refreshTimer.stop();
         }
+        refreshMenuList();
     }
     
     private void refreshMenuList() {
@@ -332,18 +332,18 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             menuMess.setSelected(false);
             menuFind.setSelected(false);
             menuBox.setSelected(true);
-            isMenuBoxSelected = menuBox.isSelected();
-            if (isMenuBoxSelected) {
+
                 getFriendRQ();
                 startRefreshTimer();
-            } else {
-                stopRefreshTimer();
-            }
+
+
             showBox();
         }
     }//GEN-LAST:event_menuBoxActionPerformed
 
     private void menuFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFindActionPerformed
+                        stopRefreshTimer();
+
         if (!menuFind.isSelected()) {
             menuMess.setSelected(false);
             menuFind.setSelected(true);
@@ -353,10 +353,13 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     }//GEN-LAST:event_menuFindActionPerformed
 
     private void menuMessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMessActionPerformed
+                        stopRefreshTimer();
+
         if (!menuMess.isSelected()) {
             menuMess.setSelected(true);
             menuFind.setSelected(false);
             menuBox.setSelected(false);
+
             getSocket().emit("signInStatus", Auth.user.getuID());
             showMess();
         }
