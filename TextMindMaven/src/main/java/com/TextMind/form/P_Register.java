@@ -71,9 +71,9 @@ public class P_Register extends javax.swing.JPanel {
         login.add(txtConfirm, "w 90%");
         txtConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
 
-        txtEmailConfirm.setHint("Verify code");
-        txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-        login.add(txtEmailConfirm, "w 90%");
+//        txtEmailConfirm.setHint("Verify code");
+//        txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+//        login.add(txtEmailConfirm, "w 90%");
 
         lblError.setText("");
         lblError.setHorizontalAlignment(JLabel.CENTER);
@@ -119,14 +119,14 @@ public class P_Register extends javax.swing.JPanel {
 
         if (!password.matches(pattermPassword) || !username.matches(pattermPassword)) {
 //            JOptionPane.showMessageDialog(this, "Password or Username is at least 8 word and contain only alpha bet and number");
-            lblError.setText("Password or Username is at least 8 word and contain only alpha bet and number");
+            lblError.setText("<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
             txtPassword.grabFocus();
             return;
         }
 
         if (!username.matches(pattermPassword)) {
 //            JOptionPane.showMessageDialog(this, "username is at least 8 word and contain only alpha bet and number");
-            lblError.setText("Username is at least 8 word and contain only alpha bet and number");
+            lblError.setText("<html>Username is at least 8 word and <br>contain only alpha bet and number</html>");
             txtUsername.grabFocus();
             return;
         }
@@ -154,7 +154,7 @@ public class P_Register extends javax.swing.JPanel {
                 // Handle the logic based on the received boolean value
                 if (!isSignUpValid) {
 //                    JOptionPane.showMessageDialog(null, "Sign up error, username or email already exist in database");
-                    lblError.setText("Sign up error, username or email already exist in database");
+                    lblError.setText("<html>Sign up error, username or email <br>already exist in database</html>");
                     return;
                 } else {
 //                    JOptionPane.showMessageDialog(null, "Sign up success");
