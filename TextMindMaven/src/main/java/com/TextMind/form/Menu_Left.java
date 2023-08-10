@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import net.miginfocom.swing.MigLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +35,8 @@ import org.json.JSONObject;
 public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateListener {
     private UserDAO listFriend;
     private ArrayList<String> listFriendOnline = new ArrayList<>();
-
+    private Timer refreshTimer;
+    private boolean isMenuBoxSelected = false;
     /**
      * Creates new form Menu_Left
      */
@@ -75,7 +77,29 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                 }
             });
         
-        
+            getSocket().on("foundUsersSendRQ" + Auth.user.getuID(), new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    String jsonString = args[0].toString();
+                try {                  
+                    JSONArray jsonArray = new JSONArray(jsonString);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        User found = new User();
+                        String name = jsonObject.optString("name");
+                        String uID = jsonObject.optString("uID");
+                        if(checkRQDeducate(uID)){
+                            found.setName(name);
+                            found.setuID(uID);
+                            Friend_Request fr = new Friend_Request(found);
+                            menuList.add(fr, "wrap");
+                        }
+                    }
+                } catch (JSONException e) {
+                    menuList.removeAll();
+                }
+                }
+            });
     }
     
     
@@ -105,6 +129,12 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             
         });
         
+        refreshTimer = new Timer(500, e -> {
+            if (isMenuBoxSelected) {
+                getFriendRQ();
+            }
+        });
+        refreshTimer.setRepeats(true);
     }
 
     private void showMess() {
@@ -133,17 +163,35 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
 
     private void showBox() {
         menuList.removeAll();
-        for (int i = 0; i < 10; i++) {
-            menuList.add(new Friend_Request("Box " + i), "wrap");
-        }
+        isMenuBoxSelected = true; // Set the flag
+        getFriendRQ();
         refreshMenuList();
+        startRefreshTimer();
+    }
+    
+    private void startRefreshTimer() {
+        if (!refreshTimer.isRunning()) {
+            refreshTimer.start();
+        }
     }
 
+    private void stopRefreshTimer() {
+        if (refreshTimer.isRunning()) {
+            refreshTimer.stop();
+        }
+    }
+    
     private void refreshMenuList() {
         menuList.repaint();
         menuList.revalidate();
     }
     
+    private void getFriendRQ(){
+        if(menuBox.isSelected()){
+           getSocket().emit("getAllRequestFriend", Auth.user.getuID());
+
+        }
+    }
     
     public void onListUpdated() {
         showMess();
@@ -178,7 +226,20 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         return true;
     }
     
-    
+    private boolean checkRQDeducate(String uID){
+        for (Component component : menuList.getComponents()) {
+            if (component instanceof Friend_Request) {
+                
+                Friend_Request friend = (Friend_Request) component;
+                String friendID = friend.getFriendRQ().getuID();
+                // Check if the friend's ID is in the online list
+               if(uID.equalsIgnoreCase(friendID)){
+                   return false;
+               }
+            }
+        }
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -271,6 +332,13 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             menuMess.setSelected(false);
             menuFind.setSelected(false);
             menuBox.setSelected(true);
+            isMenuBoxSelected = menuBox.isSelected();
+            if (isMenuBoxSelected) {
+                getFriendRQ();
+                startRefreshTimer();
+            } else {
+                stopRefreshTimer();
+            }
             showBox();
         }
     }//GEN-LAST:event_menuBoxActionPerformed

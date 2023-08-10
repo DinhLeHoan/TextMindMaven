@@ -22,11 +22,22 @@ public class Friend_Request extends javax.swing.JPanel {
     /**
      * Creates new form Item_People
      */
-    public Friend_Request(String name) {
+    public Friend_Request(User user) {
 
         initComponents();
-        lblName.setText(name);
+        friend = user;
+
+        lblName.setText(user.getName());
         init();
+    }
+
+    public User getFriendRQ() {
+        return friend;
+    }
+    
+    
+    public void setFriendRQ(User friend) {
+        this.friend = friend;
     }
     
     private void init() {
@@ -46,7 +57,6 @@ public class Friend_Request extends javax.swing.JPanel {
             @Override
             public void mouseReleased(MouseEvent me) {
                 if (mouseOver) {
-                    PublicEvent.getInstance().getEventMain().selectUser(friend);
                 }
             }
         });
@@ -64,23 +74,28 @@ public class Friend_Request extends javax.swing.JPanel {
     private void initComponents() {
 
         gradientPanel1 = new com.TextMind.Helper.GradientPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnDeny = new javax.swing.JButton();
+        btnAccept = new javax.swing.JButton();
         imageAvatar1 = new com.TextMind.swing.ImageAvatar();
         lblName = new javax.swing.JLabel();
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close30.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tick30.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDeny.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close30.png"))); // NOI18N
+        btnDeny.setBorderPainted(false);
+        btnDeny.setContentAreaFilled(false);
+        btnDeny.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeny.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDenyActionPerformed(evt);
+            }
+        });
+
+        btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tick30.png"))); // NOI18N
+        btnAccept.setBorderPainted(false);
+        btnAccept.setContentAreaFilled(false);
+        btnAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
             }
         });
 
@@ -101,9 +116,9 @@ public class Friend_Request extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDeny, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         gradientPanel1Layout.setVerticalGroup(
@@ -114,8 +129,8 @@ public class Friend_Request extends javax.swing.JPanel {
                         .addGap(12, 12, 12)
                         .addGroup(gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblName)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDeny, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(gradientPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -139,16 +154,20 @@ public class Friend_Request extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDenyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnDeny;
     private com.TextMind.Helper.GradientPanel gradientPanel1;
     private com.TextMind.swing.ImageAvatar imageAvatar1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblName;
     // End of variables declaration//GEN-END:variables
 }
