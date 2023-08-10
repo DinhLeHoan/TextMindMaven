@@ -58,10 +58,12 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                         User found = new User();
                         String name = jsonObject.optString("name");
                         String uID = jsonObject.optString("uID");
-                        found.setName(name);
-                        found.setuID(uID);
-                        Friend_Found ff = new Friend_Found(found);
-                        menuList.add(ff, "wrap");
+                        if(checkFindDeducate(uID)){
+                            found.setName(name);
+                            found.setuID(uID);
+                            Friend_Found ff = new Friend_Found(found);
+                            menuList.add(ff, "wrap");
+                        }
                     }
                 } catch (JSONException e) {
                     menuList.removeAll();
@@ -87,7 +89,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                     try {
                         String uIDFriend = jsonArray.getString(i);
                         if (!listFriendOnline.contains(uIDFriend)) {
-                            System.out.println(uIDFriend+" is online");
                             listFriendOnline.add(uIDFriend);
                         }
                     } catch (JSONException ex) {
@@ -156,6 +157,21 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             }
         }
         refreshMenuList();
+    }
+    
+    private boolean checkFindDeducate(String uID){
+        for (Component component : menuList.getComponents()) {
+            if (component instanceof Friend_Found) {
+                
+                Friend_Found friend = (Friend_Found) component;
+                String friendID = friend.getFriend().getuID();
+                // Check if the friend's ID is in the online list
+               if(uID.equalsIgnoreCase(friendID)){
+                   return false;
+               }
+            }
+        }
+        return true;
     }
     
     
