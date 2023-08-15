@@ -56,7 +56,6 @@ public class ReportUser extends javax.swing.JDialog {
         btnReport = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         title2 = new javax.swing.JPanel();
-        btnClose2 = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -79,6 +78,11 @@ public class ReportUser extends javax.swing.JDialog {
         });
 
         btnClose.setText("CLOSE");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         title2.setBackground(new java.awt.Color(102, 153, 255));
         title2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -92,35 +96,18 @@ public class ReportUser extends javax.swing.JDialog {
             }
         });
 
-        btnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        btnClose2.setBorder(null);
-        btnClose2.setContentAreaFilled(false);
-        btnClose2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnClose2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClose2ActionPerformed(evt);
-            }
-        });
-
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("...");
 
         javax.swing.GroupLayout title2Layout = new javax.swing.GroupLayout(title2);
         title2.setLayout(title2Layout);
         title2Layout.setHorizontalGroup(
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, title2Layout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
-                .addComponent(btnClose2)
-                .addContainerGap())
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         title2Layout.setVerticalGroup(
             title2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(title2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnClose2))
-            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
@@ -133,7 +120,7 @@ public class ReportUser extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(reportLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 200, Short.MAX_VALUE)
                         .addComponent(btnReport)
                         .addGap(18, 18, 18)
                         .addComponent(btnClose))
@@ -183,9 +170,9 @@ public class ReportUser extends javax.swing.JDialog {
         pY = evt.getY();
     }//GEN-LAST:event_title2MousePressed
 
-    private void btnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClose2ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnClose2ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,7 +219,6 @@ public class ReportUser extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnClose2;
     private javax.swing.JButton btnReport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
