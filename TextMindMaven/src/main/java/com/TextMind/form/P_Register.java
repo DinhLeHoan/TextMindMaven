@@ -49,7 +49,7 @@ public class P_Register extends javax.swing.JPanel {
     }
 
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "10[]15[]10[]10[]10[]10[]10[]5[]push"));
+        login.setLayout(new MigLayout("wrap", "push[center]push", "5[]10[]10[]10[]10[]10[]10[]5[]5[]push"));
         JLabel label = new JLabel("Register");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(204, 255, 255));
@@ -75,16 +75,22 @@ public class P_Register extends javax.swing.JPanel {
         txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
         login.add(txtEmailConfirm, "w 90%");
 
+        btnSend.setText("Send Verify Code");
+        btnSend.setBackground(new Color(0, 102, 204));
+        btnSend.setForeground(new Color(250, 250, 250));
+        login.add(btnSend, "w 40%, h 40");
+        
         lblError.setText("");
         lblError.setHorizontalAlignment(JLabel.CENTER);
         lblError.setVerticalAlignment(JLabel.CENTER);
         login.add(lblError, "w 80%, h 40");
-
+        
         btnRegister.setText("Register");
         btnRegister.setBackground(new Color(0, 102, 204));
         btnRegister.setForeground(new Color(250, 250, 250));
 //        btnRegister.setBorder(new RoundedBorder(10));
         login.add(btnRegister, "w 40%, h 40");
+        
         btnLogin.setText("Login");
         btnLogin.setBackground(new Color(0, 102, 204));
         btnLogin.setForeground(new Color(250, 250, 250));
@@ -213,6 +219,7 @@ public class P_Register extends javax.swing.JPanel {
         lblError = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
+        btnSend = new javax.swing.JButton();
 
         lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 0, 0));
@@ -238,6 +245,8 @@ public class P_Register extends javax.swing.JPanel {
             }
         });
 
+        btnSend.setText("Send");
+
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
@@ -245,11 +254,12 @@ public class P_Register extends javax.swing.JPanel {
             .addGroup(loginLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(loginLayout.createSequentialGroup()
                         .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 89, Short.MAX_VALUE))
-                    .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         loginLayout.setVerticalGroup(
@@ -261,7 +271,9 @@ public class P_Register extends javax.swing.JPanel {
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSend)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -316,6 +328,7 @@ public class P_Register extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnSend;
     private javax.swing.JLabel lblError;
     private com.TextMind.Helper.CurvesPanel login;
     // End of variables declaration//GEN-END:variables

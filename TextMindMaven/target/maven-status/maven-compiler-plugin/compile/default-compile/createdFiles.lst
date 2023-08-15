@@ -86,6 +86,7 @@ com\TextMind\component\Chat_Body$1.class
 com\TextMind\component\Chat_Title$1.class
 com\TextMind\component\Friend_Request$3.class
 com\TextMind\component\Chat_Item.class
+com\TextMind\form\Menu_Left$7.class
 com\TextMind\main\main.class
 com\TextMind\Socket\SocketManager.class
 com\TextMind\Helper\GradientPanel.class
