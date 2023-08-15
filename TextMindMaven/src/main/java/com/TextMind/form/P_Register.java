@@ -71,9 +71,9 @@ public class P_Register extends javax.swing.JPanel {
         login.add(txtConfirm, "w 90%");
         txtConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
 
-//        txtEmailConfirm.setHint("Verify code");
-//        txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-//        login.add(txtEmailConfirm, "w 90%");
+        txtEmailConfirm.setHint("Verify code");
+        txtEmailConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        login.add(txtEmailConfirm, "w 90%");
 
         lblError.setText("");
         lblError.setHorizontalAlignment(JLabel.CENTER);
@@ -106,33 +106,28 @@ public class P_Register extends javax.swing.JPanel {
         String confirmPassword = (new String(txtConfirm.getPassword())).trim();
         String pattermPassword = "^[A-Za-z0-9]{8,}$";
         if (name.isBlank() || email.isBlank() || password.isBlank() || username.isBlank() || confirmPassword.isBlank()) {
-//            JOptionPane.showMessageDialog(this, "Please fill all input field");
             lblError.setText("Please fill all input field");
             return;
         }
         if (!EmailValidator.getInstance().isValid(email)) {
-//            JOptionPane.showMessageDialog(this, "Email is wrong format");
             lblError.setText("Mail is wrong format");
             txtEmail.grabFocus();
             return;
         }
 
         if (!password.matches(pattermPassword) || !username.matches(pattermPassword)) {
-//            JOptionPane.showMessageDialog(this, "Password or Username is at least 8 word and contain only alpha bet and number");
             lblError.setText("<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
             txtPassword.grabFocus();
             return;
         }
 
         if (!username.matches(pattermPassword)) {
-//            JOptionPane.showMessageDialog(this, "username is at least 8 word and contain only alpha bet and number");
             lblError.setText("<html>Username is at least 8 word and <br>contain only alpha bet and number</html>");
             txtUsername.grabFocus();
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-//            JOptionPane.showMessageDialog(this, "Password do not match with confirm");
             lblError.setText("Password do not match with confirm");
             txtConfirm.grabFocus();
             return;
@@ -153,11 +148,9 @@ public class P_Register extends javax.swing.JPanel {
                 boolean isSignUpValid = (boolean) os[0];
                 // Handle the logic based on the received boolean value
                 if (!isSignUpValid) {
-//                    JOptionPane.showMessageDialog(null, "Sign up error, username or email already exist in database");
                     lblError.setText("<html>Sign up error, username or email <br>already exist in database</html>");
                     return;
                 } else {
-//                    JOptionPane.showMessageDialog(null, "Sign up success");
                     lblError.setText("Sign up success");                    
                     resetField();
                     PublicEvent.getInstance().getEventLogin().goLogin();

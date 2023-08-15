@@ -54,12 +54,12 @@ public class P_Login extends javax.swing.JPanel {
     private User validateLogin() {
         try {
             if (txtUsername != null && txtPassword != null) {
-                String username = txtUsername.getText();
+                String username = txtUsername.getText().trim();
                 String password = new String(txtPassword.getPassword());
 
                 // Kiểm tra username và password có đủ độ dài và không chứa kí tự đặc biệt
                 if (isValidUsername(username) && isValidPassword(password)) {
-                    return new User(username, password);
+                    return new User(username, password.trim());
                 } else {
                     lblError.setText("Invalid username or password!");
                 }
