@@ -143,6 +143,8 @@ public class Friend_Found extends javax.swing.JPanel {
         JSONObject requestFriend = new JSONObject();
         try {
             requestFriend.put("uidTo", friend.getuID());
+            requestFriend.put("nameFrom", Auth.user.getName());
+
             requestFriend.put("uidFrom", Auth.user.getuID());
             getSocket().emit("sendRequestFriend", requestFriend);
         } catch (Exception e) {

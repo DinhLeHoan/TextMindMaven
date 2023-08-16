@@ -35,7 +35,6 @@ import org.json.JSONObject;
 public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateListener {
     private UserDAO listFriend;
     private ArrayList<String> listFriendOnline = new ArrayList<>();
-    private Timer refreshTimer;
     /**
      * Creates new form Menu_Left
      */
@@ -104,7 +103,29 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                 @Override
                 public void call(Object... args) {
                     listFriend.fillList();
-                    showMess();
+                }
+            });
+            
+            getSocket().on("someOneSendRQ" + Auth.user.getuID(), new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    String jsonString = args[0].toString();
+                try {                  
+
+                        JSONObject jsonObject = new JSONObject(jsonString);
+                        User found = new User();
+                        String name = jsonObject.optString("name");
+                        String uID = jsonObject.optString("uID");
+                        if(checkRQDeducate(uID)){
+                            found.setName(name);
+                            found.setuID(uID);
+                            Friend_Request fr = new Friend_Request(found);
+                            menuList.add(fr, "wrap");
+                        
+                    }
+                } catch (Exception e) {
+                    menuList.removeAll();
+                }
                 }
             });
     }
@@ -135,13 +156,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             }
             
         });
-        
-        refreshTimer = new Timer(500, e -> {
-            if (menuBox.isSelected()) {
-                getFriendRQ();
-            }
-        });
-        refreshTimer.setRepeats(true);
+
     }
 
     private void showMess() {
@@ -171,21 +186,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     private void showBox() {
         menuList.removeAll();
         getFriendRQ();
-        refreshMenuList();
-        startRefreshTimer();
-    }
-    
-    private void startRefreshTimer() {
-        if (!refreshTimer.isRunning()) {
-            refreshTimer.start();
-        }
-    }
-
-    private void stopRefreshTimer() {
-        menuList.removeAll();
-        if (refreshTimer.isRunning()) {
-            refreshTimer.stop();
-        }
         refreshMenuList();
     }
     
@@ -342,7 +342,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
             menuBox.setSelected(true);
 
                 getFriendRQ();
-                startRefreshTimer();
 
 
             showBox();
@@ -350,7 +349,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     }//GEN-LAST:event_menuBoxActionPerformed
 
     private void menuFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFindActionPerformed
-                        stopRefreshTimer();
 
         if (!menuFind.isSelected()) {
             menuMess.setSelected(false);
@@ -361,7 +359,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     }//GEN-LAST:event_menuFindActionPerformed
 
     private void menuMessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMessActionPerformed
-                        stopRefreshTimer();
 
         if (!menuMess.isSelected()) {
             menuMess.setSelected(true);
