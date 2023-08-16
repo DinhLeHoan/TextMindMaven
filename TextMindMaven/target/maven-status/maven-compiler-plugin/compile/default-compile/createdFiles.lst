@@ -88,6 +88,7 @@ com\TextMind\component\Friend_Request$3.class
 com\TextMind\component\Chat_Item.class
 com\TextMind\form\Menu_Left$7.class
 com\TextMind\main\main.class
+com\TextMind\form\P_Register$6.class
 com\TextMind\Socket\SocketManager.class
 com\TextMind\Helper\GradientPanel.class
 com\TextMind\component\Chat_Image.class
@@ -104,6 +105,7 @@ com\TextMind\form\Menu_Left$1.class
 com\TextMind\swing\Progress$ProgressType.class
 com\TextMind\event\EventMessage.class
 com\TextMind\swing\FindAndAdd$2.class
+com\TextMind\form\Menu_Left$8.class
 com\TextMind\main\Login.class
 com\TextMind\form\Chat.class
 com\TextMind\form\Menu_Left$2.class
@@ -120,6 +122,7 @@ com\TextMind\Query\Querry.class
 com\TextMind\Helper\CurvesPanel$1.class
 com\TextMind\swing\JIMSendTextPane.class
 com\TextMind\component\MenuButton.class
+com\TextMind\form\Menu_Left$9.class
 com\TextMind\main\Change_Password$5$1.class
 com\TextMind\swing\ModernScrollBarUI.class
 com\TextMind\main\main$7.class
@@ -134,10 +137,12 @@ com\TextMind\form\Menu_Left.class
 com\TextMind\DAO\UserDAO$2.class
 com\TextMind\main\Login$5.class
 com\TextMind\main\ReportUser$3.class
+com\TextMind\form\P_Register$8.class
 com\TextMind\swing\FindAndAdd.class
 com\TextMind\component\Chat_Left_With_Profile.class
 com\TextMind\component\Chat_Body.class
 com\TextMind\component\Friend_Request.class
+com\TextMind\form\P_Register$7.class
 com\TextMind\component\Friend_Found.class
 com\TextMind\main\main$8.class
 com\TextMind\swing\PictureBox.class

@@ -19,9 +19,8 @@ public class GradientPanelB extends JPanel {
 		int width = getWidth();
 		int height = getHeight();
 		
-		Color gradientStart = new Color(102, 178, 255);//220, 255, 149);
-		Color gradientEnd = new Color(255, 255, 255);//183, 234, 98);
-		
+		Color gradientStart = new Color(218, 235, 242);//220, 255, 149);
+		Color gradientEnd = new Color(255, 255, 255);//183, 234, 98);		
 		Graphics2D g2 = (Graphics2D) g;
 		GradientPaint painter = new GradientPaint(0, 0, gradientStart,
 				0, height, gradientEnd);
@@ -29,7 +28,7 @@ public class GradientPanelB extends JPanel {
 		g2.setPaint(painter);
 		g2.fill(g2.getClip());
 
-		gradientStart = new Color(102, 178, 255);
+		gradientStart = new Color(218, 235, 242);
 		gradientEnd = new Color(255, 255, 255,255);
 
 		painter = new GradientPaint(0, 0, gradientEnd,

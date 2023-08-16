@@ -29,7 +29,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         init() ;
         this.setLocationRelativeTo(null);
-        title2.setBackground(new Color(102, 178, 255));
+        title2.setBackground(new Color(179, 233, 255));
     }
     
     private void init() {
@@ -162,7 +162,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(1, 1, 1))
         );
 
-        jLabel1.setBackground(new java.awt.Color(0, 132, 245));
+        jLabel1.setBackground(new java.awt.Color(179, 233, 255));
         jLabel1.setOpaque(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

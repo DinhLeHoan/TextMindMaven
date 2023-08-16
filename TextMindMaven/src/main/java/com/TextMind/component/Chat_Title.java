@@ -61,11 +61,11 @@ public class Chat_Title extends javax.swing.JPanel {
         });
 
         lblName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setForeground(new java.awt.Color(51, 51, 51));
         lblName.setText("Name");
 
         lblStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblStatus.setForeground(new java.awt.Color(0, 204, 0));
+        lblStatus.setForeground(new java.awt.Color(51, 255, 0));
         lblStatus.setText("Active Now");
 
         javax.swing.GroupLayout gradientPanelB1Layout = new javax.swing.GroupLayout(gradientPanelB1);

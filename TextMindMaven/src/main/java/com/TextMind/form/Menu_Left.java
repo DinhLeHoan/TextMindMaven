@@ -204,7 +204,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     private void getFriendRQ(){
         if(menuBox.isSelected()){
            getSocket().emit("getAllRequestFriend", Auth.user.getuID());
-
         }
     }
     
@@ -274,6 +273,8 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         sp = new javax.swing.JScrollPane();
         menuList = new javax.swing.JLayeredPane();
 
+        setBackground(new java.awt.Color(218, 235, 242));
+
         menu.setBackground(new java.awt.Color(0, 153, 255));
         menu.setLayout(new java.awt.GridLayout(1, 3));
 
@@ -309,10 +310,11 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         });
         menu.add(menuBox);
 
+        sp.setBackground(new java.awt.Color(218, 235, 242));
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        menuList.setBackground(new java.awt.Color(150, 202, 255));
+        menuList.setBackground(new java.awt.Color(218, 235, 242));
         menuList.setForeground(new java.awt.Color(153, 204, 255));
 
         javax.swing.GroupLayout menuListLayout = new javax.swing.GroupLayout(menuList);
@@ -332,15 +334,15 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sp)
             .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(sp, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(sp, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

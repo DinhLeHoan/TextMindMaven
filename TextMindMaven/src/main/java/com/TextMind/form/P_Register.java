@@ -59,7 +59,7 @@ public class P_Register extends javax.swing.JPanel {
     }
 
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "5[]10[]10[]10[]10[]10[]10[]5[]5[]push"));
+        login.setLayout(new MigLayout("wrap", "push[center]push", "5[]10[]10[]10[]10[]10[]10[]45[]5[]push"));
         JLabel label = new JLabel("Register");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(204, 255, 255));
@@ -88,6 +88,7 @@ public class P_Register extends javax.swing.JPanel {
         btnSend.setText("Send Verify Code");
         btnSend.setBackground(new Color(0, 102, 204));
         btnSend.setForeground(new Color(250, 250, 250));
+        
         login.add(btnSend, "w 40%, h 40");
         
         btnSend.addActionListener(new ActionListener() {
@@ -386,9 +387,9 @@ public class P_Register extends javax.swing.JPanel {
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addComponent(btnSend)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

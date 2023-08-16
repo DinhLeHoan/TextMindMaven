@@ -31,7 +31,7 @@ public class main extends javax.swing.JFrame {
     public main() {
         initComponents();
         init() ;
-        title.setBackground(new Color(102, 178, 255));
+        title.setBackground(new Color(179, 233, 255));
     }
     
     private void init() {

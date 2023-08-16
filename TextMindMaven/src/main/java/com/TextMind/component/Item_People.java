@@ -42,23 +42,35 @@ public class Item_People extends javax.swing.JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent me) {
-                setCursor(new Cursor(Cursor.HAND_CURSOR));
-                setBackground(new Color(235, 235, 235));
+                panelRound.setCursor(new Cursor(Cursor.HAND_CURSOR));
+//                setCursor(new Cursor(Cursor.HAND_CURSOR));
+//                setBackground(new Color(190, 247, 245));
+                setColor(190, 247, 245) ;
                 mouseOver = true;
             }
 
             @Override
             public void mouseExited(MouseEvent me) {
-                setBackground(new Color(224, 224, 224));
+//                setBackground(new Color(255,255,255));
+                setColor(255, 255, 255) ;
                 mouseOver = false;
             }
             @Override
             public void mouseReleased(MouseEvent me) {
+                setColor(190, 247, 245) ;
                 if (mouseOver) {
                     PublicEvent.getInstance().getEventMain().selectUser(friend);
                 }
             }
         });
+    }
+    
+    private void setColor(int a, int b, int c) {
+        setBackground(new Color(a, b, c));
+        panelRound.setBackground(new Color(a, b, c));
+        avt.setBackground(new Color(a, b, c));
+        lblName.setBackground(new Color(a, b, c));
+        lblStatus.setBackground(new Color(a, b, c));
     }
     
     
@@ -72,72 +84,71 @@ public class Item_People extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gradientPanel1 = new com.TextMind.Helper.GradientPanel();
-        activeIcon = new com.TextMind.swing.ActiveStatus();
-        imageAvatar1 = new com.TextMind.swing.ImageAvatar();
+        panelRound = new com.TextMind.swing.PanelRound();
+        avt = new com.TextMind.swing.ImageAvatar();
         lblName = new javax.swing.JLabel();
-        jlabel1 = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
+        activeIcon = new com.TextMind.swing.ActiveStatus();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        gradientPanel1.setRoundBottomLeft(30);
-        gradientPanel1.setRoundBottomRight(30);
-        gradientPanel1.setRoundTopLeft(30);
-        gradientPanel1.setRoundTopRight(30);
+        setBackground(new java.awt.Color(168, 168, 167));
 
-        imageAvatar1.setBorderSize(1);
-        imageAvatar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/userNonActive.png"))); // NOI18N
+        panelRound.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        avt.setBorderSize(1);
+        avt.setImage(new javax.swing.ImageIcon(getClass().getResource("/images/userNonActive.png"))); // NOI18N
+
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(51, 51, 51));
         lblName.setText("Name");
 
-        jlabel1.setText("status");
+        lblStatus.setText("status");
 
-        javax.swing.GroupLayout gradientPanel1Layout = new javax.swing.GroupLayout(gradientPanel1);
-        gradientPanel1.setLayout(gradientPanel1Layout);
-        gradientPanel1Layout.setHorizontalGroup(
-            gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradientPanel1Layout.createSequentialGroup()
-                .addGap(3, 3, 3)
-                .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(gradientPanel1Layout.createSequentialGroup()
-                        .addComponent(jlabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 100, Short.MAX_VALUE))
-                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+        javax.swing.GroupLayout panelRoundLayout = new javax.swing.GroupLayout(panelRound);
+        panelRound.setLayout(panelRoundLayout);
+        panelRoundLayout.setHorizontalGroup(
+            panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(avt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRoundLayout.createSequentialGroup()
+                        .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(activeIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelRoundLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        gradientPanel1Layout.setVerticalGroup(
-            gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gradientPanel1Layout.createSequentialGroup()
-                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(gradientPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradientPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlabel1)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(gradientPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imageAvatar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+        panelRoundLayout.setVerticalGroup(
+            panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(avt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRoundLayout.createSequentialGroup()
+                        .addComponent(lblName)
+                        .addGap(5, 5, 5)
+                        .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(activeIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelRound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(gradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelRound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -145,9 +156,10 @@ public class Item_People extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.TextMind.swing.ActiveStatus activeIcon;
-    private com.TextMind.Helper.GradientPanel gradientPanel1;
-    private com.TextMind.swing.ImageAvatar imageAvatar1;
-    private javax.swing.JLabel jlabel1;
+    private com.TextMind.swing.ImageAvatar avt;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblStatus;
+    private com.TextMind.swing.PanelRound panelRound;
     // End of variables declaration//GEN-END:variables
 }
