@@ -65,7 +65,7 @@ public class Change_Password extends javax.swing.JDialog {
         lblError.setFont(new Font("sansserif", 1, 12));
         lblError.setForeground(new Color(255,0,0));
         lblError.setBackground(new Color(51, 153, 255));
-        
+        lblError.setVisible(false);
         
 //        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
 //        txtEmail.setHint("Email");
@@ -101,11 +101,80 @@ public class Change_Password extends javax.swing.JDialog {
         
     }
     
-    private void checkChangePassword(){
+    private void checkChangePassword() throws JSONException{
         String passwordOld = new String(txtOldPassword.getPassword()).trim();
-        if(!passwordOld.equals(Auth.user.getPassword())){
-            
+        String verifyCode = txtVerify.getText().trim();
+        String passwordNew = new String(txtNewPassword.getPassword()).trim();
+        String passwordConfirm = new String(txtConfirm.getPassword()).trim();
+        String pattermPassword = "^[A-Za-z0-9]{8,}$";
+
+        if(passwordOld.isBlank() || verifyCode.isBlank() || passwordNew.isBlank() || passwordConfirm.isBlank()){
+            lblError.setVisible(true);
+            lblError.setText("Please fill all input field");
+            return;
         }
+        
+        if(!passwordOld.equals(Auth.user.getPassword())){
+                        lblError.setVisible(true);
+
+            lblError.setText("Incorrect old password. Please try again.");
+            txtOldPassword.grabFocus();
+            return;
+        }
+        
+        if(!verifyCode.equals(code)){
+                        lblError.setVisible(true);
+
+            lblError.setText("Verify Code wrong");
+            txtVerify.grabFocus();
+            return;
+        }
+        
+        if (!passwordNew.matches(pattermPassword)) {
+                        lblError.setVisible(true);
+
+            lblError.setText("<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
+            txtNewPassword.grabFocus();
+            return;
+        }
+        
+        if(passwordNew.equals(Auth.user.getPassword())){
+                        lblError.setVisible(true);
+
+            lblError.setText("New password cannot be the same as the old password");
+            txtNewPassword.grabFocus();
+            return;
+        }
+        
+        if(!passwordNew.equals(passwordConfirm)){
+                        lblError.setVisible(true);
+
+            lblError.setText("Password do not match with confirm");
+            txtConfirm.grabFocus();
+            return;
+        }
+        
+        JSONObject data = new JSONObject();
+        data.put("uID", Auth.user.getuID());
+        data.put("password", passwordNew);
+
+        getSocket().emit("changePassword", data);
+        getSocket().once("passwordChangeSuccess" + Auth.user.getuID(), new Emitter.Listener() {
+            @Override
+            public void call(Object... os) {
+                boolean isChangeValid = (boolean) os[0];
+                // Handle the logic based on the received boolean value
+                if (isChangeValid) {
+                    lblError.setText("Change password success");
+                    btnCloseActionPerformed(null);
+                    return;
+                } else {
+                    lblError.setText("Error");                    
+                    return;
+                }
+            }
+        });
+        
     }
 
     /**
@@ -228,7 +297,12 @@ public class Change_Password extends javax.swing.JDialog {
     }//GEN-LAST:event_title2MousePressed
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            checkChangePassword();
+        } catch (JSONException ex) {
+            Logger.getLogger(Change_Password.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnChangeActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
