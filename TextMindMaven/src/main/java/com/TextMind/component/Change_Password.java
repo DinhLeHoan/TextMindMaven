@@ -31,6 +31,7 @@ public class Change_Password extends javax.swing.JDialog {
     MyTextField txtVerify = new MyTextField();
     MyPasswordField txtOldPassword = new MyPasswordField();
     MyPasswordField txtNewPassword = new MyPasswordField();
+    MyPasswordField txtConfirm = new MyPasswordField();
     JLabel lblError = new JLabel("JoptionPane Error", SwingConstants.CENTER);
 
     private String code = null;
@@ -76,6 +77,9 @@ public class Change_Password extends javax.swing.JDialog {
 
         txtNewPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
         txtNewPassword.setHint("New Password");
+        
+        txtConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
+        txtConfirm.setHint("Confirm Password");
 
         txtVerify.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
         txtVerify.setHint("Verify code");
@@ -87,12 +91,14 @@ public class Change_Password extends javax.swing.JDialog {
         btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
         
-        changePass.add(txtVerify, "w 90%");
-        changePass.add(btnSend, "w 40%, h 40");
+        changePass.add(txtVerify, "w 90%");       
         changePass.add(txtNewPassword, "w 90%");
+        changePass.add(txtConfirm, "w 90%");
+        changePass.add(lblError, "w 90%");
+        changePass.add(btnSend, "w 40%, h 40");
         changePass.add(btnChange, "w 40%, h 40");
         changePass.add(btnClose, "w 40%, h 40");        
-        changePass.add(lblError, "w 90%");
+        
     }
     
     private void checkChangePassword(){
