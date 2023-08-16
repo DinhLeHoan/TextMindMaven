@@ -86,7 +86,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                         User found = new User();
                         String name = jsonObject.optString("name");
                         String uID = jsonObject.optString("uID");
-                        if(checkRQDeducate(uID)){
+                        if(checkRQDeducate(uID)&& menuBox.isSelected()){
                             found.setName(name);
                             found.setuID(uID);
                             Friend_Request fr = new Friend_Request(found);
@@ -106,6 +106,13 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                 }
             });
             
+            getSocket().on("notNewFriend" + Auth.user.getuID(), new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    showBox();
+                }
+            });
+            
             getSocket().on("someOneSendRQ" + Auth.user.getuID(), new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
@@ -116,7 +123,7 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                         User found = new User();
                         String name = jsonObject.optString("name");
                         String uID = jsonObject.optString("uID");
-                        if(checkRQDeducate(uID)){
+                        if(checkRQDeducate(uID) && menuBox.isSelected()){
                             found.setName(name);
                             found.setuID(uID);
                             Friend_Request fr = new Friend_Request(found);
@@ -202,7 +209,9 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
     }
     
     public void onListUpdated() {
-        showMess();
+        if(menuMess.isSelected()){
+                    showMess();
+        }
     }
     
     private void updateOnlineFriends(ArrayList<String> onlineFriends) {
