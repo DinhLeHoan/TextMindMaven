@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package com.TextMind.main;
+package com.TextMind.component;
 
 import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import net.miginfocom.swing.MigLayout;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONException;
@@ -30,6 +31,7 @@ public class Change_Password extends javax.swing.JDialog {
     MyTextField txtVerify = new MyTextField();
     MyPasswordField txtOldPassword = new MyPasswordField();
     MyPasswordField txtNewPassword = new MyPasswordField();
+    JLabel lblError = new JLabel("JoptionPane Error", SwingConstants.CENTER);
 
     private String code = null;
     private int pX;
@@ -58,7 +60,12 @@ public class Change_Password extends javax.swing.JDialog {
         changePass.add(title2);
         changePass.add(btnChange);
         changePass.add(btnClose);
-
+        
+        lblError.setFont(new Font("sansserif", 1, 12));
+        lblError.setForeground(new Color(255,0,0));
+        lblError.setBackground(new Color(51, 153, 255));
+        
+        
 //        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
 //        txtEmail.setHint("Email");
 //        changePass.add(txtEmail, "w 90%");
@@ -83,9 +90,9 @@ public class Change_Password extends javax.swing.JDialog {
         changePass.add(txtVerify, "w 90%");
         changePass.add(btnSend, "w 40%, h 40");
         changePass.add(txtNewPassword, "w 90%");
-        changePass.add(btnClose, "w 40%, h 40");
         changePass.add(btnChange, "w 40%, h 40");
-
+        changePass.add(btnClose, "w 40%, h 40");        
+        changePass.add(lblError, "w 90%");
     }
     
     private void checkChangePassword(){

@@ -5,7 +5,6 @@
 package com.TextMind.component;
 
 import com.TextMind.main.Login;
-import com.TextMind.main.ReportUser;
 import com.TextMind.main.main;
 import java.awt.Color;
 

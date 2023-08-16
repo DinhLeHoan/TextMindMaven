@@ -7,7 +7,7 @@ package com.TextMind.form;
 import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.event.PublicEvent;
-import com.TextMind.main.Change_Password;
+import com.TextMind.component.Change_Password;
 import com.TextMind.main.Login;
 import com.TextMind.main.main;
 import java.awt.Color;
