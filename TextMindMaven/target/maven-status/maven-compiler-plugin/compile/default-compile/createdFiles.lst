@@ -3,6 +3,7 @@ com\TextMind\event\EventMenuLeft.class
 com\TextMind\swing\blurHash\BlurHash.class
 com\TextMind\form\P_Register$3.class
 com\TextMind\component\Chat_Left.class
+com\TextMind\component\Change_Password$9$1.class
 com\TextMind\event\PublicEvent.class
 com\TextMind\swing\blurHash\Base83.class
 com\TextMind\component\Panel_More.class
@@ -20,6 +21,7 @@ com\TextMind\form\Chat$2.class
 com\TextMind\component\Change_Password$1.class
 com\TextMind\form\P_Login$3.class
 com\TextMind\swing\FindAndAdd$1.class
+com\TextMind\component\Change_Password$8.class
 com\TextMind\component\OptionButton.class
 com\TextMind\component\ReportUser.class
 com\TextMind\Helper\CurvesPanel.class
@@ -120,7 +122,6 @@ com\TextMind\form\Menu_Right.class
 com\TextMind\component\Friend_Found$1.class
 com\TextMind\component\Image_Item.class
 com\TextMind\form\P_Register.class
-com\TextMind\component\Change_Password$7$1.class
 com\TextMind\Query\Querry.class
 com\TextMind\Helper\CurvesPanel$1.class
 com\TextMind\swing\JIMSendTextPane.class
@@ -134,6 +135,7 @@ com\TextMind\component\Panel_More$2.class
 com\TextMind\Auth\Auth.class
 com\TextMind\swing\ScrollBar.class
 com\TextMind\main\Login$6.class
+com\TextMind\component\Change_Password$9.class
 com\TextMind\Helper\CirclesPanel$1.class
 com\TextMind\component\ReportUser$5.class
 com\TextMind\main\Login$3.class
