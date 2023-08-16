@@ -4,13 +4,21 @@
  */
 package com.TextMind.main;
 
+import com.TextMind.Auth.Auth;
+import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.swing.MyPasswordField;
 import com.TextMind.swing.MyTextField;
+import io.socket.emitter.Emitter;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import net.miginfocom.swing.MigLayout;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -23,6 +31,7 @@ public class Change_Password extends javax.swing.JDialog {
     MyPasswordField txtOldPassword = new MyPasswordField();
     MyPasswordField txtNewPassword = new MyPasswordField();
 
+    private String code = null;
     private int pX;
     private int pY;
 
@@ -50,9 +59,9 @@ public class Change_Password extends javax.swing.JDialog {
         changePass.add(btnChange);
         changePass.add(btnClose);
 
-        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-        txtEmail.setHint("Email");
-        changePass.add(txtEmail, "w 90%");
+//        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+//        txtEmail.setHint("Email");
+//        changePass.add(txtEmail, "w 90%");
 //
         txtOldPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
         txtOldPassword.setHint("Old Password");
@@ -77,6 +86,13 @@ public class Change_Password extends javax.swing.JDialog {
         changePass.add(btnClose, "w 40%, h 40");
         changePass.add(btnChange, "w 40%, h 40");
 
+    }
+    
+    private void checkChangePassword(){
+        String passwordOld = new String(txtOldPassword.getPassword()).trim();
+        if(!passwordOld.equals(Auth.user.getPassword())){
+            
+        }
     }
 
     /**
@@ -129,6 +145,11 @@ public class Change_Password extends javax.swing.JDialog {
         );
 
         btnSend.setText("SEND CODE");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
 
         btnChange.setText("CHANGE");
         btnChange.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +221,38 @@ public class Change_Password extends javax.swing.JDialog {
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+        JSONObject data = new JSONObject();
+            String randomString = RandomStringUtils.randomAlphanumeric(6);
+        try {
+            data.put("email", Auth.user.getEmail());
+            data.put("random", randomString);
+        } catch (JSONException ex) {
+            Logger.getLogger(Change_Password.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            getSocket().emit("getValicateEmail", data);
+            getSocket().once("verificationCodeSent"+randomString, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    String jsonString = args[0].toString();
+                try {                  
+
+                        JSONObject jsonObject = new JSONObject(jsonString);
+                        String mailCode = jsonObject.optString("code");
+                        String mailOfCode = jsonObject.optString("mailOfThis");
+                        code = mailCode;
+                    }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
+                }
+            });
+            
+      
+    }//GEN-LAST:event_btnSendActionPerformed
 
     /**
      * @param args the command line arguments

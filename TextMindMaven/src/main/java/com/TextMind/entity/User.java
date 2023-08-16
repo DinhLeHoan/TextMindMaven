@@ -9,7 +9,7 @@ package com.TextMind.entity;
  * @author hoanl
  */
 public class User {
-    private String uID,name,username,password;
+    private String uID,name,username,password,email;
     private boolean isOnline;
     public User() {
     }
@@ -19,6 +19,25 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    public User(String uID, String name, String username, String password, String email) {
+        this.uID = uID;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
 
     public User(String uID, String name,boolean isOnline) {
         this.uID = uID;

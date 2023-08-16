@@ -144,8 +144,9 @@ public class P_Login extends javax.swing.JPanel {
                     String username = jsonObject.optString("username");
                     String password = jsonObject.optString("password");
                     String uID = jsonObject.optString("uID");
-
-                    Auth.user = new User(uID, name, username, password);
+                    String email = jsonObject.optString("email");
+                    
+                    Auth.user = new User(uID, name, username, password,email);
 
                     PublicEvent.getInstance().getEventLogin().login();
                 } catch (JSONException e) {
