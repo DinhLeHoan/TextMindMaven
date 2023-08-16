@@ -15,6 +15,7 @@ import com.TextMind.event.PublicEvent;
 import io.socket.emitter.Emitter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import net.miginfocom.swing.MigLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,8 +54,7 @@ public class Chat extends javax.swing.JPanel {
                     messDataSend.put("message", text.trim());
                     messDataSend.put("name", Auth.user.getName());
                     Date now = new Date();
-                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm a");
-                    
+                    SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);                    
                     chatBody.addItemRight(messDataSend.getString("message"),sdf.format(now));
                 } catch (JSONException ex) {
                     ex.printStackTrace();

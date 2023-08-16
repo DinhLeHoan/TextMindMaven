@@ -12,6 +12,8 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
@@ -19,9 +21,12 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import net.miginfocom.swing.MigLayout;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,8 +42,13 @@ public class P_Register extends javax.swing.JPanel {
     MyTextField txtUsername = new MyTextField();
     MyPasswordField txtPassword = new MyPasswordField();
     MyPasswordField txtConfirm = new MyPasswordField();
-    Button cmd = new Button();
+    
+    private int countdown = 30; 
+    private String code = null;
+    private String validateMail = null;
 
+    Button cmd = new Button();
+    
     /**
      * Creates new form P_Login
      */
@@ -80,6 +90,30 @@ public class P_Register extends javax.swing.JPanel {
         btnSend.setForeground(new Color(250, 250, 250));
         login.add(btnSend, "w 40%, h 40");
         
+        btnSend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {                
+                String email = txtEmail.getText().trim();
+                if(EmailValidator.getInstance().isValid(email) && !email.isBlank()) {
+                    try {
+                        // Your code to send the verify code
+                        sendVerifyCode();
+                        btnSend.setEnabled(false);
+
+                        // Start the countdown
+                        startCountdown();
+                    } catch (JSONException ex) {
+                        Logger.getLogger(P_Register.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                else{
+                    lblError.setText("Mail is wrong format or being blank");
+                    txtEmail.grabFocus();
+                    return;
+                }
+            }
+        });
+        
         lblError.setText("");
         lblError.setHorizontalAlignment(JLabel.CENTER);
         lblError.setVerticalAlignment(JLabel.CENTER);
@@ -111,7 +145,10 @@ public class P_Register extends javax.swing.JPanel {
         String username = txtUsername.getText().trim();
         String confirmPassword = (new String(txtConfirm.getPassword())).trim();
         String pattermPassword = "^[A-Za-z0-9]{8,}$";
-        if (name.isBlank() || email.isBlank() || password.isBlank() || username.isBlank() || confirmPassword.isBlank()) {
+        
+        String validateCode = txtEmailConfirm.getText().trim();
+        
+        if (name.isBlank() || email.isBlank() || password.isBlank() || username.isBlank() || confirmPassword.isBlank() || validateCode.isBlank()) {
             lblError.setText("Please fill all input field");
             return;
         }
@@ -133,11 +170,24 @@ public class P_Register extends javax.swing.JPanel {
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
+        if (!password.equals(confirmPassword) ) {
             lblError.setText("Password do not match with confirm");
             txtConfirm.grabFocus();
             return;
         }
+        
+        if(!validateCode.equals(code)){
+            lblError.setText("Verify Code wrong");
+            txtEmailConfirm.grabFocus();
+            return;
+        }
+        
+        if(!validateMail.equals(email)){
+            lblError.setText("Email does not match the verified email");
+            txtEmailConfirm.grabFocus();
+            return;
+        }
+        
 
         JSONObject data = new JSONObject();
         String randomString = RandomStringUtils.randomAlphanumeric(6);
@@ -204,6 +254,71 @@ public class P_Register extends javax.swing.JPanel {
                 }
             }
         });
+    }
+    
+    private void sendVerifyCode() throws JSONException {
+        String email = txtEmail.getText().trim();
+        if(!EmailValidator.getInstance().isValid(email) || email.isBlank()) {
+            lblError.setText("Mail is wrong format or being blank");
+            txtEmail.grabFocus();
+            return;
+        }
+        else{
+            JSONObject data = new JSONObject();
+            String randomString = RandomStringUtils.randomAlphanumeric(6);
+            data.put("email", email);
+            data.put("random", randomString);
+            
+            getSocket().emit("getValicateEmail", data);
+            getSocket().once("verificationCodeSent"+randomString, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    String jsonString = args[0].toString();
+                try {                  
+
+                        JSONObject jsonObject = new JSONObject(jsonString);
+                        
+                        String mailCode = jsonObject.optString("code");
+                        String mailOfCode = jsonObject.optString("mailOfThis");
+                        validateMail = mailOfCode;
+                        code = mailCode;
+                    }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
+                }
+            });
+        
+        }
+    }
+    
+     private void startCountdown() {
+        SwingWorker<Void, Void> countdownWorker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                while (countdown > 0) {
+                    // Update the button text with the countdown message
+                    SwingUtilities.invokeLater(() -> {
+                        btnSend.setText("Wait for " + countdown + "s to resend");
+                        btnSend.setForeground(Color.BLACK);
+                    });
+
+                    Thread.sleep(1000); // Sleep for 1 second
+                    countdown--;
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Re-enable the button and set the default text
+                btnSend.setEnabled(true);
+                btnSend.setText("Send Verify Code");
+                countdown = 30; // Reset countdown
+            }
+        };
+
+        countdownWorker.execute();
     }
 
     /**
@@ -290,30 +405,7 @@ public class P_Register extends javax.swing.JPanel {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         try {
-            //        String username = txtUsername.getText().trim() ;
-//        String password = String.valueOf(txtPassword.getPassword()) ;
-//        String confirmPassword = String.valueOf(txtConfirm.getPassword());
-//        if (username.equals("")) {
-//            txtUsername.grabFocus();
-//        } else if (password.equals("")) {
-//            txtPassword.grabFocus();
-//        } else if (!password.equals(confirmPassword)) {
-//            txtPassword.grabFocus();
-//        } else {
-//            Model_Register data = new Model_Register(username, password) ;
-//            PublicEvent.getInstance().getEventLogin().register(data, new EventMessage() {
-//                @Override
-//                public void callMessage(Model_Message message) {
-//                    if (!message.isAction()) {
-//                        lblError.setText(message.getMessage());
-//                    } else {
-//                        PublicEvent.getInstance().getEventLogin().login();
-//                    }
-//                }
-//                
-//            });
-//        }        
-//          PublicEvent.getInstance().getEventLogin().register();
+
             validateInfor();
         } catch (JSONException ex) {
             Logger.getLogger(P_Register.class.getName()).log(Level.SEVERE, null, ex);

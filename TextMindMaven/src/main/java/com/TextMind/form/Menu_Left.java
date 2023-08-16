@@ -352,7 +352,6 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
 
                 getFriendRQ();
 
-
             showBox();
         }
     }//GEN-LAST:event_menuBoxActionPerformed
