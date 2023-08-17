@@ -80,6 +80,7 @@ com\TextMind\form\P_Login$1.class
 com\TextMind\main\main$3.class
 com\TextMind\component\Change_Password$5.class
 com\TextMind\form\P_Login$6.class
+com\TextMind\form\Tick.class
 com\TextMind\Helper\GradientPanelB.class
 com\TextMind\swing\Progress.class
 com\TextMind\form\View_Image.class
@@ -122,6 +123,7 @@ com\TextMind\form\Menu_Right.class
 com\TextMind\component\Friend_Found$1.class
 com\TextMind\component\Image_Item.class
 com\TextMind\form\P_Register.class
+com\TextMind\component\Change_Password$7$1.class
 com\TextMind\Query\Querry.class
 com\TextMind\Helper\CurvesPanel$1.class
 com\TextMind\swing\JIMSendTextPane.class
