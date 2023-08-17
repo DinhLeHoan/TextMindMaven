@@ -10,6 +10,7 @@ import com.TextMind.swing.MyPasswordField;
 import com.TextMind.swing.MyTextField;
 import io.socket.emitter.Emitter;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,7 +60,7 @@ public class Forgot_Password extends javax.swing.JDialog {
     }
 
     public void initForm() {
-        title.setText("CHANGE PASSWORD");
+        title.setText("FORGOT PASSWORD");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(204, 255, 255));
         title.setBackground(new Color(51, 153, 255));        
@@ -79,9 +80,11 @@ public class Forgot_Password extends javax.swing.JDialog {
 
         btnSend.setBackground(new Color(0, 102, 204));
         btnSend.setForeground(new Color(250, 250, 250));
+        btnSend.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
+        btnClose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
               
         changePass.add(txtUsername, "w 90%");
         changePass.add(txtEmail, "w 90%");

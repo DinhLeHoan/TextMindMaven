@@ -59,7 +59,7 @@ public class Change_Password extends javax.swing.JDialog {
     }
 
     public void initForm() {
-        title.setText("FORGOT PASSWORD");
+        title.setText("CHANGE PASSWORD");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(204, 255, 255));
         title.setBackground(new Color(51, 153, 255));        
