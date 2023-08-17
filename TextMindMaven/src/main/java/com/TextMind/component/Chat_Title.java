@@ -9,7 +9,6 @@ import com.TextMind.event.PublicEvent;
 import com.TextMind.main.Login;
 import com.TextMind.main.main;
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,7 +73,7 @@ import javax.swing.JOptionPane;
         btnReport = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
+        btnUnfriend = new javax.swing.JButton();
 
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         btnReport.setBorderPainted(false);
@@ -94,13 +93,13 @@ import javax.swing.JOptionPane;
         lblStatus.setForeground(new java.awt.Color(51, 255, 0));
         lblStatus.setText("Active Now");
 
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button.png"))); // NOI18N
-        btnDelete.setBorderPainted(false);
-        btnDelete.setContentAreaFilled(false);
-        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnUnfriend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/unfriend.png"))); // NOI18N
+        btnUnfriend.setBorderPainted(false);
+        btnUnfriend.setContentAreaFilled(false);
+        btnUnfriend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUnfriend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
+                btnUnfriendActionPerformed(evt);
             }
         });
 
@@ -112,24 +111,26 @@ import javax.swing.JOptionPane;
                 .addContainerGap()
                 .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStatus)
-                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                .addGap(265, 265, 265)
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addGap(225, 225, 225)
+                .addComponent(btnUnfriend)
+                .addGap(18, 18, 18)
                 .addComponent(btnReport)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDelete)
-                .addGap(9, 9, 9))
+                .addContainerGap())
         );
         gradientPanelB1Layout.setVerticalGroup(
             gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradientPanelB1Layout.createSequentialGroup()
+                .addComponent(lblName)
+                .addGap(1, 1, 1)
+                .addComponent(lblStatus)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradientPanelB1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDelete)
-                    .addComponent(btnReport)
-                    .addGroup(gradientPanelB1Layout.createSequentialGroup()
-                        .addComponent(lblName)
-                        .addGap(1, 1, 1)
-                        .addComponent(lblStatus)))
-                .addGap(0, 15, Short.MAX_VALUE))
+                    .addComponent(btnUnfriend)
+                    .addComponent(btnReport))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -152,15 +153,15 @@ import javax.swing.JOptionPane;
         
     }//GEN-LAST:event_btnReportActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-         Delete_Friend dl = new Delete_Friend(main.getFrames()[0], true);
-        dl.setVisible(true);
-    }//GEN-LAST:event_btnDeleteActionPerformed
+    private void btnUnfriendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnfriendActionPerformed
+        Delete_Friend df = new Delete_Friend(main.getFrames()[0], true);
+        df.setVisible(true);
+    }//GEN-LAST:event_btnUnfriendActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnReport;
+    private javax.swing.JButton btnUnfriend;
     private com.TextMind.Helper.GradientPanelB gradientPanelB1;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStatus;

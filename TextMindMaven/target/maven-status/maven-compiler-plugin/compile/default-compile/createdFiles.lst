@@ -24,7 +24,9 @@ com\TextMind\component\Forgot_Password$6$1.class
 com\TextMind\swing\PanelSlide$1.class
 com\TextMind\form\Chat$2.class
 com\TextMind\component\Change_Password$1.class
+com\TextMind\component\Delete_Friend$2.class
 com\TextMind\form\P_Login$3.class
+com\TextMind\component\Chat_Title$3.class
 com\TextMind\swing\FindAndAdd$1.class
 com\TextMind\component\Change_Password$8.class
 com\TextMind\component\OptionButton.class
@@ -39,6 +41,7 @@ com\TextMind\main\main$5.class
 com\TextMind\swing\blurHash\Util.class
 com\TextMind\component\Forgot_Password$2.class
 com\TextMind\swing\VerifyGmail.class
+com\TextMind\component\Delete_Friend$3.class
 com\TextMind\form\P_Register$4.class
 com\TextMind\component\Chat_Body$2.class
 com\TextMind\form\View_Image$2.class
@@ -52,9 +55,11 @@ com\TextMind\component\Chat_Bottom.class
 com\TextMind\main\main$4.class
 com\TextMind\component\Chat_Bottom$3.class
 com\TextMind\DAO\UserDAO.class
+com\TextMind\component\Delete_Friend$1.class
 com\TextMind\form\Loading.class
 com\TextMind\component\Change_Password$3.class
 com\TextMind\component\Item_People$1.class
+com\TextMind\component\Delete_Friend$3$1.class
 com\TextMind\form\Menu_Left$6.class
 com\TextMind\component\Item_People.class
 com\TextMind\form\Chat$1.class
@@ -128,6 +133,7 @@ com\TextMind\component\Chat_Title$2.class
 com\TextMind\swing\FindAndAdd$2.class
 com\TextMind\form\Menu_Left$8.class
 com\TextMind\main\Login.class
+com\TextMind\component\Delete_Friend.class
 com\TextMind\form\Chat.class
 com\TextMind\form\Menu_Left$2.class
 com\TextMind\Helper\CirclesPanel.class
