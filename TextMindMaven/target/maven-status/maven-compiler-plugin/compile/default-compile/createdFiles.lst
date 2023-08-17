@@ -40,6 +40,7 @@ com\TextMind\component\Chat_Body$2.class
 com\TextMind\form\View_Image$2.class
 com\TextMind\component\Friend_Request$1.class
 com\TextMind\DAO\UserDAO$ListUpdateListener.class
+com\TextMind\event\EventTitleChat.class
 com\TextMind\form\P_Login$5.class
 com\TextMind\component\Change_Password$6.class
 com\TextMind\component\Forgot_Password$3.class
@@ -116,6 +117,7 @@ com\TextMind\component\ReportUser$4.class
 com\TextMind\form\Menu_Left$1.class
 com\TextMind\swing\Progress$ProgressType.class
 com\TextMind\event\EventMessage.class
+com\TextMind\component\Chat_Title$2.class
 com\TextMind\swing\FindAndAdd$2.class
 com\TextMind\form\Menu_Left$8.class
 com\TextMind\main\Login.class
