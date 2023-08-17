@@ -95,6 +95,7 @@ public class Chat extends javax.swing.JPanel {
     public void setUser(User user) {
         friend = user;
         chatTitle.setUserName(friend.getName());
+        chatTitle.setTitle(true);
         chatBody.clearChat();
         chatBody.setuIDFriend(friend.getuID());
         if(friend.isIsOnline()){

@@ -6,6 +6,8 @@ package com.TextMind.component;
 
 import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
+import com.TextMind.event.EventChatBody;
+import com.TextMind.event.PublicEvent;
 import com.TextMind.form.Menu_Left;
 import com.TextMind.swing.ScrollBar;
 import io.socket.emitter.Emitter;
@@ -35,7 +37,7 @@ public class Chat_Body extends javax.swing.JPanel {
     public Chat_Body() {
         initComponents();
         init() ;
-
+        initEvent();
     }
 
     public void setuIDFriend(String uIDFriend) {
@@ -165,6 +167,19 @@ public class Chat_Body extends javax.swing.JPanel {
         repaint();
         revalidate();
     }
+    
+    private void initEvent() {
+        PublicEvent.getInstance().addEventChatBody(new EventChatBody() {
+            @Override
+            public void reset() {
+                clearChat();
+            }
+
+        });
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

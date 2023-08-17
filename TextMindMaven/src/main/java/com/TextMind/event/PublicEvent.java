@@ -16,7 +16,7 @@ public class PublicEvent {
     private EventMain eventMain;
     private EventMenuLeft eventMenuLeft;
     private EventTitleChat eventTitleChat;
-    
+    private EventChatBody eventChatBody;
     public static PublicEvent getInstance() {
         if (instance == null) {
             instance = new PublicEvent();
@@ -75,5 +75,14 @@ public class PublicEvent {
     public void addEventTitleChat(EventTitleChat eventTitleChat) {
         this.eventTitleChat = eventTitleChat;
     }
+
+    public EventChatBody getEventChatBody() {
+        return eventChatBody;
+    }
+
+    public void addEventChatBody(EventChatBody eventChatBody) {
+        this.eventChatBody = eventChatBody;
+    }
+    
     
 }

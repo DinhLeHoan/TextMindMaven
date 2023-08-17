@@ -103,6 +103,12 @@ import org.json.JSONObject;
                 @Override
                 public void call(Object... args) {
                     listFriend.fillList();
+                    String jsonString = args[0].toString();
+
+                    // Parse the JSON string to get the boolean value
+                    Boolean isSuccess = Boolean.parseBoolean(jsonString);
+                    PublicEvent.getInstance().getEventTitleChat().changeTitle(false);
+                    PublicEvent.getInstance().getEventChatBody().reset();
                 }
             });
             

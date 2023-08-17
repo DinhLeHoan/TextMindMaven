@@ -55,10 +55,24 @@ import java.awt.Color;
                     statusOffline();
                 }
             }
+
+            @Override
+            public void changeTitle(boolean isOnline) {
+                setTitle(isOnline);
+            }
             
         });
                 
     }
+     
+     public void setTitle(boolean isDefault){
+
+                btnReport.setEnabled(isDefault);
+                btnUnfriend.setEnabled(isDefault);
+
+
+
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,7 +164,6 @@ import java.awt.Color;
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
         ReportUser rp = new ReportUser(main.getFrames()[0], true);
         rp.setVisible(true);
-        
     }//GEN-LAST:event_btnReportActionPerformed
 
     private void btnUnfriendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnfriendActionPerformed

@@ -6,6 +6,8 @@ package com.TextMind.component;
 
 import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
+import com.TextMind.event.PublicEvent;
+
 import com.TextMind.swing.MyPasswordField;
 import com.TextMind.swing.MyTextField;
 import io.socket.emitter.Emitter;
@@ -73,6 +75,8 @@ public class Delete_Friend extends javax.swing.JDialog {
         changePass.add(btnClose, "w 40%, h 40");        
         
     }
+    
+
     
     
     /**
@@ -162,8 +166,17 @@ public class Delete_Friend extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        JSONObject removeFriend = new JSONObject();
+        try {
+            removeFriend.put("uidFrom", Auth.uIDCurrentChat);
+            removeFriend.put("uidTo", Auth.user.getuID());
+            getSocket().emit("removeFriend", removeFriend);
+            PublicEvent.getInstance().getEventChatBody().reset();
+            PublicEvent.getInstance().getEventTitleChat().changeTitle(false);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         
-
     }//GEN-LAST:event_btnSendActionPerformed
 
     /**
