@@ -9,6 +9,7 @@ import com.TextMind.event.PublicEvent;
 import com.TextMind.main.Login;
 import com.TextMind.main.main;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -73,6 +74,7 @@ import java.awt.Color;
         btnReport = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
 
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         btnReport.setBorderPainted(false);
@@ -92,6 +94,16 @@ import java.awt.Color;
         lblStatus.setForeground(new java.awt.Color(51, 255, 0));
         lblStatus.setText("Active Now");
 
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button.png"))); // NOI18N
+        btnDelete.setBorderPainted(false);
+        btnDelete.setContentAreaFilled(false);
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout gradientPanelB1Layout = new javax.swing.GroupLayout(gradientPanelB1);
         gradientPanelB1.setLayout(gradientPanelB1Layout);
         gradientPanelB1Layout.setHorizontalGroup(
@@ -100,22 +112,24 @@ import java.awt.Color;
                 .addContainerGap()
                 .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStatus)
-                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addGap(318, 318, 318)
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+                .addGap(265, 265, 265)
                 .addComponent(btnReport)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDelete)
+                .addGap(9, 9, 9))
         );
         gradientPanelB1Layout.setVerticalGroup(
             gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradientPanelB1Layout.createSequentialGroup()
-                .addComponent(lblName)
-                .addGap(1, 1, 1)
-                .addComponent(lblStatus)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradientPanelB1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnReport)
-                .addContainerGap())
+                .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnDelete)
+                    .addComponent(btnReport)
+                    .addGroup(gradientPanelB1Layout.createSequentialGroup()
+                        .addComponent(lblName)
+                        .addGap(1, 1, 1)
+                        .addComponent(lblStatus)))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -138,8 +152,14 @@ import java.awt.Color;
         
     }//GEN-LAST:event_btnReportActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+         Delete_Friend dl = new Delete_Friend(main.getFrames()[0], true);
+        dl.setVisible(true);
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnReport;
     private com.TextMind.Helper.GradientPanelB gradientPanelB1;
     private javax.swing.JLabel lblName;
