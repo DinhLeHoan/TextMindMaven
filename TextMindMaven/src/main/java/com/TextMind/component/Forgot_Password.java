@@ -27,10 +27,10 @@ import org.json.JSONObject;
  *
  * @author khang
  */
-public class Change_Password extends javax.swing.JDialog {
+public class Forgot_Password extends javax.swing.JDialog {
 
     MyTextField txtEmail = new MyTextField();
-    MyTextField txtVerify = new MyTextField();
+    MyTextField txtUsername = new MyTextField();
     MyPasswordField txtOldPassword = new MyPasswordField();
     MyPasswordField txtNewPassword = new MyPasswordField();
     MyPasswordField txtConfirm = new MyPasswordField();
@@ -45,7 +45,7 @@ public class Change_Password extends javax.swing.JDialog {
     /**
      * Creates new form ReportUser
      */
-    public Change_Password(java.awt.Frame parent, boolean modal) {
+    public Forgot_Password(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         initForm();
@@ -59,148 +59,40 @@ public class Change_Password extends javax.swing.JDialog {
     }
 
     public void initForm() {
-        title.setText("FORGOT PASSWORD");
+        title.setText("CHANGE PASSWORD");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(204, 255, 255));
         title.setBackground(new Color(51, 153, 255));        
         changePass.setLayout(new MigLayout("wrap", "push[center]push", "0[]15[]10[]10[]10[]10[]50[]30[]push"));
         changePass.add(title2);
-        changePass.add(btnChange);
-        changePass.add(btnClose);
         
         lblError.setFont(new Font("sansserif", 1, 12));
         lblError.setForeground(new Color(255,0,0));
         lblError.setBackground(new Color(51, 153, 255));
         lblError.setVisible(false);
         
-//        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-//        txtEmail.setHint("Email");
-//        changePass.add(txtEmail, "w 90%");
-//
-        txtOldPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
-        txtOldPassword.setHint("Old Password");
-        changePass.add(txtOldPassword, "w 90%");
-
-        txtNewPassword.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
-        txtNewPassword.setHint("New Password");
+        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        txtEmail.setHint("Email");
         
-        txtConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/pass.png")));
-        txtConfirm.setHint("Confirm Password");
-
-        txtVerify.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-        txtVerify.setHint("Verify code");
+        txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        txtUsername.setHint("Username");
 
         btnSend.setBackground(new Color(0, 102, 204));
         btnSend.setForeground(new Color(250, 250, 250));
-        btnChange.setBackground(new Color(0, 102, 204));
-        btnChange.setForeground(new Color(250, 250, 250));
+
         btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
-        
-        changePass.add(txtVerify, "w 90%");       
-        changePass.add(txtNewPassword, "w 90%");
-        changePass.add(txtConfirm, "w 90%");
+              
+        changePass.add(txtUsername, "w 90%");
+        changePass.add(txtEmail, "w 90%");
+
         changePass.add(lblError, "w 90%");
         changePass.add(btnSend, "w 40%, h 40");
-        changePass.add(btnChange, "w 40%, h 40");
+
         changePass.add(btnClose, "w 40%, h 40");        
         
     }
     
-    private JSONObject checkChangePassword() throws JSONException{
-        String passwordOld = new String(txtOldPassword.getPassword()).trim();
-        String verifyCode = txtVerify.getText().trim();
-        String passwordNew = new String(txtNewPassword.getPassword()).trim();
-        String passwordConfirm = new String(txtConfirm.getPassword()).trim();
-        String pattermPassword = "^[A-Za-z0-9]{8,}$";
-
-        if(passwordOld.isBlank() || verifyCode.isBlank() || passwordNew.isBlank() || passwordConfirm.isBlank()){
-            lblError.setVisible(true);
-            lblError.setText("Please fill all input field");
-            return null;
-        }
-        
-        if(!passwordOld.equals(Auth.user.getPassword())){
-                        lblError.setVisible(true);
-
-            lblError.setText("Incorrect old password. Please try again.");
-            txtOldPassword.grabFocus();
-            return null;
-        }
-        
-        if(!verifyCode.equals(code)){
-                        lblError.setVisible(true);
-
-            lblError.setText("Verify Code wrong");
-            txtVerify.grabFocus();
-            return null;
-        }
-        
-        if (!passwordNew.matches(pattermPassword)) {
-                        lblError.setVisible(true);
-
-            lblError.setText("<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
-            txtNewPassword.grabFocus();
-            return null;
-        }
-        
-        if(passwordNew.equals(Auth.user.getPassword())){
-                        lblError.setVisible(true);
-
-            lblError.setText("New password cannot be the same as the old password");
-            txtNewPassword.grabFocus();
-            return null;
-        }
-        
-        if(!passwordNew.equals(passwordConfirm)){
-                        lblError.setVisible(true);
-
-            lblError.setText("Password do not match with confirm");
-            txtConfirm.grabFocus();
-            return null;
-        }
-        
-        Auth.user.setPassword(passwordNew);
-        
-        JSONObject data = new JSONObject();
-        data.put("uID", Auth.user.getuID());
-        data.put("password", passwordNew);
-        data.put("type", "resetpass");
-        
-
-        return data;
-        
-        
-    }
-    
-    private void startCountdown() {
-        SwingWorker<Void, Void> countdownWorker = new SwingWorker<Void, Void>() {
-            @Override
-            protected Void doInBackground() throws Exception {
-                while (countdown > 0) {
-                    // Update the button text with the countdown message
-                    SwingUtilities.invokeLater(() -> {
-                        btnSend.setText("Wait for " + countdown + "s to resend");
-                        btnSend.setForeground(Color.BLACK);
-                    });
-
-                    Thread.sleep(1000); // Sleep for 1 second
-                    countdown--;
-                }
-                return null;
-            }
-
-            @Override
-            protected void done() {
-                // Re-enable the button and set the default text
-                btnSend.setEnabled(true);
-                btnSend.setText("Send Verify Code");
-                countdown = 30; // Reset countdown
-            }
-        };
-
-        countdownWorker.execute();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -216,7 +108,6 @@ public class Change_Password extends javax.swing.JDialog {
         title2 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         btnSend = new javax.swing.JButton();
-        btnChange = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         tick = new com.TextMind.form.Tick();
 
@@ -255,17 +146,10 @@ public class Change_Password extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        btnSend.setText("SEND CODE");
+        btnSend.setText("SUBMIT");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
-            }
-        });
-
-        btnChange.setText("CHANGE");
-        btnChange.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeActionPerformed(evt);
             }
         });
 
@@ -286,9 +170,7 @@ public class Change_Password extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changePassLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSend)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnChange)
-                .addGap(34, 34, 34)
+                .addGap(123, 123, 123)
                 .addComponent(btnClose)
                 .addGap(15, 15, 15))
         );
@@ -297,10 +179,9 @@ public class Change_Password extends javax.swing.JDialog {
             .addGroup(changePassLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 353, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                 .addGroup(changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSend)
-                    .addComponent(btnChange)
                     .addComponent(btnClose))
                 .addGap(21, 21, 21))
         );
@@ -318,7 +199,7 @@ public class Change_Password extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
         );
 
         pack();
@@ -333,85 +214,12 @@ public class Change_Password extends javax.swing.JDialog {
         pY = evt.getY();
     }//GEN-LAST:event_title2MousePressed
 
-    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
-        try {
-            // TODO add your handling code here:
-//            checkChangePassword();
-            JSONObject data = checkChangePassword();
-            if(data!=null){
-                getSocket().emit("changePassword", data);
-                tick.setVisible(true);      
-                lblError.setText("Change password success");
-                getSocket().once("passwordChangeSuccess" + Auth.user.getuID(), new Emitter.Listener() {
-                    @Override
-                    public void call(Object... os) {
-                        boolean isChangeValid = (boolean) os[0];
-                        // Handle the logic based on the received boolean value
-                        if (isChangeValid) {
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(2000); 
-                                    } catch (InterruptedException e) {
-                                    } 
-                                    btnCloseActionPerformed(null);
-
-                                }
-                            }).start();
-                            return;
-                        } else {
-                            lblError.setText("Error");                    
-                            return;
-                        }
-                    }
-                });
-            }
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }    
-    }//GEN-LAST:event_btnChangeActionPerformed
-
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        // TODO add your handling code here:
-        JSONObject data = new JSONObject();
-            String randomString = RandomStringUtils.randomAlphanumeric(6);
-        try {
-            data.put("email", Auth.user.getEmail());
-            data.put("random", randomString);
-            data.put("type", "resetpass");
-        } catch (JSONException ex) {
-            Logger.getLogger(Change_Password.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-            getSocket().emit("getValicateEmail", data);
-            getSocket().once("verificationCodeSent"+randomString, new Emitter.Listener() {
-                @Override
-                public void call(Object... args) {
-                    String jsonString = args[0].toString();
-                try {                  
 
-                        JSONObject jsonObject = new JSONObject(jsonString);
-                        String mailCode = jsonObject.optString("code");
-                        String mailOfCode = jsonObject.optString("mailOfThis");
-                        code = mailCode;
-                        btnSend.setEnabled(false);
-
-                        // Start the countdown
-                        startCountdown();
-                    }
-                catch (Exception e) {
-                    System.out.println(e);
-                }
-                }
-            });
-            
-      
     }//GEN-LAST:event_btnSendActionPerformed
 
     /**
@@ -431,21 +239,23 @@ public class Change_Password extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Forgot_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Forgot_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Forgot_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Change_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Forgot_Password.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Change_Password dialog = new Change_Password(new javax.swing.JFrame(), true);
+                Forgot_Password dialog = new Forgot_Password(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -458,7 +268,6 @@ public class Change_Password extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChange;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSend;
     private com.TextMind.Helper.GradientPanel changePass;

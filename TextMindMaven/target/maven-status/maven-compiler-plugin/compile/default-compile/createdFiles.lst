@@ -13,8 +13,10 @@ com\TextMind\model\Model_Message.class
 com\TextMind\form\P_Login$4.class
 com\TextMind\component\Change_Password$2.class
 com\TextMind\component\Change_Password.class
+com\TextMind\component\Forgot_Password$1.class
 com\TextMind\model\Model_Register.class
 com\TextMind\main\main$6.class
+com\TextMind\form\P_Register$9.class
 com\TextMind\swing\Line.class
 com\TextMind\swing\PanelSlide$1.class
 com\TextMind\form\Chat$2.class
@@ -31,6 +33,7 @@ com\TextMind\event\EventChat.class
 com\TextMind\component\Change_Password$7.class
 com\TextMind\main\main$5.class
 com\TextMind\swing\blurHash\Util.class
+com\TextMind\component\Forgot_Password$2.class
 com\TextMind\swing\VerifyGmail.class
 com\TextMind\form\P_Register$4.class
 com\TextMind\component\Chat_Body$2.class
@@ -39,6 +42,7 @@ com\TextMind\component\Friend_Request$1.class
 com\TextMind\DAO\UserDAO$ListUpdateListener.class
 com\TextMind\form\P_Login$5.class
 com\TextMind\component\Change_Password$6.class
+com\TextMind\component\Forgot_Password$3.class
 com\TextMind\component\Chat_Bottom.class
 com\TextMind\main\main$4.class
 com\TextMind\component\Chat_Bottom$3.class
@@ -58,9 +62,11 @@ com\TextMind\form\Menu_Left$3.class
 com\TextMind\swing\MyTextField.class
 com\TextMind\form\P_Register$1.class
 com\TextMind\swing\ActiveStatus.class
+com\TextMind\component\Forgot_Password$5$1.class
 com\TextMind\component\ReportUser$1.class
 com\TextMind\form\Menu_Left$4.class
 com\TextMind\component\Chat_Bottom$1.class
+com\TextMind\component\Forgot_Password$5.class
 com\TextMind\form\Home.class
 com\TextMind\component\Chat_Title.class
 com\TextMind\swing\ComponentResizer.class
@@ -78,6 +84,7 @@ com\TextMind\form\Menu_Right$2.class
 com\TextMind\component\Chat_Right.class
 com\TextMind\form\P_Login$1.class
 com\TextMind\main\main$3.class
+com\TextMind\component\Forgot_Password$4.class
 com\TextMind\component\Change_Password$5.class
 com\TextMind\form\P_Login$6.class
 com\TextMind\form\Tick.class
@@ -98,6 +105,7 @@ com\TextMind\component\Chat_Image.class
 com\TextMind\swing\WrapLayout.class
 com\TextMind\swing\blurHash\SRGB.class
 com\TextMind\component\Panel_More$1.class
+com\TextMind\form\P_Login$7.class
 com\TextMind\event\EventMain.class
 com\TextMind\main\Login$2.class
 com\TextMind\component\Friend_Request$2.class
@@ -150,6 +158,7 @@ com\TextMind\component\Chat_Left_With_Profile.class
 com\TextMind\component\Chat_Body.class
 com\TextMind\component\Friend_Request.class
 com\TextMind\form\P_Register$7.class
+com\TextMind\component\Forgot_Password.class
 com\TextMind\component\Friend_Found.class
 com\TextMind\main\main$8.class
 com\TextMind\swing\PictureBox.class

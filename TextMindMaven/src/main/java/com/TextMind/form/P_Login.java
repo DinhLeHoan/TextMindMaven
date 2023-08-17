@@ -6,8 +6,10 @@ package com.TextMind.form;
 
 import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
+import com.TextMind.component.Forgot_Password;
 import com.TextMind.entity.User;
 import com.TextMind.event.PublicEvent;
+import com.TextMind.main.Login;
 import com.TextMind.swing.MyPasswordField;
 import com.TextMind.swing.MyTextField;
 import io.socket.emitter.Emitter;
@@ -21,10 +23,13 @@ import java.awt.Graphics2D;
 import java.awt.Label;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import net.miginfocom.swing.MigLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +42,8 @@ public class P_Login extends javax.swing.JPanel {
 
     MyTextField txtUsername = new MyTextField();
     MyPasswordField txtPassword = new MyPasswordField();
+    JLabel forgot = new JLabel("<HTML><U>Forgot password</U></HTML>", SwingConstants.CENTER);
+    
 
     Button cmd = new Button();
 
@@ -82,7 +89,7 @@ public class P_Login extends javax.swing.JPanel {
     }
 
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]45[]45[]10[]push"));
+        login.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]20[]20[]10[]push"));
         JLabel label = new JLabel("Sign In");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(204, 255, 255));
@@ -106,12 +113,24 @@ public class P_Login extends javax.swing.JPanel {
         btnLogin.setText("Login");
         btnLogin.setBackground(new Color(0, 102, 204));
         btnLogin.setForeground(new Color(250, 250, 250));
+        
+        forgot.setFont(new Font("sansserif", 2, 14));
+        forgot.setForeground(new Color(38, 255, 31));
+        forgot.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        forgot.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Forgot_Password fp = new Forgot_Password(Login.getFrames()[0], true);
+                fp.setVisible(true);
+            }
+        });
 
         login.add(btnLogin, "w 40%, h 40");
         btnRegister.setText("Register");
         btnRegister.setBackground(new Color(0, 102, 204));
         btnRegister.setForeground(new Color(250, 250, 250));
         login.add(btnRegister, "w 40%, h 40");
+        login.add(forgot, "w 90%");
         
         txtPassword.addKeyListener(new KeyAdapter() {
             @Override
