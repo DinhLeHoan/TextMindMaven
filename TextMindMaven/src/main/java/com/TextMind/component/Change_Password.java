@@ -63,7 +63,7 @@ public class Change_Password extends javax.swing.JDialog {
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(204, 255, 255));
         title.setBackground(new Color(51, 153, 255));        
-        changePass.setLayout(new MigLayout("wrap", "push[center]push", "0[]15[]10[]10[]10[]10[]50[]30[]push"));
+        changePass.setLayout(new MigLayout("wrap", "push[center]push", "0[]15[]10[]10[]10[]10[]30[]10[]10[]push"));
         changePass.add(title2);
         changePass.add(btnChange);
         changePass.add(btnClose);
