@@ -97,6 +97,12 @@ public class Chat extends javax.swing.JPanel {
         chatTitle.setUserName(friend.getName());
         chatBody.clearChat();
         chatBody.setuIDFriend(friend.getuID());
+        if(friend.isIsOnline()){
+            chatTitle.statusActive();
+        }
+        else{
+            chatTitle.statusOffline();
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.

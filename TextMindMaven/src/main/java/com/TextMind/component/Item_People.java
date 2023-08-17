@@ -4,6 +4,7 @@
  */
 package com.TextMind.component;
 
+import com.TextMind.Auth.Auth;
 import com.TextMind.entity.User;
 import com.TextMind.event.PublicEvent;
 import java.awt.Color;
@@ -15,7 +16,7 @@ import java.awt.event.MouseEvent;
  *
  * @author KHOA
  */
-public class Item_People extends javax.swing.JPanel {
+	public class Item_People extends javax.swing.JPanel {
     private boolean mouseOver;
     private User friend;
     
@@ -36,6 +37,8 @@ public class Item_People extends javax.swing.JPanel {
 
     public void setActive(boolean status) {
         activeIcon.setActive(status);
+        this.friend.setIsOnline(status);
+        
     }
     
     private void init() {
@@ -60,6 +63,7 @@ public class Item_People extends javax.swing.JPanel {
                 setColor(190, 247, 245) ;
                 if (mouseOver) {
                     PublicEvent.getInstance().getEventMain().selectUser(friend);
+                    Auth.uIDCurrentChat = friend.getuID();
                 }
             }
         });

@@ -36,6 +36,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isIsOnline() {
+        return isOnline;
+    }
+
+    public void setIsOnline(boolean isOnline) {
+        this.isOnline = isOnline;
+    }
     
     
 

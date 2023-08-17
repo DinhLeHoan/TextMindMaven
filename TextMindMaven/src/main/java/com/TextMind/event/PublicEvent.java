@@ -15,6 +15,8 @@ public class PublicEvent {
     private EventLogin eventLogin;
     private EventMain eventMain;
     private EventMenuLeft eventMenuLeft;
+    private EventTitleChat eventTitleChat;
+    
     public static PublicEvent getInstance() {
         if (instance == null) {
             instance = new PublicEvent();
@@ -65,4 +67,13 @@ public class PublicEvent {
     public EventMenuLeft getEventMenuLeft() {
         return eventMenuLeft;
     }
+
+    public EventTitleChat getEventTitleChat() {
+        return eventTitleChat;
+    }
+
+    public void addEventTitleChat(EventTitleChat eventTitleChat) {
+        this.eventTitleChat = eventTitleChat;
+    }
+    
 }

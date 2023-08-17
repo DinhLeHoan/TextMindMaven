@@ -4,6 +4,8 @@
  */
 package com.TextMind.component;
 
+import com.TextMind.event.EventTitleChat;
+import com.TextMind.event.PublicEvent;
 import com.TextMind.main.Login;
 import com.TextMind.main.main;
 import java.awt.Color;
@@ -12,27 +14,50 @@ import java.awt.Color;
  *
  * @author KHOA
  */
-public class Chat_Title extends javax.swing.JPanel {
-
+	
+	public class Chat_Title extends javax.swing.JPanel {
     /**
      * Creates new form Chat_Title
      */
     public Chat_Title() {
         initComponents();
+        initEvent();
     }
     
     public void setUserName(String userName) {
         lblName.setText(userName);
     }
     
+    
     public void statusActive() {
         lblStatus.setText("Active now");
         lblStatus.setForeground(new Color(40, 147, 59));
     }
     
+    public void statusOffline() {
+        lblStatus.setText("Offline");
+        lblStatus.setForeground(new Color(255,0,0));
+    }
+    
     public void setStatusText(String text) {
         lblStatus.setText(text);
         lblStatus.setForeground(new Color(160, 160, 160));
+    }
+    
+     private void initEvent() {
+        PublicEvent.getInstance().addEventTitleChat(new EventTitleChat() {
+            @Override
+            public void changeStatus(boolean isOnline) {
+                if(isOnline){
+                    statusActive();
+                }
+                else{
+                    statusOffline();
+                }
+            }
+            
+        });
+                
     }
 
     /**

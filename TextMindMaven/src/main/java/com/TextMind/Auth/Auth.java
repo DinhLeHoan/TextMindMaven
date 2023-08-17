@@ -12,6 +12,7 @@ import com.TextMind.entity.User;
  */
 public class Auth {
     public static User user = null;
+    public static String uIDCurrentChat = "123";
     public static void clear(){
         Auth.user = null;
     }
@@ -19,5 +20,6 @@ public class Auth {
     public static boolean isLogin(){
         return Auth.user != null;
     }
+    
     
 }

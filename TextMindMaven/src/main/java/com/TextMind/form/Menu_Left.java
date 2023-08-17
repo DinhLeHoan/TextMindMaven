@@ -32,7 +32,7 @@ import org.json.JSONObject;
  *
  * @author KHOA
  */
-public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateListener {
+	public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateListener {
     private UserDAO listFriend;
     private ArrayList<String> listFriendOnline = new ArrayList<>();
     /**
@@ -159,6 +159,12 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                     }
 
                 }
+                if(!listFriendOnline.contains(Auth.uIDCurrentChat)){
+                    PublicEvent.getInstance().getEventTitleChat().changeStatus(false);
+                }
+                else{
+                    PublicEvent.getInstance().getEventTitleChat().changeStatus(true);
+                }
                 updateOnlineFriends(listFriendOnline);
             }
             
@@ -222,6 +228,8 @@ public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateL
                 // Check if the friend's ID is in the online list
                 boolean isOnline = listFriendOnline.contains(friendID);
                 friend.setActive(isOnline);
+
+
             }
         }
         refreshMenuList();
