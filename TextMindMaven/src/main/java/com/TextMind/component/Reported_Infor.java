@@ -12,7 +12,7 @@ import java.awt.Font;
  *
  * @author ducan
  */
-public class ReportUser extends javax.swing.JDialog {
+public class Reported_Infor extends javax.swing.JDialog {
 
     private int pX;
     private int pY;
@@ -20,7 +20,7 @@ public class ReportUser extends javax.swing.JDialog {
     /**
      * Creates new form NewJDialog
      */
-    public ReportUser(java.awt.Frame parent, boolean modal) {
+    public Reported_Infor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         init();
@@ -30,13 +30,16 @@ public class ReportUser extends javax.swing.JDialog {
     public void init() {
         ScrollBar sb = new ScrollBar();
         sp.setVerticalScrollBar(sb);
-        lblTitle.setText("REPORT");
+        txtName.setEditable(false);
+        txtEmail.setEditable(false);
+        txtDetail.setEditable(false);
+        lblTitle.setText("INFORMATION");
         lblTitle.setFont(new Font("sansserif", 1, 30));
         lblTitle.setForeground(new Color(204, 255, 255));
 
-        btnReport.setBackground(new Color(0, 102, 204));
-        btnReport.setForeground(new Color(250, 250, 250));
-        report.add(btnReport, "w 40%, h 40");
+        btnDelete.setBackground(new Color(0, 102, 204));
+        btnDelete.setForeground(new Color(250, 250, 250));
+        report.add(btnDelete, "w 40%, h 40");
 
         btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
@@ -54,12 +57,16 @@ public class ReportUser extends javax.swing.JDialog {
 
         report = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnReport = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         title2 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         sp = new javax.swing.JScrollPane();
         txtDetail = new com.TextMind.swing.JIMSendTextPane();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -69,16 +76,17 @@ public class ReportUser extends javax.swing.JDialog {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("DETAILS:");
 
-        btnReport.setText("REPORT");
-        btnReport.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete Account");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        btnClose.setText("CLOSE");
+        btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -113,37 +121,66 @@ public class ReportUser extends javax.swing.JDialog {
 
         sp.setViewportView(txtDetail);
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("NAME:");
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("EMAIL:");
+
         javax.swing.GroupLayout reportLayout = new javax.swing.GroupLayout(report);
         report.setLayout(reportLayout);
         reportLayout.setHorizontalGroup(
             reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportLayout.createSequentialGroup()
+            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(reportLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(reportLayout.createSequentialGroup()
-                        .addGap(0, 200, Short.MAX_VALUE)
-                        .addComponent(btnReport)
+                        .addGap(0, 203, Short.MAX_VALUE)
+                        .addComponent(btnDelete)
                         .addGap(18, 18, 18)
                         .addComponent(btnClose))
-                    .addComponent(sp, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(sp, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(reportLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtName))
+                    .addGroup(reportLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(reportLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(17, 17, 17)
+                        .addComponent(txtEmail)))
                 .addContainerGap())
-            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         reportLayout.setVerticalGroup(
             reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportLayout.createSequentialGroup()
                 .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(sp, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sp, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnClose)
-                    .addComponent(btnReport))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(btnDelete))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,9 +197,9 @@ public class ReportUser extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void title2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2MouseDragged
         this.setLocation(this.getLocation().x + evt.getX() - pX, this.getLocation().y + evt.getY() - pY);
@@ -194,21 +231,27 @@ public class ReportUser extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ReportUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reported_Infor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ReportUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reported_Infor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ReportUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reported_Infor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ReportUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reported_Infor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ReportUser dialog = new ReportUser(new javax.swing.JFrame(), true);
+                Reported_Infor dialog = new Reported_Infor(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -222,12 +265,16 @@ public class ReportUser extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnReport;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel report;
     private javax.swing.JScrollPane sp;
     private javax.swing.JPanel title2;
     private com.TextMind.swing.JIMSendTextPane txtDetail;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

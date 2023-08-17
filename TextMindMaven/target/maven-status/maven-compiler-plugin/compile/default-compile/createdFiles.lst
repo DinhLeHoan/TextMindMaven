@@ -4,6 +4,7 @@ com\TextMind\swing\blurHash\BlurHash.class
 com\TextMind\form\P_Register$3.class
 com\TextMind\component\Chat_Left.class
 com\TextMind\component\Change_Password$9$1.class
+com\TextMind\component\Chat_Body$3.class
 com\TextMind\event\PublicEvent.class
 com\TextMind\swing\blurHash\Base83.class
 com\TextMind\component\Panel_More.class
@@ -62,6 +63,7 @@ com\TextMind\component\Item_People$1.class
 com\TextMind\component\Delete_Friend$3$1.class
 com\TextMind\form\Menu_Left$6.class
 com\TextMind\component\Item_People.class
+com\TextMind\event\EventChatBody.class
 com\TextMind\form\Chat$1.class
 com\TextMind\swing\JIMSendTextPane$WarpColumnFactory.class
 com\TextMind\component\ReportUser$2.class
