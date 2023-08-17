@@ -165,6 +165,7 @@ public class Change_Password extends javax.swing.JDialog {
         JSONObject data = new JSONObject();
         data.put("uID", Auth.user.getuID());
         data.put("password", passwordNew);
+        data.put("type", "resetpass");
         
 
         return data;
@@ -383,6 +384,7 @@ public class Change_Password extends javax.swing.JDialog {
         try {
             data.put("email", Auth.user.getEmail());
             data.put("random", randomString);
+            data.put("type", "resetpass");
         } catch (JSONException ex) {
             Logger.getLogger(Change_Password.class.getName()).log(Level.SEVERE, null, ex);
         }

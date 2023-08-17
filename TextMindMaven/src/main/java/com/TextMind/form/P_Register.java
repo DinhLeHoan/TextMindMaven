@@ -269,7 +269,7 @@ public class P_Register extends javax.swing.JPanel {
             String randomString = RandomStringUtils.randomAlphanumeric(6);
             data.put("email", email);
             data.put("random", randomString);
-            
+            data.put("type", "verification");
             getSocket().emit("getValicateEmail", data);
             getSocket().once("verificationCodeSent"+randomString, new Emitter.Listener() {
                 @Override
@@ -362,6 +362,11 @@ public class P_Register extends javax.swing.JPanel {
         });
 
         btnSend.setText("Send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
@@ -416,6 +421,10 @@ public class P_Register extends javax.swing.JPanel {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         PublicEvent.getInstance().getEventLogin().goLogin();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSendActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
