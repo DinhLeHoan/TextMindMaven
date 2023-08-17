@@ -51,11 +51,11 @@ public class Chat_Body extends javax.swing.JPanel {
     }
     
     public void addItemLeft(String text, String user,String date, Icon... image) {
-        Chat_Left_With_Profile item = new Chat_Left_With_Profile();
+        Chat_Left item = new Chat_Left();
         item.setText(text);
-        item.setImage(image);
+//        item.setImage(image);
         item.setTime(date);
-        item.setUserProfile(user);
+//        item.setUserProfile(user);
         body.add(item, "wrap, w 100::80%");
         body.repaint();
         body.revalidate();
