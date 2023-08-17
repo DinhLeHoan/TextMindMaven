@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import net.miginfocom.swing.MigLayout;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,13 +32,11 @@ import org.json.JSONObject;
 public class Forgot_Password extends javax.swing.JDialog {
 
     MyTextField txtEmail = new MyTextField();
-    MyTextField txtUsername = new MyTextField();
-    MyPasswordField txtOldPassword = new MyPasswordField();
-    MyPasswordField txtNewPassword = new MyPasswordField();
-    MyPasswordField txtConfirm = new MyPasswordField();
+    MyTextField txtConfirm = new MyTextField();
+    private String code;
+    private String emailRQ;
     JLabel lblError = new JLabel("JoptionPane Error", SwingConstants.CENTER);
 
-    private String code = null;
     private int pX;
     private int pY;
 
@@ -75,25 +74,47 @@ public class Forgot_Password extends javax.swing.JDialog {
         txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
         txtEmail.setHint("Email");
         
-        txtUsername.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
-        txtUsername.setHint("Username");
+
+        txtConfirm.setPrefixIcon(new ImageIcon(getClass().getResource("/images/mail.png")));
+        txtConfirm.setHint("Confirm code");
+        
+        btnSubmit.setBackground(new Color(0, 102, 204));
+        btnSubmit.setForeground(new Color(250, 250, 250));
+        btnSubmit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         btnSend.setBackground(new Color(0, 102, 204));
         btnSend.setForeground(new Color(250, 250, 250));
         btnSend.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
+        
         btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
         btnClose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
               
-        changePass.add(txtUsername, "w 90%");
         changePass.add(txtEmail, "w 90%");
+        changePass.add(txtConfirm, "w 90%");
 
         changePass.add(lblError, "w 90%");
-        changePass.add(btnSend, "w 40%, h 40");
+        changePass.add(btnSend, "w 40%, h 20");
+        changePass.add(btnSubmit, "w 40%, h 20");
 
-        changePass.add(btnClose, "w 40%, h 40");        
+        changePass.add(btnClose, "w 40%, h 20");        
         
+    }
+    
+    private void checkForgetPass(){
+        String email = txtEmail.getText().trim();
+        String codeEmail = txtConfirm.getText().trim();
+        
+        if(email.isBlank()){
+            lblError.setText("Please fill email to retrieve your password then press send button");
+            return;
+        }
+        
+        if(!EmailValidator.getInstance().isValid(email)){
+            lblError.setText("Mail is wrong format");
+            txtEmail.grabFocus();
+            return;
+        }
     }
     
 
@@ -110,8 +131,9 @@ public class Forgot_Password extends javax.swing.JDialog {
         changePass = new com.TextMind.Helper.GradientPanel();
         title2 = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        btnSend = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
+        btnSend = new javax.swing.JButton();
         tick = new com.TextMind.form.Tick();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -149,10 +171,10 @@ public class Forgot_Password extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        btnSend.setText("SUBMIT");
-        btnSend.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("SUBMIT");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -160,6 +182,13 @@ public class Forgot_Password extends javax.swing.JDialog {
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
+            }
+        });
+
+        btnSend.setText("SEND CODE");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
             }
         });
 
@@ -173,18 +202,21 @@ public class Forgot_Password extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changePassLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSend)
-                .addGap(123, 123, 123)
+                .addGap(18, 18, 18)
+                .addComponent(btnSubmit)
+                .addGap(18, 18, 18)
                 .addComponent(btnClose)
-                .addGap(15, 15, 15))
+                .addGap(30, 30, 30))
         );
         changePassLayout.setVerticalGroup(
             changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(changePassLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 496, Short.MAX_VALUE)
                 .addGroup(changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSend)
+                    .addComponent(btnSubmit)
                     .addComponent(btnClose))
                 .addGap(21, 21, 21))
         );
@@ -196,13 +228,11 @@ public class Forgot_Password extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1)
         );
 
         pack();
@@ -221,8 +251,12 @@ public class Forgot_Password extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnSendActionPerformed
 
     /**
@@ -273,6 +307,7 @@ public class Forgot_Password extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSend;
+    private javax.swing.JButton btnSubmit;
     private com.TextMind.Helper.GradientPanel changePass;
     private javax.swing.JLayeredPane jLayeredPane1;
     private com.TextMind.form.Tick tick;
