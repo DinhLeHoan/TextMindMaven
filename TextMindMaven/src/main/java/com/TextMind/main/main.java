@@ -32,6 +32,7 @@ public class main extends javax.swing.JFrame {
         initComponents();
         init() ;
         title.setBackground(new Color(179, 233, 255));
+        viewImage.setEnabled(false);
     }
     
     private void init() {
