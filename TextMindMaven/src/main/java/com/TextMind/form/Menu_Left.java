@@ -10,6 +10,7 @@ import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.component.Friend_Found;
 import com.TextMind.component.Friend_Request;
 import com.TextMind.component.Item_People;
+import com.TextMind.component.Banned_People;
 import com.TextMind.component.Reported_People;
 import com.TextMind.entity.User;
 import com.TextMind.entity.UserReported;
@@ -152,7 +153,7 @@ import org.json.JSONObject;
             });    
             
         if(Auth.isAdmin()){
-            menuFind.setVisible(false);
+//            menuFind.setVisible(false);
             menuBox.setVisible(false);
             getSocket().on("newReport", new Emitter.Listener() {
                 @Override
@@ -232,9 +233,15 @@ import org.json.JSONObject;
     }
 
     private void showFindFriend() {
-        menuList.removeAll();
-        FindAndAdd fad = new FindAndAdd();
-        menuList.add(fad, "wrap");
+//        menuList.removeAll();
+//        FindAndAdd fad = new FindAndAdd();
+//        menuList.add(fad, "wrap");
+        if(Auth.isAdmin()){
+            for (int i = 0 ; i < 5 ; i++) {
+                Banned_People bp = new Banned_People(listFriend.getListReport().get(0)) ;
+                menuList.add(bp, "wrap") ;
+            }
+        }
         refreshMenuList();
     }
 
