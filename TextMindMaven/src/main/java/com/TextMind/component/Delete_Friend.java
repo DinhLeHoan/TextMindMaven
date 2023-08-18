@@ -173,6 +173,7 @@ public class Delete_Friend extends javax.swing.JDialog {
             getSocket().emit("removeFriend", removeFriend);
             PublicEvent.getInstance().getEventChatBody().reset();
             PublicEvent.getInstance().getEventTitleChat().changeTitle(false);
+            PublicEvent.getInstance().getEventChatBottom().setTyping(false);
                     this.dispose();
 
         } catch (Exception e) {

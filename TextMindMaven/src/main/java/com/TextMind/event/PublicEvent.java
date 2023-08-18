@@ -18,6 +18,7 @@ public class PublicEvent {
     private EventTitleChat eventTitleChat;
     private EventChatBody eventChatBody;
     private EventMenuRight eventMenuRight;
+    private EventChatBottom eventChatBottom;
 
     public static PublicEvent getInstance() {
         if (instance == null) {
@@ -36,6 +37,14 @@ public class PublicEvent {
 
     public void addEventMenuRight(EventMenuRight eventMenuRight) {
         this.eventMenuRight = eventMenuRight;
+    }
+
+    public EventChatBottom getEventChatBottom() {
+        return eventChatBottom;
+    }
+
+    public void setEventChatBottom(EventChatBottom eventChatBottom) {
+        this.eventChatBottom = eventChatBottom;
     }
     
     

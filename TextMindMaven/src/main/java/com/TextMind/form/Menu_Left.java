@@ -61,6 +61,9 @@ import org.json.JSONObject;
                         User found = new User();
                         String name = jsonObject.optString("name");
                         String uID = jsonObject.optString("uID");
+                        if(uID.equals(Auth.user.getuID())){
+                            return;
+                        }
                         if(checkFindDeducate(uID)){
                             found.setName(name);
                             found.setuID(uID);
@@ -111,6 +114,7 @@ import org.json.JSONObject;
                     Boolean isSuccess = Boolean.parseBoolean(jsonString);
                     PublicEvent.getInstance().getEventTitleChat().changeTitle(false);
                     PublicEvent.getInstance().getEventChatBody().reset();
+                    showMess();
                 }
             });
             

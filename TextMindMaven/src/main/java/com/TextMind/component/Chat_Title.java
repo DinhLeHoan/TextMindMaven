@@ -70,8 +70,6 @@ import java.awt.Color;
                 btnReport.setEnabled(isDefault);
                 btnUnfriend.setEnabled(isDefault);
 
-
-
      }
 
     /**

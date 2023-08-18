@@ -4,6 +4,7 @@
  */
 package com.TextMind.component;
 
+import com.TextMind.event.EventChatBottom;
 import com.TextMind.event.PublicEvent;
 import com.TextMind.swing.JIMSendTextPane;
 import com.TextMind.swing.ScrollBar;
@@ -103,6 +104,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
         panelMore = new Panel_More() ;
         panelMore.setVisible(false);
         add(panelMore, "dock south,h 0!");
+        initEvent(txt);
     }
     
     private void eventSend(JIMSendTextPane txt) {
@@ -120,7 +122,19 @@ public class Chat_Bottom extends javax.swing.JPanel {
     private void refresh() {
         revalidate();
     }
+    
+    private void initEvent(JIMSendTextPane txt) {
+        PublicEvent.getInstance().setEventChatBottom(new EventChatBottom() {
+            @Override
+            public void setTyping(boolean isRemove) {
+                txt.setEditable(isRemove);
+            }
 
+            
+    
+        });
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

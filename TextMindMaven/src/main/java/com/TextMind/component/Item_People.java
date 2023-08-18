@@ -62,6 +62,7 @@ import java.awt.event.MouseEvent;
             public void mouseReleased(MouseEvent me) {
                 setColor(190, 247, 245) ;
                 if (mouseOver) {
+            PublicEvent.getInstance().getEventChatBottom().setTyping(true);
                     PublicEvent.getInstance().getEventMain().selectUser(friend);
                     Auth.uIDCurrentChat = friend.getuID();
                 }
