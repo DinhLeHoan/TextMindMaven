@@ -2,6 +2,7 @@ com\TextMind\component\Panel_More$3.class
 com\TextMind\DAO\UserDAO$3.class
 com\TextMind\event\EventMenuLeft.class
 com\TextMind\swing\blurHash\BlurHash.class
+com\TextMind\form\Menu_Left$11.class
 com\TextMind\form\P_Register$3.class
 com\TextMind\component\Chat_Left.class
 com\TextMind\component\Reported_People$1.class
@@ -30,8 +31,10 @@ com\TextMind\swing\PanelSlide$1.class
 com\TextMind\form\Chat$2.class
 com\TextMind\component\Change_Password$1.class
 com\TextMind\component\Delete_Friend$2.class
+com\TextMind\event\EventMenuRight.class
 com\TextMind\form\P_Login$3.class
 com\TextMind\component\Chat_Title$3.class
+com\TextMind\component\Banned_People.class
 com\TextMind\swing\FindAndAdd$1.class
 com\TextMind\component\Change_Password$8.class
 com\TextMind\component\OptionButton.class
@@ -41,6 +44,7 @@ com\TextMind\component\Friend_Found$2.class
 com\TextMind\form\View_Image$1.class
 com\TextMind\component\Forgot_Password$8.class
 com\TextMind\event\EventChat.class
+com\TextMind\form\Menu_Left$12.class
 com\TextMind\component\Change_Password$7.class
 com\TextMind\main\main$5.class
 com\TextMind\swing\blurHash\Util.class
@@ -73,10 +77,12 @@ com\TextMind\event\EventChatBody.class
 com\TextMind\form\Chat$1.class
 com\TextMind\swing\JIMSendTextPane$WarpColumnFactory.class
 com\TextMind\component\ReportUser$2.class
+com\TextMind\component\Banned_People$1.class
 com\TextMind\event\EventLogin.class
 com\TextMind\form\P_Register$2.class
 com\TextMind\Emoji\Emoji.class
 com\TextMind\form\Menu_Left$3.class
+com\TextMind\form\Menu_Left$10.class
 com\TextMind\swing\MyTextField.class
 com\TextMind\component\Forgot_Password$11.class
 com\TextMind\form\P_Register$1.class
@@ -85,6 +91,7 @@ com\TextMind\component\ReportUser$1.class
 com\TextMind\form\Menu_Left$4.class
 com\TextMind\component\Chat_Bottom$1.class
 com\TextMind\component\Forgot_Password$5.class
+com\TextMind\form\Menu_Right$3.class
 com\TextMind\component\Reported_Infor$3.class
 com\TextMind\form\Home.class
 com\TextMind\component\Chat_Title.class
