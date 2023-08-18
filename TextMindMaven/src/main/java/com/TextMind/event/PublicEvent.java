@@ -17,6 +17,8 @@ public class PublicEvent {
     private EventMenuLeft eventMenuLeft;
     private EventTitleChat eventTitleChat;
     private EventChatBody eventChatBody;
+    private EventMenuRight eventMenuRight;
+
     public static PublicEvent getInstance() {
         if (instance == null) {
             instance = new PublicEvent();
@@ -27,6 +29,16 @@ public class PublicEvent {
     private PublicEvent() {
 
     }
+
+    public EventMenuRight getEventMenuRight() {
+        return eventMenuRight;
+    }
+
+    public void addEventMenuRight(EventMenuRight eventMenuRight) {
+        this.eventMenuRight = eventMenuRight;
+    }
+    
+    
 
     public void addEventImageView(EventImageView event) {
         this.eventImageView = event;

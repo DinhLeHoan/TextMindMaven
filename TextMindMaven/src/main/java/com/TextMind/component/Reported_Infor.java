@@ -4,6 +4,8 @@
  */
 package com.TextMind.component;
 
+import static com.TextMind.Socket.SocketManager.getSocket;
+import com.TextMind.event.PublicEvent;
 import com.TextMind.swing.ScrollBar;
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +15,7 @@ import java.awt.Font;
  * @author ducan
  */
 public class Reported_Infor extends javax.swing.JDialog {
-
+    private String idTo,idFrom,detail;
     private int pX;
     private int pY;
 
@@ -44,6 +46,16 @@ public class Reported_Infor extends javax.swing.JDialog {
         btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
         report.add(btnClose, "w 40%, h 40");
+    }
+    
+    public void setInfor(String idFrom,String idTo,String detail){
+        txtIDfrom.setText(idFrom);
+        txtIDto.setText(idTo);
+        txtDetail.setText(detail);
+        this.idFrom = idFrom;
+        this.idTo = idTo;
+        this.detail = detail;
+
     }
 
     /**
@@ -199,6 +211,9 @@ public class Reported_Infor extends javax.swing.JDialog {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        getSocket().emit("banUser", idTo);
+        PublicEvent.getInstance().getEventMenuLeft().unShowBanned(idTo);
+        this.dispose();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void title2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2MouseDragged

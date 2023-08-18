@@ -8,6 +8,7 @@ import com.TextMind.Auth.Auth;
 import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.event.PublicEvent;
 import com.TextMind.component.Change_Password;
+import com.TextMind.event.EventMenuRight;
 import com.TextMind.main.Login;
 import com.TextMind.main.main;
 import java.awt.Color;
@@ -40,6 +41,7 @@ public class Menu_Right extends javax.swing.JPanel {
 
     private void init() {
         txtName.setText(Auth.user.getName());
+        initEvent();
     }
 
     private void signOut() {
@@ -47,6 +49,17 @@ public class Menu_Right extends javax.swing.JPanel {
 
         PublicEvent.getInstance().getEventMain().signOut();
         PublicEvent.getInstance().getEventLogin().reLogin();
+    }
+    
+    private void initEvent() {
+        PublicEvent.getInstance().addEventMenuRight(new EventMenuRight() {
+            @Override
+            public void logOut() {
+                signOut();
+            }
+    
+        });
+       
     }
 
     /**

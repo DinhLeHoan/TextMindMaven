@@ -64,6 +64,7 @@ public class Reported_People extends javax.swing.JPanel {
                 if (mouseOver) {
                     Auth.uIDCurrentChat = friend.getuIDto();
                     Reported_Infor rp = new Reported_Infor(main.getFrames()[0], true) ;
+                    rp.setInfor(friend.getuIDfrom(), friend.getuIDto(), friend.getDetail());
                     rp.setVisible(true);
                 }
             }

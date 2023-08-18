@@ -144,9 +144,23 @@ import org.json.JSONObject;
                 }
             });
             
+        getSocket().on("banUser" + Auth.user.getuID(), new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                   PublicEvent.getInstance().getEventMenuRight().logOut();
+                }
+            });    
+            
         if(Auth.isAdmin()){
             menuFind.setVisible(false);
             menuBox.setVisible(false);
+            getSocket().on("newReport", new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    listFriend.fillList();
+
+                }
+            });
 
         }
     }
@@ -181,7 +195,7 @@ import org.json.JSONObject;
             }
             
         });
-
+        initEvent();
     }
 
     private void showMess() {
@@ -291,6 +305,36 @@ import org.json.JSONObject;
             }
         }
         return true;
+    }
+    
+    private boolean bannedUser(String uID){
+        for (Component component : menuList.getComponents()) {
+            if (component instanceof Reported_People) {
+                
+                Reported_People friend = (Reported_People) component;
+                if(friend.getFriend().getuIDto().equals(uID)){
+                    friend.setVisible(false);
+                }
+            }
+        }
+        return true;
+    }
+    
+    private void initEvent() {
+        PublicEvent.getInstance().addEventMenuLeft(new EventMenuLeft() {
+
+            @Override
+            public void showFound(ArrayList<User> list) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void unShowBanned(String id) {
+                bannedUser(id);
+            }
+    
+        });
+       
     }
 
     /**
