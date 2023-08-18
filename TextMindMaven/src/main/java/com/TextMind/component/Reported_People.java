@@ -63,6 +63,8 @@ public class Reported_People extends javax.swing.JPanel {
                 setColor(190, 247, 245) ;
                 if (mouseOver) {
                     Auth.uIDCurrentChat = friend.getuIDto();
+                    Reported_Infor rp = new Reported_Infor(main.getFrames()[0], true) ;
+                    rp.setVisible(true);
                 }
             }
             
