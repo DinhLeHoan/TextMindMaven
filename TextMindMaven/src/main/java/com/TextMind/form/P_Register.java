@@ -59,7 +59,7 @@ public class P_Register extends javax.swing.JPanel {
     }
 
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "5[]10[]10[]10[]10[]10[]10[]45[]5[]push"));
+        login.setLayout(new MigLayout("wrap", "push[center]push", "5[]10[]10[]10[]10[]10[]10[]20[]5[]push"));
         JLabel label = new JLabel("Register");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(204, 255, 255));

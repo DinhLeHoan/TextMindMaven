@@ -89,7 +89,7 @@ public class P_Login extends javax.swing.JPanel {
     }
 
     private void initLogin() {
-        login.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]20[]20[]10[]push"));
+        login.setLayout(new MigLayout("wrap", "push[center]push", "60[]35[]10[]20[]20[]1[]push"));
         JLabel label = new JLabel("Sign In");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(204, 255, 255));
@@ -115,7 +115,7 @@ public class P_Login extends javax.swing.JPanel {
         btnLogin.setForeground(new Color(250, 250, 250));
         
         forgot.setFont(new Font("sansserif", 2, 14));
-        forgot.setForeground(new Color(38, 255, 31));
+        forgot.setForeground(new Color(5, 232, 43));
         forgot.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         forgot.addMouseListener(new MouseAdapter() {
             @Override

@@ -133,6 +133,7 @@ com\TextMind\Helper\GradientPanel.class
 com\TextMind\component\Chat_Image.class
 com\TextMind\swing\WrapLayout.class
 com\TextMind\swing\blurHash\SRGB.class
+com\TextMind\component\Chat_Bottom$4.class
 com\TextMind\component\Panel_More$1.class
 com\TextMind\form\P_Login$7.class
 com\TextMind\event\EventMain.class
@@ -147,6 +148,7 @@ com\TextMind\form\Menu_Left$1.class
 com\TextMind\swing\Progress$ProgressType.class
 com\TextMind\component\Forgot_Password$9.class
 com\TextMind\event\EventMessage.class
+com\TextMind\event\EventChatBottom.class
 com\TextMind\component\Chat_Title$2.class
 com\TextMind\swing\FindAndAdd$2.class
 com\TextMind\form\Menu_Left$8.class
