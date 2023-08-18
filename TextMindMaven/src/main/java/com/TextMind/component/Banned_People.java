@@ -5,6 +5,7 @@
 package com.TextMind.component;
 
 import com.TextMind.Auth.Auth;
+import com.TextMind.entity.User;
 import com.TextMind.entity.UserReported;
 import com.TextMind.event.PublicEvent;
 import java.awt.Color;
@@ -19,12 +20,12 @@ import com.TextMind.main.main;
  */
 public class Banned_People extends javax.swing.JPanel {
     private boolean mouseOver;
-    private UserReported friend;
+    private User friend;
     
     /**
      * Creates new form Item_People
      */
-    public Banned_People(UserReported user) {
+    public Banned_People(User user) {
 
         friend = user;
         initComponents();
@@ -32,7 +33,7 @@ public class Banned_People extends javax.swing.JPanel {
         init();
     }
 
-    public UserReported getFriend() {
+    public User getFriend() {
         return friend;
     }
 
@@ -62,9 +63,7 @@ public class Banned_People extends javax.swing.JPanel {
             public void mouseReleased(MouseEvent me) {
                 setColor(190, 247, 245) ;
                 if (mouseOver) {
-                    Auth.uIDCurrentChat = friend.getuIDto();
-                    Reported_Infor rp = new Reported_Infor(main.getFrames()[0], true) ;
-                    rp.setVisible(true);
+
                 }
             }
             
@@ -110,6 +109,11 @@ public class Banned_People extends javax.swing.JPanel {
         btnForgive.setBorderPainted(false);
         btnForgive.setContentAreaFilled(false);
         btnForgive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnForgive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnForgiveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRoundLayout = new javax.swing.GroupLayout(panelRound);
         panelRound.setLayout(panelRoundLayout);
@@ -156,6 +160,11 @@ public class Banned_People extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnForgiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgiveActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnForgiveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

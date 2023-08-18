@@ -237,15 +237,10 @@ import org.json.JSONObject;
     }
 
     private void showFindFriend() {
-//        menuList.removeAll();
-//        FindAndAdd fad = new FindAndAdd();
-//        menuList.add(fad, "wrap");
-        if(Auth.isAdmin()){
-            for (int i = 0 ; i < 5 ; i++) {
-                Banned_People bp = new Banned_People(listFriend.getListReport().get(0)) ;
-                menuList.add(bp, "wrap") ;
-            }
-        }
+        menuList.removeAll();
+        FindAndAdd fad = new FindAndAdd();
+            menuList.add(fad, "wrap");
+
         refreshMenuList();
     }
 
