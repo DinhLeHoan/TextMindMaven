@@ -10,7 +10,9 @@ import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.component.Friend_Found;
 import com.TextMind.component.Friend_Request;
 import com.TextMind.component.Item_People;
+import com.TextMind.component.Reported_People;
 import com.TextMind.entity.User;
+import com.TextMind.entity.UserReported;
 import com.TextMind.event.EventMenuLeft;
 import com.TextMind.event.PublicEvent;
 import com.TextMind.swing.FindAndAdd;
@@ -141,9 +143,13 @@ import org.json.JSONObject;
                 }
                 }
             });
+            
+        if(Auth.isAdmin()){
+            menuFind.setVisible(false);
+            menuBox.setVisible(false);
+
+        }
     }
-    
-    
     
     private void init() {
         listFriend = new UserDAO();
@@ -180,18 +186,34 @@ import org.json.JSONObject;
 
     private void showMess() {
         menuList.removeAll();
-        for (User friendData : listFriend.getListFriend()) {
-            Item_People friend = new Item_People(friendData);
-            if(listFriendOnline.contains(friendData.getuID()))
-            {   
-                friend.setActive(true);
+
+        if(Auth.isAdmin()){
+                for (UserReported friendData : listFriend.getListReport()) {
+                    Reported_People friend = new Reported_People(friendData);
+                    if(listFriendOnline.contains(friendData.getuIDto()))
+                    {   
+                        friend.setActive(true);
+                    }
+                    else{
+                        friend.setActive(false);
+                    }
+                    menuList.add(friend, "wrap");
             }
-            else{
-                friend.setActive(false);
-            }
-            menuList.add(friend, "wrap");
         }
-        refreshMenuList();
+        else{
+            for (User friendData : listFriend.getListFriend()) {
+                Item_People friend = new Item_People(friendData);
+                if(listFriendOnline.contains(friendData.getuID()))
+                {   
+                    friend.setActive(true);
+                }
+                else{
+                    friend.setActive(false);
+                }
+                menuList.add(friend, "wrap");
+            }
+            refreshMenuList();
+        }
 
     }
 

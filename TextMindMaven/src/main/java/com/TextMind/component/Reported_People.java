@@ -5,7 +5,7 @@
 package com.TextMind.component;
 
 import com.TextMind.Auth.Auth;
-import com.TextMind.entity.User;
+import com.TextMind.entity.UserReported;
 import com.TextMind.event.PublicEvent;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -17,14 +17,14 @@ import com.TextMind.main.main;
  *
  * @author KHOA
  */
-	public class Reported_People extends javax.swing.JPanel {
+public class Reported_People extends javax.swing.JPanel {
     private boolean mouseOver;
-    private User friend;
+    private UserReported friend;
     
     /**
      * Creates new form Item_People
      */
-    public Reported_People(User user) {
+    public Reported_People(UserReported user) {
 
         friend = user;
         initComponents();
@@ -32,7 +32,7 @@ import com.TextMind.main.main;
         init();
     }
 
-    public User getFriend() {
+    public UserReported getFriend() {
         return friend;
     }
 
@@ -62,8 +62,7 @@ import com.TextMind.main.main;
             public void mouseReleased(MouseEvent me) {
                 setColor(190, 247, 245) ;
                 if (mouseOver) {
-                    PublicEvent.getInstance().getEventMain().selectUser(friend);
-                    Auth.uIDCurrentChat = friend.getuID();
+                    Auth.uIDCurrentChat = friend.getuIDto();
                 }
             }
             

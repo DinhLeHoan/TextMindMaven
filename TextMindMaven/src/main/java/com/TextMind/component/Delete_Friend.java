@@ -63,14 +63,14 @@ public class Delete_Friend extends javax.swing.JDialog {
         changePass.add(btnClose);
         
 
-        btnSend.setBackground(new Color(0, 102, 204));
-        btnSend.setForeground(new Color(250, 250, 250));
+        btnDelete.setBackground(new Color(0, 102, 204));
+        btnDelete.setForeground(new Color(250, 250, 250));
 
         btnClose.setBackground(new Color(0, 102, 204));
         btnClose.setForeground(new Color(250, 250, 250));
         
         
-        changePass.add(btnSend, "w 40%, h 40");
+        changePass.add(btnDelete, "w 40%, h 40");
 
         changePass.add(btnClose, "w 40%, h 40");        
         
@@ -90,7 +90,7 @@ public class Delete_Friend extends javax.swing.JDialog {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         changePass = new com.TextMind.Helper.GradientPanel();
-        btnSend = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         title = new javax.swing.JLabel();
 
@@ -99,10 +99,10 @@ public class Delete_Friend extends javax.swing.JDialog {
 
         jLayeredPane1.setLayout(new java.awt.CardLayout());
 
-        btnSend.setText("DELETE");
-        btnSend.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -121,7 +121,7 @@ public class Delete_Friend extends javax.swing.JDialog {
             changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changePassLayout.createSequentialGroup()
                 .addGap(76, 76, 76)
-                .addComponent(btnSend)
+                .addComponent(btnDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnClose)
                 .addGap(68, 68, 68))
@@ -137,7 +137,7 @@ public class Delete_Friend extends javax.swing.JDialog {
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(changePassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSend)
+                    .addComponent(btnDelete)
                     .addComponent(btnClose))
                 .addGap(21, 21, 21))
         );
@@ -165,7 +165,7 @@ public class Delete_Friend extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         JSONObject removeFriend = new JSONObject();
         try {
             removeFriend.put("uidFrom", Auth.uIDCurrentChat);
@@ -173,11 +173,13 @@ public class Delete_Friend extends javax.swing.JDialog {
             getSocket().emit("removeFriend", removeFriend);
             PublicEvent.getInstance().getEventChatBody().reset();
             PublicEvent.getInstance().getEventTitleChat().changeTitle(false);
+                    this.dispose();
+
         } catch (Exception e) {
             System.out.println(e);
         }
         
-    }//GEN-LAST:event_btnSendActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,13 +228,9 @@ public class Delete_Friend extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnSend;
+    private javax.swing.JButton btnDelete;
     private com.TextMind.Helper.GradientPanel changePass;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel title;
-    private javax.swing.JLabel title1;
-    private javax.swing.JPanel title2;
-    private javax.swing.JPanel title3;
-    private javax.swing.JLabel title4;
     // End of variables declaration//GEN-END:variables
 }

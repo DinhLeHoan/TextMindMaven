@@ -4,9 +4,12 @@
  */
 package com.TextMind.component;
 
+import com.TextMind.Auth.Auth;
+import static com.TextMind.Socket.SocketManager.getSocket;
 import com.TextMind.swing.ScrollBar;
 import java.awt.Color;
 import java.awt.Font;
+import org.json.JSONObject;
 
 /**
  *
@@ -162,6 +165,22 @@ public class ReportUser extends javax.swing.JDialog {
 
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
         // TODO add your handling code here:
+        String txtRP = txtDetail.getText().trim();
+        JSONObject reportData = new JSONObject();
+
+        if(txtRP.isBlank()){
+            
+        }
+        else{
+            try {
+            reportData.put("uidFrom", Auth.user.getuID());
+            reportData.put("uidTo", Auth.uIDCurrentChat);
+            reportData.put("detail", txtRP);
+            getSocket().emit("reportUser", reportData);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
     }//GEN-LAST:event_btnReportActionPerformed
 
     private void title2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title2MouseDragged

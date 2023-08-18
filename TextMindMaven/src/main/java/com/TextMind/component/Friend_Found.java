@@ -61,6 +61,7 @@ public class Friend_Found extends javax.swing.JPanel {
 
             }
         });
+            btnAddFriend.setEnabled(true);
     }
     
     public void setDisableSend(){
@@ -152,6 +153,7 @@ public class Friend_Found extends javax.swing.JPanel {
 
             requestFriend.put("uidFrom", Auth.user.getuID());
             getSocket().emit("sendRequestFriend", requestFriend);
+            btnAddFriend.setEnabled(false);
         } catch (Exception e) {
             System.out.println(e);
         }

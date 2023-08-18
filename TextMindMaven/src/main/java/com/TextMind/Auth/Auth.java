@@ -21,5 +21,7 @@ public class Auth {
         return Auth.user != null;
     }
     
-    
+    public static boolean isAdmin(){
+        return Auth.user.isIsAdmin();
+    }
 }
