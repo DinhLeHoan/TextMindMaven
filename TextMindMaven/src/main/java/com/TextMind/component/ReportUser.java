@@ -169,7 +169,9 @@ public class ReportUser extends javax.swing.JDialog {
         JSONObject reportData = new JSONObject();
 
         if(txtRP.isBlank()){
-            
+            txtDetail.setHintText("Write something...");
+            revalidate();
+            repaint();
         }
         else{
             try {

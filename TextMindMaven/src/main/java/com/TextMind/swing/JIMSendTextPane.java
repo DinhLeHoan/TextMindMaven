@@ -125,7 +125,7 @@ public class JIMSendTextPane extends JTextPane {
             int m = 0xfefefefe;
             int c2 = ((c0 & m) >>> 1) + ((c1 & m) >>> 1);
             g.setColor(new Color(c2, true));
-            g.drawString(hintText, ins.left, h / 2 + fm.getAscent() / 2 - 2);
+            g.drawString(hintText, ins.left, 18);
         }
     }
     

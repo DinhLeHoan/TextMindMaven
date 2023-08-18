@@ -40,11 +40,11 @@
                       <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
                       <Component id="lblName" pref="150" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
-                  <Component id="btnUnfriend" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
                   <Component id="btnReport" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnUnfriend" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

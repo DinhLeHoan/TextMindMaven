@@ -1,9 +1,12 @@
 com\TextMind\component\Panel_More$3.class
+com\TextMind\DAO\UserDAO$3.class
 com\TextMind\event\EventMenuLeft.class
 com\TextMind\swing\blurHash\BlurHash.class
 com\TextMind\form\P_Register$3.class
 com\TextMind\component\Chat_Left.class
+com\TextMind\component\Reported_People$1.class
 com\TextMind\component\Change_Password$9$1.class
+com\TextMind\component\Reported_Infor$5$1.class
 com\TextMind\component\Chat_Body$3.class
 com\TextMind\event\PublicEvent.class
 com\TextMind\swing\blurHash\Base83.class
@@ -12,6 +15,7 @@ com\TextMind\swing\PanelRound.class
 com\TextMind\component\Forgot_Password$10.class
 com\TextMind\main\Login$4.class
 com\TextMind\model\Model_Message.class
+com\TextMind\component\Reported_Infor$2.class
 com\TextMind\form\P_Login$4.class
 com\TextMind\component\Change_Password$2.class
 com\TextMind\component\Change_Password.class
@@ -49,6 +53,7 @@ com\TextMind\form\View_Image$2.class
 com\TextMind\component\Friend_Request$1.class
 com\TextMind\DAO\UserDAO$ListUpdateListener.class
 com\TextMind\event\EventTitleChat.class
+com\TextMind\component\Reported_Infor$1.class
 com\TextMind\form\P_Login$5.class
 com\TextMind\component\Change_Password$6.class
 com\TextMind\component\Forgot_Password$3.class
@@ -60,6 +65,7 @@ com\TextMind\component\Delete_Friend$1.class
 com\TextMind\form\Loading.class
 com\TextMind\component\Change_Password$3.class
 com\TextMind\component\Item_People$1.class
+com\TextMind\component\Reported_Infor$4.class
 com\TextMind\component\Delete_Friend$3$1.class
 com\TextMind\form\Menu_Left$6.class
 com\TextMind\component\Item_People.class
@@ -79,6 +85,7 @@ com\TextMind\component\ReportUser$1.class
 com\TextMind\form\Menu_Left$4.class
 com\TextMind\component\Chat_Bottom$1.class
 com\TextMind\component\Forgot_Password$5.class
+com\TextMind\component\Reported_Infor$3.class
 com\TextMind\form\Home.class
 com\TextMind\component\Chat_Title.class
 com\TextMind\swing\ComponentResizer.class
@@ -94,6 +101,7 @@ com\TextMind\component\Change_Password$4.class
 com\TextMind\component\Chat_Bottom$2.class
 com\TextMind\swing\PanelSlide.class
 com\TextMind\form\Menu_Right$2.class
+com\TextMind\entity\UserReported.class
 com\TextMind\component\Chat_Right.class
 com\TextMind\form\P_Login$1.class
 com\TextMind\main\main$3.class
@@ -113,6 +121,7 @@ com\TextMind\form\Menu_Left$7.class
 com\TextMind\main\main.class
 com\TextMind\form\P_Register$6.class
 com\TextMind\Socket\SocketManager.class
+com\TextMind\component\Reported_Infor$5.class
 com\TextMind\Helper\GradientPanel.class
 com\TextMind\component\Chat_Image.class
 com\TextMind\swing\WrapLayout.class
@@ -139,6 +148,7 @@ com\TextMind\component\Delete_Friend.class
 com\TextMind\form\Chat.class
 com\TextMind\form\Menu_Left$2.class
 com\TextMind\Helper\CirclesPanel.class
+com\TextMind\component\Reported_People.class
 com\TextMind\form\P_Login$2.class
 com\TextMind\component\ReportUser$3.class
 com\TextMind\form\Menu_Right$1.class
@@ -146,6 +156,7 @@ com\TextMind\swing\JIMSendTextPane$WarpEditorKit.class
 com\TextMind\swing\ProgressCircleUI.class
 com\TextMind\form\Menu_Right.class
 com\TextMind\component\Friend_Found$1.class
+com\TextMind\component\Reported_Infor.class
 com\TextMind\component\Image_Item.class
 com\TextMind\form\P_Register.class
 com\TextMind\component\Change_Password$7$1.class

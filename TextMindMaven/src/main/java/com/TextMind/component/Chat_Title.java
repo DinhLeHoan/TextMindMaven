@@ -126,10 +126,10 @@ import java.awt.Color;
                 .addGroup(gradientPanelB1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStatus)
                     .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addGap(225, 225, 225)
-                .addComponent(btnUnfriend)
-                .addGap(18, 18, 18)
+                .addGap(237, 237, 237)
                 .addComponent(btnReport)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUnfriend)
                 .addContainerGap())
         );
         gradientPanelB1Layout.setVerticalGroup(
