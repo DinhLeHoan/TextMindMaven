@@ -41,6 +41,12 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>9.1.0.jre15-preview</version>
         </dependency>
+        <dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>7.8.0</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -58,7 +58,20 @@ public class P_Login extends javax.swing.JPanel {
         login.start();
     }
 
-    private User validateLogin() {
+    public MyTextField getTxtUsername() {
+		return txtUsername;
+	}
+
+	public MyPasswordField getTxtPassword() {
+		return txtPassword;
+	}
+
+	public javax.swing.JButton getBtnLogin() {
+		return btnLogin;
+	}
+
+
+	private User validateLogin() {
         try {
             if (txtUsername != null && txtPassword != null) {
                 String username = txtUsername.getText().trim();

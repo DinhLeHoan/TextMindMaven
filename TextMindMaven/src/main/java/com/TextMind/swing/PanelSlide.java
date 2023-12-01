@@ -35,8 +35,16 @@ public class PanelSlide extends javax.swing.JPanel {
         });
 
     }
+    
+    
 
-    private final List<Component> list;
+    public List<Component> getList() {
+		return list;
+	}
+
+
+
+	private final List<Component> list;
     private final Timer timer;
     private Component comExit;
     private Component comShow;
