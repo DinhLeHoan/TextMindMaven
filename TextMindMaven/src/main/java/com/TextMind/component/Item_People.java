@@ -41,7 +41,17 @@ import java.awt.event.MouseEvent;
         
     }
     
-    private void init() {
+    
+    
+    public javax.swing.JLabel getLblName() {
+		return lblName;
+	}
+
+	public void setLblName(javax.swing.JLabel lblName) {
+		this.lblName = lblName;
+	}
+
+	private void init() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent me) {

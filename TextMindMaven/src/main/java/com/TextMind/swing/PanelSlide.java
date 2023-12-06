@@ -16,6 +16,7 @@ import javax.swing.Timer;
  * @author KHOA
  */
 public class PanelSlide extends javax.swing.JPanel {
+	
 
     public int getAnimate() {
         return animate;
@@ -41,8 +42,6 @@ public class PanelSlide extends javax.swing.JPanel {
     public List<Component> getList() {
 		return list;
 	}
-
-
 
 	private final List<Component> list;
     private final Timer timer;
@@ -107,4 +106,14 @@ public class PanelSlide extends javax.swing.JPanel {
             }
         }
     }
+
+	public int getCurrentShowing() {
+		return currentShowing;
+	}
+
+	public void setCurrentShowing(int currentShowing) {
+		this.currentShowing = currentShowing;
+	}
+    
+    
 }

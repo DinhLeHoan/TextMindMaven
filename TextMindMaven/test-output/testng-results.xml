@@ -1,37 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-06T10:12:18 ICT" name="Default suite" finished-at="2023-12-06T10:12:28 ICT" duration-ms="10463">
+  <suite started-at="2023-12-06T23:07:26 ICT" name="Default suite" finished-at="2023-12-06T23:07:34 ICT" duration-ms="7690">
     <groups>
     </groups>
-    <test started-at="2023-12-06T10:12:18 ICT" name="Default test" finished-at="2023-12-06T10:12:28 ICT" duration-ms="10463">
-      <class name="testing.P_RegisterTest">
-        <test-method is-config="true" signature="init()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:18 ICT" name="init" finished-at="2023-12-06T10:12:18 ICT" duration-ms="191" status="PASS">
+    <test started-at="2023-12-06T23:07:26 ICT" name="Default test" finished-at="2023-12-06T23:07:34 ICT" duration-ms="7690">
+      <class name="testing.ChatTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:testing.ChatTest@1aa7ecca]" started-at="2023-12-06T23:07:26 ICT" name="init" finished-at="2023-12-06T23:07:26 ICT" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="TC_QLKH_REGISTER_04()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:18 ICT" name="TC_QLKH_REGISTER_04" finished-at="2023-12-06T10:12:23 ICT" duration-ms="5093" status="PASS">
+        <test-method signature="TC_MODULE_LOGIN_05()[pri:0, instance:testing.ChatTest@1aa7ecca]" started-at="2023-12-06T23:07:26 ICT" name="TC_MODULE_LOGIN_05" finished-at="2023-12-06T23:07:34 ICT" duration-ms="7637" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [contrau] but found [hoan]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [contrau] but found [hoan]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at org.testng.Assert.assertEquals(Assert.java:666)
+at testing.ChatTest.TC_MODULE_LOGIN_05(ChatTest.java:89)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_QLKH_REGISTER_04 -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:23 ICT" name="logout" finished-at="2023-12-06T10:12:23 ICT" duration-ms="20" status="PASS">
+        </test-method> <!-- TC_MODULE_LOGIN_05 -->
+        <test-method is-config="true" signature="logout()[pri:0, instance:testing.ChatTest@1aa7ecca]" started-at="2023-12-06T23:07:34 ICT" name="logout" finished-at="2023-12-06T23:07:34 ICT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method is-config="true" signature="init()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:23 ICT" name="init" finished-at="2023-12-06T10:12:23 ICT" duration-ms="88" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="test1()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:23 ICT" name="test1" finished-at="2023-12-06T10:12:28 ICT" duration-ms="5002" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test1 -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:28 ICT" name="logout" finished-at="2023-12-06T10:12:28 ICT" duration-ms="19" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logout -->
-      </class> <!-- testing.P_RegisterTest -->
+      </class> <!-- testing.ChatTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

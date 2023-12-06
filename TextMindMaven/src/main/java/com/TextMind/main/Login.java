@@ -78,6 +78,16 @@ public class Login extends javax.swing.JFrame {
 	}
 
 
+	public javax.swing.JButton getBtnClose2() {
+		return btnClose2;
+	}
+
+	public void setBtnClose2(javax.swing.JButton btnClose2) {
+		this.btnClose2 = btnClose2;
+	}
+
+
+
 
 	/**
      * This method is called from within the constructor to initialize the form.
@@ -335,5 +345,7 @@ public class Login extends javax.swing.JFrame {
     private com.TextMind.swing.PictureBox pictureBox1;
     private com.TextMind.swing.PanelSlide slide;
     private javax.swing.JPanel title2;
+    
+    
     // End of variables declaration//GEN-END:variables
 }

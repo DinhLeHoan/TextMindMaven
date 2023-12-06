@@ -29,6 +29,11 @@ import net.miginfocom.swing.MigLayout;
 public class Chat_Bottom extends javax.swing.JPanel {
     private MigLayout mig;
     private Panel_More panelMore;
+    private JIMSendTextPane txt = new JIMSendTextPane();
+    private JButton btn = new JButton();
+    private JButton btnMore = new JButton();
+
+
     /**
      * Creates new form Chat_Title
      */
@@ -42,7 +47,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
         setLayout(mig);
         JScrollPane scroll = new JScrollPane();
         scroll.setBorder(null);
-        JIMSendTextPane txt = new JIMSendTextPane();
+        txt = new JIMSendTextPane();
         
         txt.addKeyListener(new KeyAdapter() {
             @Override
@@ -66,7 +71,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
         panel.setLayout(new MigLayout("filly", "0[]3[]0", "0[bottom]0"));
         panel.setPreferredSize(new Dimension(30, 28));
         panel.setBackground(Color.WHITE);
-        JButton btn = new JButton();
+        btn = new JButton();
         btn.setBorder(null);
         btn.setContentAreaFilled(false);
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -77,7 +82,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
                 eventSend(txt) ;
             }
         });
-        JButton btnMore = new JButton();
+        btnMore = new JButton();
         btnMore.setBorder(null);
         btnMore.setContentAreaFilled(false);
         btnMore.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -123,7 +128,49 @@ public class Chat_Bottom extends javax.swing.JPanel {
         revalidate();
     }
     
-    private void initEvent(JIMSendTextPane txt) {
+    
+    
+    public MigLayout getMig() {
+		return mig;
+	}
+
+	public void setMig(MigLayout mig) {
+		this.mig = mig;
+	}
+
+	public Panel_More getPanelMore() {
+		return panelMore;
+	}
+
+	public void setPanelMore(Panel_More panelMore) {
+		this.panelMore = panelMore;
+	}
+
+	public JIMSendTextPane getTxt() {
+		return txt;
+	}
+
+	public void setTxt(JIMSendTextPane txt) {
+		this.txt = txt;
+	}
+
+	public JButton getBtn() {
+		return btn;
+	}
+
+	public void setBtn(JButton btn) {
+		this.btn = btn;
+	}
+
+	public JButton getBtnMore() {
+		return btnMore;
+	}
+
+	public void setBtnMore(JButton btnMore) {
+		this.btnMore = btnMore;
+	}
+
+	private void initEvent(JIMSendTextPane txt) {
         PublicEvent.getInstance().setEventChatBottom(new EventChatBottom() {
             @Override
             public void setTyping(boolean isRemove) {
