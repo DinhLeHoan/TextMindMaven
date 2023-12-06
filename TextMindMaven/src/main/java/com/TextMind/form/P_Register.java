@@ -426,8 +426,73 @@ public class P_Register extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSendActionPerformed
 
+    
+    public MyTextField getTxtName() {
+		return txtName;
+	}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+	public void setTxtName(MyTextField txtName) {
+		this.txtName = txtName;
+	}
+
+	public MyTextField getTxtEmail() {
+		return txtEmail;
+	}
+
+	public void setTxtEmail(MyTextField txtEmail) {
+		this.txtEmail = txtEmail;
+	}
+
+	public MyTextField getTxtEmailConfirm() {
+		return txtEmailConfirm;
+	}
+
+	public void setTxtEmailConfirm(MyTextField txtEmailConfirm) {
+		this.txtEmailConfirm = txtEmailConfirm;
+	}
+
+	public MyTextField getTxtUsername() {
+		return txtUsername;
+	}
+
+	public void setTxtUsername(MyTextField txtUsername) {
+		this.txtUsername = txtUsername;
+	}
+
+	public MyPasswordField getTxtPassword() {
+		return txtPassword;
+	}
+
+	public void setTxtPassword(MyPasswordField txtPassword) {
+		this.txtPassword = txtPassword;
+	}
+
+	public MyPasswordField getTxtConfirm() {
+		return txtConfirm;
+	}
+
+	public void setTxtConfirm(MyPasswordField txtConfirm) {
+		this.txtConfirm = txtConfirm;
+	}
+
+	public javax.swing.JLabel getLblError() {
+		return lblError;
+	}
+
+	public void setLblError(javax.swing.JLabel lblError) {
+		this.lblError = lblError;
+	}
+
+	
+
+	public javax.swing.JButton getBtnSend() {
+		return btnSend;
+	}
+
+
+
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnSend;

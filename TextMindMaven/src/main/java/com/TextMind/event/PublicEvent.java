@@ -28,7 +28,7 @@ public class PublicEvent {
     }
 
     private PublicEvent() {
-
+    	
     }
 
     public EventMenuRight getEventMenuRight() {
@@ -46,8 +46,6 @@ public class PublicEvent {
     public void setEventChatBottom(EventChatBottom eventChatBottom) {
         this.eventChatBottom = eventChatBottom;
     }
-    
-    
 
     public void addEventImageView(EventImageView event) {
         this.eventImageView = event;

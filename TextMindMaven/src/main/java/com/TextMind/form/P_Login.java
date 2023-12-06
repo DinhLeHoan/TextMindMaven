@@ -300,9 +300,16 @@ public class P_Login extends javax.swing.JPanel {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         login() ;
     }//GEN-LAST:event_btnLoginActionPerformed
+    
+
+    public javax.swing.JButton getBtnRegister() {
+		return btnRegister;
+	}
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel lblError;

@@ -1,49 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-01T09:28:34 ICT" name="Default suite" finished-at="2023-12-01T09:28:50 ICT" duration-ms="15427">
+  <suite started-at="2023-12-06T10:12:18 ICT" name="Default suite" finished-at="2023-12-06T10:12:28 ICT" duration-ms="10463">
     <groups>
     </groups>
-    <test started-at="2023-12-01T09:28:34 ICT" name="Default test" finished-at="2023-12-01T09:28:50 ICT" duration-ms="15427">
-      <class name="testing.P_LoginTest">
-        <test-method is-config="true" signature="init()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:35 ICT" name="init" finished-at="2023-12-01T09:28:35 ICT" duration-ms="120" status="PASS">
+    <test started-at="2023-12-06T10:12:18 ICT" name="Default test" finished-at="2023-12-06T10:12:28 ICT" duration-ms="10463">
+      <class name="testing.P_RegisterTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:18 ICT" name="init" finished-at="2023-12-06T10:12:18 ICT" duration-ms="191" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="test1()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:35 ICT" name="test1" finished-at="2023-12-01T09:28:40 ICT" duration-ms="5077" status="PASS">
+        <test-method signature="TC_QLKH_REGISTER_04()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:18 ICT" name="TC_QLKH_REGISTER_04" finished-at="2023-12-06T10:12:23 ICT" duration-ms="5093" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_QLKH_REGISTER_04 -->
+        <test-method is-config="true" signature="logout()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:23 ICT" name="logout" finished-at="2023-12-06T10:12:23 ICT" duration-ms="20" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="init()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:23 ICT" name="init" finished-at="2023-12-06T10:12:23 ICT" duration-ms="88" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="test1()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:23 ICT" name="test1" finished-at="2023-12-06T10:12:28 ICT" duration-ms="5002" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test1 -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:40 ICT" name="logout" finished-at="2023-12-01T09:28:40 ICT" duration-ms="4" status="PASS">
+        <test-method is-config="true" signature="logout()[pri:0, instance:testing.P_RegisterTest@1046d517]" started-at="2023-12-06T10:12:28 ICT" name="logout" finished-at="2023-12-06T10:12:28 ICT" duration-ms="19" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method is-config="true" signature="init()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:40 ICT" name="init" finished-at="2023-12-01T09:28:40 ICT" duration-ms="45" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="test2()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:40 ICT" name="test2" finished-at="2023-12-01T09:28:45 ICT" duration-ms="5009" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test2 -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:45 ICT" name="logout" finished-at="2023-12-01T09:28:45 ICT" duration-ms="24" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logout -->
-        <test-method is-config="true" signature="init()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:45 ICT" name="init" finished-at="2023-12-01T09:28:45 ICT" duration-ms="42" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="test3()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:45 ICT" name="test3" finished-at="2023-12-01T09:28:50 ICT" duration-ms="5003" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test3 -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:testing.P_LoginTest@9ebe38b]" started-at="2023-12-01T09:28:50 ICT" name="logout" finished-at="2023-12-01T09:28:50 ICT" duration-ms="28" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logout -->
-      </class> <!-- testing.P_LoginTest -->
+      </class> <!-- testing.P_RegisterTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
