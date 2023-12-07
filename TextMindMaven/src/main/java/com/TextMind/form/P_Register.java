@@ -485,6 +485,34 @@ public class P_Register extends javax.swing.JPanel {
 
 	
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public javax.swing.JButton getBtnLogin() {
+		return btnLogin;
+	}
+
+	public void setBtnLogin(javax.swing.JButton btnLogin) {
+		this.btnLogin = btnLogin;
+	}
+
+	public javax.swing.JButton getBtnRegister() {
+		return btnRegister;
+	}
+
+	public void setBtnRegister(javax.swing.JButton btnRegister) {
+		this.btnRegister = btnRegister;
+	}
+
+	public void setBtnSend(javax.swing.JButton btnSend) {
+		this.btnSend = btnSend;
+	}
+
 	public javax.swing.JButton getBtnSend() {
 		return btnSend;
 	}

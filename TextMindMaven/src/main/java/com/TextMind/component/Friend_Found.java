@@ -29,7 +29,6 @@ public class Friend_Found extends javax.swing.JPanel {
 
         initComponents();
         friend = user;
-
         lblName.setText(user.getName());
         init();
     }
@@ -160,7 +159,25 @@ public class Friend_Found extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAddFriendActionPerformed
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton getBtnAddFriend() {
+		return btnAddFriend;
+	}
+
+	public void setBtnAddFriend(javax.swing.JButton btnAddFriend) {
+		this.btnAddFriend = btnAddFriend;
+	}
+
+
+	public javax.swing.JLabel getLblName() {
+		return lblName;
+	}
+
+	public void setLblName(javax.swing.JLabel lblName) {
+		this.lblName = lblName;
+	}
+
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private com.TextMind.swing.ImageAvatar avt;
     private javax.swing.JButton btnAddFriend;
     private javax.swing.JSeparator jSeparator1;

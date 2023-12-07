@@ -141,8 +141,25 @@ public class Menu_Right extends javax.swing.JPanel {
         cp.setVisible(true);
     }//GEN-LAST:event_btnChangePassActionPerformed
 
+    
+    public javax.swing.JButton getBtnChangePass() {
+		return btnChangePass;
+	}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+	public void setBtnChangePass(javax.swing.JButton btnChangePass) {
+		this.btnChangePass = btnChangePass;
+	}
+
+	public javax.swing.JButton getBtnSignOut() {
+		return btnSignOut;
+	}
+
+	public void setBtnSignOut(javax.swing.JButton btnSignOut) {
+		this.btnSignOut = btnSignOut;
+	}
+
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangePass;
     private javax.swing.JButton btnSignOut;
     private com.TextMind.Helper.GradientPanelB menuRight;

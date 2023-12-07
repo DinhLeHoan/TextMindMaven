@@ -38,6 +38,11 @@ import org.json.JSONObject;
 	public class Menu_Left extends javax.swing.JPanel implements UserDAO.ListUpdateListener {
     private UserDAO listFriend;
     private ArrayList<String> listFriendOnline = new ArrayList<>();
+    private FindAndAdd fad;
+    private Friend_Request fr;
+    private Friend_Found ff;
+    
+    
     /**
      * Creates new form Menu_Left
      */
@@ -68,7 +73,7 @@ import org.json.JSONObject;
                         if(checkFindDeducate(uID)){
                             found.setName(name);
                             found.setuID(uID);
-                            Friend_Found ff = new Friend_Found(found);
+                            ff = new Friend_Found(found);
                             if(!listFriend.checkDeducate(uID)){
                                 ff.setDisableSend();
                             }
@@ -95,7 +100,7 @@ import org.json.JSONObject;
                         if(checkRQDeducate(uID)&& menuBox.isSelected()){
                             found.setName(name);
                             found.setuID(uID);
-                            Friend_Request fr = new Friend_Request(found);
+                            fr = new Friend_Request(found);
                             menuList.add(fr, "wrap");
                         }
                     }
@@ -139,7 +144,7 @@ import org.json.JSONObject;
                         if(checkRQDeducate(uID) && menuBox.isSelected()){
                             found.setName(name);
                             found.setuID(uID);
-                            Friend_Request fr = new Friend_Request(found);
+                            fr = new Friend_Request(found);
                             menuList.add(fr, "wrap");
                         
                     }
@@ -238,7 +243,7 @@ import org.json.JSONObject;
 
     private void showFindFriend() {
         menuList.removeAll();
-        FindAndAdd fad = new FindAndAdd();
+        fad = new FindAndAdd();
             menuList.add(fad, "wrap");
 
         refreshMenuList();
@@ -287,8 +292,8 @@ import org.json.JSONObject;
         for (Component component : menuList.getComponents()) {
             if (component instanceof Friend_Found) {
                 
-                Friend_Found friend = (Friend_Found) component;
-                String friendID = friend.getFriend().getuID();
+                ff = (Friend_Found) component;
+                String friendID = ff.getFriend().getuID();
                 // Check if the friend's ID is in the online list
                if(uID.equalsIgnoreCase(friendID)){
                    return false;
@@ -302,8 +307,8 @@ import org.json.JSONObject;
         for (Component component : menuList.getComponents()) {
             if (component instanceof Friend_Request) {
                 
-                Friend_Request friend = (Friend_Request) component;
-                String friendID = friend.getFriendRQ().getuID();
+                fr = (Friend_Request) component;
+                String friendID = fr.getFriendRQ().getuID();
                 // Check if the friend's ID is in the online list
                if(uID.equalsIgnoreCase(friendID)){
                    return false;
@@ -476,8 +481,61 @@ import org.json.JSONObject;
         }
     }//GEN-LAST:event_menuMessActionPerformed
 
+    
+    public com.TextMind.component.MenuButton getMenuFind() {
+		return menuFind;
+	}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+	public void setMenuFind(com.TextMind.component.MenuButton menuFind) {
+		this.menuFind = menuFind;
+	}
+	
+
+	public FindAndAdd getFad() {
+		return fad;
+	}
+
+	public void setFad(FindAndAdd fad) {
+		this.fad = fad;
+	}
+
+
+	public com.TextMind.component.MenuButton getMenuBox() {
+		return menuBox;
+	}
+
+	public void setMenuBox(com.TextMind.component.MenuButton menuBox) {
+		this.menuBox = menuBox;
+	}
+
+	public com.TextMind.component.MenuButton getMenuMess() {
+		return menuMess;
+	}
+
+	public void setMenuMess(com.TextMind.component.MenuButton menuMess) {
+		this.menuMess = menuMess;
+	}
+
+
+	public Friend_Request getFr() {
+		return fr;
+	}
+
+	public void setFr(Friend_Request fr) {
+		this.fr = fr;
+	}
+
+
+	public Friend_Found getFf() {
+		return ff;
+	}
+
+	public void setFf(Friend_Found ff) {
+		this.ff = ff;
+	}
+
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane menu;
     private com.TextMind.component.MenuButton menuBox;
     private com.TextMind.component.MenuButton menuFind;

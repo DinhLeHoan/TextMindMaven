@@ -27,7 +27,7 @@ public class FindAndAdd extends JPanel {
 
     private JTextField textField;
     private JButton btnFindAndAdd;
-
+    private JSONObject data;
     public FindAndAdd() {
         setPreferredSize(new Dimension(200, 48)); // Set preferred size
 
@@ -81,7 +81,7 @@ public class FindAndAdd extends JPanel {
             String username = textField.getText().trim();
 
             // Send the username to the server through Socket.IO
-            JSONObject data = new JSONObject();
+            data = new JSONObject();
             data.put("nameOrMail", username);
             data.put("uID", Auth.user.getuID());
          
@@ -96,7 +96,7 @@ public class FindAndAdd extends JPanel {
             String mail = textField.getText().trim();
 
             // Send the username to the server through Socket.IO
-            JSONObject data = new JSONObject();
+            data = new JSONObject();
             data.put("mail", mail);
             data.put("uID", Auth.user.getuID());
          
@@ -125,5 +125,29 @@ public class FindAndAdd extends JPanel {
         }
     }
 
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JButton getBtnFindAndAdd() {
+		return btnFindAndAdd;
+	}
+
+	public void setBtnFindAndAdd(JButton btnFindAndAdd) {
+		this.btnFindAndAdd = btnFindAndAdd;
+	}
+
+	public JSONObject getData() {
+		return data;
+	}
+
+	public void setData(JSONObject data) {
+		this.data = data;
+	}
+    
     // Your other methods and code here...
 }

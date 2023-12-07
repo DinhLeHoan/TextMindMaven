@@ -29,7 +29,6 @@ public class Friend_Request extends javax.swing.JPanel {
 
         initComponents();
         friend = user;
-
         lblName.setText(user.getName());
         init();
     }
@@ -187,7 +186,33 @@ public class Friend_Request extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDenyActionPerformed
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton getBtnAccept() {
+		return btnAccept;
+	}
+
+	public void setBtnAccept(javax.swing.JButton btnAccept) {
+		this.btnAccept = btnAccept;
+	}
+
+	public javax.swing.JButton getBtnDeny() {
+		return btnDeny;
+	}
+
+	public void setBtnDeny(javax.swing.JButton btnDeny) {
+		this.btnDeny = btnDeny;
+	}
+
+
+	public javax.swing.JLabel getLblName() {
+		return lblName;
+	}
+
+	public void setLblName(javax.swing.JLabel lblName) {
+		this.lblName = lblName;
+	}
+
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private com.TextMind.swing.ImageAvatar avt;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnDeny;
