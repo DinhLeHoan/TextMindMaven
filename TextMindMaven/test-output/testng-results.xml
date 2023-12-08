@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-07T09:06:17 ICT" name="Default suite" finished-at="2023-12-07T09:06:26 ICT" duration-ms="9006">
+  <suite started-at="2023-12-08T09:55:17 ICT" name="Default suite" finished-at="2023-12-08T09:56:01 ICT" duration-ms="44024">
     <groups>
     </groups>
-    <test started-at="2023-12-07T09:06:17 ICT" name="Default test" finished-at="2023-12-07T09:06:26 ICT" duration-ms="9006">
-      <class name="testing.AcceptTheFriendRequestTest">
-        <test-method is-config="true" signature="init()[pri:0, instance:testing.AcceptTheFriendRequestTest@1aa7ecca]" started-at="2023-12-07T09:06:17 ICT" name="init" finished-at="2023-12-07T09:06:17 ICT" duration-ms="9" status="PASS">
+    <test started-at="2023-12-08T09:55:17 ICT" name="Default test" finished-at="2023-12-08T09:56:01 ICT" duration-ms="44024">
+      <class name="testing.WebTest">
+        <test-method is-config="true" signature="suiteTest()[pri:0, instance:testing.WebTest@36ebc363]" started-at="2023-12-08T09:55:17 ICT" name="suiteTest" finished-at="2023-12-08T09:55:19 ICT" duration-ms="2117" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02()[pri:0, instance:testing.AcceptTheFriendRequestTest@1aa7ecca]" started-at="2023-12-07T09:06:17 ICT" name="TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02" finished-at="2023-12-07T09:06:26 ICT" duration-ms="8967" status="PASS">
+        </test-method> <!-- suiteTest -->
+        <test-method signature="LoginTest()[pri:0, instance:testing.WebTest@36ebc363]" started-at="2023-12-08T09:55:19 ICT" name="LoginTest" finished-at="2023-12-08T09:56:01 ICT" duration-ms="41462" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02 -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:testing.AcceptTheFriendRequestTest@1aa7ecca]" started-at="2023-12-07T09:06:26 ICT" name="logout" finished-at="2023-12-07T09:06:26 ICT" duration-ms="1" status="PASS">
+        </test-method> <!-- LoginTest -->
+        <test-method is-config="true" signature="suiteTearDown()[pri:0, instance:testing.WebTest@36ebc363]" started-at="2023-12-08T09:56:01 ICT" name="suiteTearDown" finished-at="2023-12-08T09:56:01 ICT" duration-ms="397" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- logout -->
-      </class> <!-- testing.AcceptTheFriendRequestTest -->
+        </test-method> <!-- suiteTearDown -->
+      </class> <!-- testing.WebTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

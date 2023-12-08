@@ -17,5 +17,5 @@ import org.json.JSONObject;
  * @author hoanl
  */
 public class Querry {
-    
+
 }

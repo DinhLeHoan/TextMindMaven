@@ -11,7 +11,7 @@ import javax.swing.Icon;
  * @author KHOA
  */
 public interface EventImageView {
-    public void viewImage(Icon image);
+	public void viewImage(Icon image);
 
-    public void saveImage(Icon image);
+	public void saveImage(Icon image);
 }

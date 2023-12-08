@@ -11,5 +11,5 @@ import com.TextMind.model.Model_Message;
  * @author KHOA
  */
 public interface EventMessage {
-    public void callMessage(Model_Message message);
+	public void callMessage(Model_Message message);
 }

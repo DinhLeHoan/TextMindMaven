@@ -9,7 +9,8 @@ package com.TextMind.event;
  * @author KHOA
  */
 public interface EventTitleChat {
-    public void changeStatus(boolean isOnline);
-    public void changeTitle(boolean isOnline);
+	public void changeStatus(boolean isOnline);
+
+	public void changeTitle(boolean isOnline);
 
 }

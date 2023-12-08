@@ -68,10 +68,10 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		assertNotNull(m.getHome().getMenu_left().getFad());
 	}
-	
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_02() {
 		main m = new main();
@@ -89,17 +89,18 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		m.getHome().getMenu_left().getFad().getTextField().setText("contrau");;
+		m.getHome().getMenu_left().getFad().getTextField().setText("contrau");
+		;
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()>1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() > 1);
 	}
-	
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_03() {
 		main m = new main();
@@ -117,17 +118,18 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		m.getHome().getMenu_left().getFad().getTextField().setText("");;
+		m.getHome().getMenu_left().getFad().getTextField().setText("");
+		;
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()==1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() == 1);
 	}
-	
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_04() {
 		main m = new main();
@@ -145,17 +147,18 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		m.getHome().getMenu_left().getFad().getTextField().setText("  ");;
+		m.getHome().getMenu_left().getFad().getTextField().setText("  ");
+		;
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()==1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() == 1);
 	}
-	
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_05() {
 		main m = new main();
@@ -173,17 +176,18 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		m.getHome().getMenu_left().getFad().getTextField().setText("@@@@");;
+		m.getHome().getMenu_left().getFad().getTextField().setText("@@@@");
+		;
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()==1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() == 1);
 	}
-	
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_06() {
 		main m = new main();
@@ -203,14 +207,14 @@ public class FindFriendTest {
 		}
 		String a = "a";
 		for (int i = 0; a.length() < 155; i++) {
-			a = a+"a";
+			a = a + "a";
 		}
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		m.getHome().getMenu_left().getFad().getTextField().setText(a);
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
@@ -218,9 +222,10 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()==1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() == 1);
 	}
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_07() {
 		main m = new main();
@@ -238,7 +243,7 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		m.getHome().getMenu_left().getFad().getTextField().setText("☆☆☆☆☆☆");
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
@@ -246,10 +251,10 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()==1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() == 1);
 	}
-	
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_08() {
 		main m = new main();
@@ -267,7 +272,7 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		m.getHome().getMenu_left().getFad().getTextField().setText("cont");
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
@@ -275,10 +280,10 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()==1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() == 1);
 	}
-	
+
 	@Test
 	public void TC_MODULE_FIND_FRIEND_09() {
 		main m = new main();
@@ -296,7 +301,7 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		m.getHome().getMenu_left().getFad().getTextField().setText("contraucutephomaique");
 		m.getHome().getMenu_left().getFad().getBtnFindAndAdd().doClick();
 		try {
@@ -304,7 +309,7 @@ public class FindFriendTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount()==1);
+
+		assertTrue(m.getHome().getMenu_left().getMenuList().getComponentCount() == 1);
 	}
 }

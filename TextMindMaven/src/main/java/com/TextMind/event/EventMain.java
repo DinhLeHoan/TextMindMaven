@@ -11,12 +11,12 @@ import com.TextMind.entity.User;
  * @author KHOA
  */
 public interface EventMain {
-    public void showLoading(boolean show);
+	public void showLoading(boolean show);
 
-    public void initChat();
-    
-     public void selectUser(User user);
-     
-    public void signOut();
+	public void initChat();
+
+	public void selectUser(User user);
+
+	public void signOut();
 
 }

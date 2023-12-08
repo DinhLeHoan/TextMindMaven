@@ -26,88 +26,83 @@ import org.json.JSONObject;
  * @author KHOA
  */
 public class Chat extends javax.swing.JPanel {
-    private Chat_Title chatTitle;
-    private Chat_Body chatBody;
-    private Chat_Bottom chatBottom;
-    private User friend;
+	private Chat_Title chatTitle;
+	private Chat_Body chatBody;
+	private Chat_Bottom chatBottom;
+	private User friend;
 
-    /**
-     * Creates new form Menu_Left
-     */
-    public Chat() {
-        initComponents();
-        init() ;
-    }
-    
-    private void init() {
-        setLayout(new MigLayout("fillx", "0[fill]0", "0[]0[100%, fill]0[shrink 0]0"));        
-        chatTitle = new Chat_Title();
-        chatBody = new Chat_Body();
-        chatBottom = new Chat_Bottom();
-        PublicEvent.getInstance().addEventChat(new EventChat() {
-            @Override
-            public void sendMessage(String text) {
-                JSONObject messDataSend = new JSONObject();
-                try {
-                    messDataSend.put("uidTo", friend.getuID());
-                    messDataSend.put("uidFrom", Auth.user.getuID());
-                    messDataSend.put("message", text.trim());
-                    messDataSend.put("name", Auth.user.getName());
-                    Date now = new Date();
-                    SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);                    
-                    chatBody.addItemRight(messDataSend.getString("message"),sdf.format(now));
-                } catch (JSONException ex) {
-                    ex.printStackTrace();
-                }
-                getSocket().emit("messageSend",messDataSend);
-            }
+	/**
+	 * Creates new form Menu_Left
+	 */
+	public Chat() {
+		initComponents();
+		init();
+	}
 
+	private void init() {
+		setLayout(new MigLayout("fillx", "0[fill]0", "0[]0[100%, fill]0[shrink 0]0"));
+		chatTitle = new Chat_Title();
+		chatBody = new Chat_Body();
+		chatBottom = new Chat_Bottom();
+		PublicEvent.getInstance().addEventChat(new EventChat() {
+			@Override
+			public void sendMessage(String text) {
+				JSONObject messDataSend = new JSONObject();
+				try {
+					messDataSend.put("uidTo", friend.getuID());
+					messDataSend.put("uidFrom", Auth.user.getuID());
+					messDataSend.put("message", text.trim());
+					messDataSend.put("name", Auth.user.getName());
+					Date now = new Date();
+					SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);
+					chatBody.addItemRight(messDataSend.getString("message"), sdf.format(now));
+				} catch (JSONException ex) {
+					ex.printStackTrace();
+				}
+				getSocket().emit("messageSend", messDataSend);
+			}
 
-        });
-        getSocket().on(Auth.user.getuID(), new Emitter.Listener() {
-            @Override
-            public void call(Object... os) {
-                try {
-                    String jsonString = (String) os[0];
-                    JSONObject messDataSend = new JSONObject(jsonString);
+		});
+		getSocket().on(Auth.user.getuID(), new Emitter.Listener() {
+			@Override
+			public void call(Object... os) {
+				try {
+					String jsonString = (String) os[0];
+					JSONObject messDataSend = new JSONObject(jsonString);
 
-                    String name = messDataSend.optString("name");
-                    String message = messDataSend.optString("message");
-                    String date = messDataSend.optString("date");
-                    if (name.trim().equalsIgnoreCase(Auth.user.getName())) {
-                        chatBody.addItemRight(message,date);
-                    } else {
-                        chatBody.addItemLeft(message, name,date);
-                    }
-                } catch (JSONException e) {
-                    System.out.println(e);
-                }
-            }
-        });
+					String name = messDataSend.optString("name");
+					String message = messDataSend.optString("message");
+					String date = messDataSend.optString("date");
+					if (name.trim().equalsIgnoreCase(Auth.user.getName())) {
+						chatBody.addItemRight(message, date);
+					} else {
+						chatBody.addItemLeft(message, name, date);
+					}
+				} catch (JSONException e) {
+					System.out.println(e);
+				}
+			}
+		});
 
+		add(chatTitle, "wrap");
+		add(chatBody, "wrap");
+		add(chatBottom, "h ::50%");
+	}
 
-        add(chatTitle, "wrap");
-        add(chatBody, "wrap");
-        add(chatBottom, "h ::50%");
-    }
-    
+	public void setUser(User user) {
+		friend = user;
+		chatTitle.setUserName(friend.getName());
+		chatTitle.setTitle(true);
+		chatBody.clearChat();
+		chatBody.setuIDFriend(friend.getuID());
+		if (friend.isIsOnline()) {
+			chatTitle.statusActive();
+		} else {
+			chatTitle.statusOffline();
+		}
+	}
 
-    public void setUser(User user) {
-        friend = user;
-        chatTitle.setUserName(friend.getName());
-        chatTitle.setTitle(true);
-        chatBody.clearChat();
-        chatBody.setuIDFriend(friend.getuID());
-        if(friend.isIsOnline()){
-            chatTitle.statusActive();
-        }
-        else{
-            chatTitle.statusOffline();
-        }
-    }
-    
-    
-    public Chat_Body getChatBody() {
+	public Chat_Body getChatBody() {
 		return chatBody;
 	}
 
@@ -122,8 +117,6 @@ public class Chat extends javax.swing.JPanel {
 	public void setChatBottom(Chat_Bottom chatBottom) {
 		this.chatBottom = chatBottom;
 	}
-	
-	
 
 	public Chat_Title getChatTitle() {
 		return chatTitle;
@@ -134,29 +127,25 @@ public class Chat extends javax.swing.JPanel {
 	}
 
 	/**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+	 * This method is called from within the constructor to initialize the form.
+	 * WARNING: Do NOT modify this code. The content of this method is always
+	 * regenerated by the Form Editor.
+	 */
+	@SuppressWarnings("unchecked")
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// Code">//GEN-BEGIN:initComponents
+	private void initComponents() {
 
-        setBackground(new java.awt.Color(249, 249, 249));
+		setBackground(new java.awt.Color(249, 249, 249));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 874, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+		this.setLayout(layout);
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 874, Short.MAX_VALUE));
+		layout.setVerticalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 523, Short.MAX_VALUE));
+	}// </editor-fold>//GEN-END:initComponents
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+	// End of variables declaration//GEN-END:variables
 }

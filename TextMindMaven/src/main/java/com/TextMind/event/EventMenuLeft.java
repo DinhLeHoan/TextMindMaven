@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * @author hoanl
  */
 public interface EventMenuLeft {
-    public void showFound(ArrayList<User> list);
-    public void unShowBanned(String id);
+	public void showFound(ArrayList<User> list);
+
+	public void unShowBanned(String id);
 
 }

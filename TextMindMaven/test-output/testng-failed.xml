@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testing.AcceptTheFriendRequestTest">
+      <class name="testing.P_LoginTest">
         <methods>
-          <include name="init"/>
-          <include name="TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02"/>
           <include name="logout"/>
+          <include name="init"/>
+          <include name="TC_MODULE_LOGIN_05"/>
+          <include name="TC_MODULE_LOGIN_07"/>
         </methods>
-      </class> <!-- testing.AcceptTheFriendRequestTest -->
+      </class> <!-- testing.P_LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

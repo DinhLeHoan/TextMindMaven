@@ -6,20 +6,19 @@ package com.TextMind.event;
 
 import com.TextMind.model.Model_Register;
 
-
 /**
  *
  * @author KHOA
  */
 public interface EventLogin {
-    public void login();
+	public void login();
 
 //    public void register(Model_Register data, EventMessage message);
-    public void register() ;
+	public void register();
 
-    public void goRegister();
+	public void goRegister();
 
-    public void goLogin();
-    
-    public void reLogin();
+	public void goLogin();
+
+	public void reLogin();
 }

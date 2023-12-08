@@ -9,11 +9,11 @@ package com.TextMind.swing;
  * @author ducan
  */
 public class VerifyGmail {
-    String email;
-    String codeSend;
-    String codeGet;
-    public void VerifyAccept(String email){
-        
-        
-    }
+	String email;
+	String codeSend;
+	String codeGet;
+
+	public void VerifyAccept(String email) {
+
+	}
 }

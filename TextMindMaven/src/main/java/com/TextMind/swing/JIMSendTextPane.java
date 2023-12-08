@@ -30,75 +30,75 @@ import javax.swing.text.ViewFactory;
  * @author KHOA
  */
 public class JIMSendTextPane extends JTextPane {
-    
-    public String getHintText() {
-        return hintText;
-    }
 
-    public void setHintText(String hintText) {
-        this.hintText = hintText;
-    }
+	public String getHintText() {
+		return hintText;
+	}
 
-    private String hintText = "";
-    
-    private class WarpEditorKit extends StyledEditorKit {
+	public void setHintText(String hintText) {
+		this.hintText = hintText;
+	}
 
-        private ViewFactory defaultFactory = new WarpColumnFactory();
+	private String hintText = "";
 
-        @Override
-        public ViewFactory getViewFactory() {
-            return defaultFactory;
-        }
-    }
+	private class WarpEditorKit extends StyledEditorKit {
 
-    private class WarpColumnFactory implements ViewFactory {
+		private ViewFactory defaultFactory = new WarpColumnFactory();
 
-        public View create(Element elem) {
-            String kind = elem.getName();
-            if (kind != null) {
-                if (kind.equals(AbstractDocument.ContentElementName)) {
-                    return new WarpLabelView(elem);
-                } else if (kind.equals(AbstractDocument.ParagraphElementName)) {
-                    return new ParagraphView(elem);
-                } else if (kind.equals(AbstractDocument.SectionElementName)) {
-                    return new BoxView(elem, View.Y_AXIS);
-                } else if (kind.equals(StyleConstants.ComponentElementName)) {
-                    return new ComponentView(elem);
-                } else if (kind.equals(StyleConstants.IconElementName)) {
-                    return new IconView(elem);
-                }
-            }
+		@Override
+		public ViewFactory getViewFactory() {
+			return defaultFactory;
+		}
+	}
 
-            //default to text display
-            return new LabelView(elem);
-        }
-    }
+	private class WarpColumnFactory implements ViewFactory {
 
-    private class WarpLabelView extends LabelView {
+		public View create(Element elem) {
+			String kind = elem.getName();
+			if (kind != null) {
+				if (kind.equals(AbstractDocument.ContentElementName)) {
+					return new WarpLabelView(elem);
+				} else if (kind.equals(AbstractDocument.ParagraphElementName)) {
+					return new ParagraphView(elem);
+				} else if (kind.equals(AbstractDocument.SectionElementName)) {
+					return new BoxView(elem, View.Y_AXIS);
+				} else if (kind.equals(StyleConstants.ComponentElementName)) {
+					return new ComponentView(elem);
+				} else if (kind.equals(StyleConstants.IconElementName)) {
+					return new IconView(elem);
+				}
+			}
 
-        public WarpLabelView(Element elem) {
-            super(elem);
-        }
+			// default to text display
+			return new LabelView(elem);
+		}
+	}
 
-        @Override
-        public float getMinimumSpan(int axis) {
-            switch (axis) {
-                case View.X_AXIS:
-                    return 0;
-                case View.Y_AXIS:
-                    return super.getMinimumSpan(axis);
-                default:
-                    throw new IllegalArgumentException("Invalid axis:" + axis);
-            }
-        }
-    }
+	private class WarpLabelView extends LabelView {
 
-    //this category
-    //Constructor
-    public JIMSendTextPane() {
-        super();
-        this.setEditorKit(new WarpEditorKit());
-        
+		public WarpLabelView(Element elem) {
+			super(elem);
+		}
+
+		@Override
+		public float getMinimumSpan(int axis) {
+			switch (axis) {
+			case View.X_AXIS:
+				return 0;
+			case View.Y_AXIS:
+				return super.getMinimumSpan(axis);
+			default:
+				throw new IllegalArgumentException("Invalid axis:" + axis);
+			}
+		}
+	}
+
+	// this category
+	// Constructor
+	public JIMSendTextPane() {
+		super();
+		this.setEditorKit(new WarpEditorKit());
+
 //        addKeyListener(new KeyAdapter() {
 //            @Override
 //            public void keyPressed(KeyEvent e) {
@@ -110,23 +110,24 @@ public class JIMSendTextPane extends JTextPane {
 //                }
 //            }
 //        });
-    }
-    
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        if (getText().length() == 0 && !hintText.equals("")) {
-            int h = getHeight();
-            ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-            Insets ins = getInsets();
-            FontMetrics fm = g.getFontMetrics();
-            int c0 = getBackground().getRGB();
-            int c1 = getForeground().getRGB();
-            int m = 0xfefefefe;
-            int c2 = ((c0 & m) >>> 1) + ((c1 & m) >>> 1);
-            g.setColor(new Color(c2, true));
-            g.drawString(hintText, ins.left, 18);
-        }
-    }
-    
+	}
+
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		if (getText().length() == 0 && !hintText.equals("")) {
+			int h = getHeight();
+			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+					RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			Insets ins = getInsets();
+			FontMetrics fm = g.getFontMetrics();
+			int c0 = getBackground().getRGB();
+			int c1 = getForeground().getRGB();
+			int m = 0xfefefefe;
+			int c2 = ((c0 & m) >>> 1) + ((c1 & m) >>> 1);
+			g.setColor(new Color(c2, true));
+			g.drawString(hintText, ins.left, 18);
+		}
+	}
+
 }

@@ -9,99 +9,98 @@ package com.TextMind.event;
  * @author KHOA
  */
 public class PublicEvent {
-    private static PublicEvent instance;
-    private EventImageView eventImageView;
-    private EventChat eventChat;
-    private EventLogin eventLogin;
-    private EventMain eventMain;
-    private EventMenuLeft eventMenuLeft;
-    private EventTitleChat eventTitleChat;
-    private EventChatBody eventChatBody;
-    private EventMenuRight eventMenuRight;
-    private EventChatBottom eventChatBottom;
+	private static PublicEvent instance;
+	private EventImageView eventImageView;
+	private EventChat eventChat;
+	private EventLogin eventLogin;
+	private EventMain eventMain;
+	private EventMenuLeft eventMenuLeft;
+	private EventTitleChat eventTitleChat;
+	private EventChatBody eventChatBody;
+	private EventMenuRight eventMenuRight;
+	private EventChatBottom eventChatBottom;
 
-    public static PublicEvent getInstance() {
-        if (instance == null) {
-            instance = new PublicEvent();
-        }
-        return instance;
-    }
+	public static PublicEvent getInstance() {
+		if (instance == null) {
+			instance = new PublicEvent();
+		}
+		return instance;
+	}
 
-    private PublicEvent() {
-    	
-    }
+	private PublicEvent() {
 
-    public EventMenuRight getEventMenuRight() {
-        return eventMenuRight;
-    }
+	}
 
-    public void addEventMenuRight(EventMenuRight eventMenuRight) {
-        this.eventMenuRight = eventMenuRight;
-    }
+	public EventMenuRight getEventMenuRight() {
+		return eventMenuRight;
+	}
 
-    public EventChatBottom getEventChatBottom() {
-        return eventChatBottom;
-    }
+	public void addEventMenuRight(EventMenuRight eventMenuRight) {
+		this.eventMenuRight = eventMenuRight;
+	}
 
-    public void setEventChatBottom(EventChatBottom eventChatBottom) {
-        this.eventChatBottom = eventChatBottom;
-    }
+	public EventChatBottom getEventChatBottom() {
+		return eventChatBottom;
+	}
 
-    public void addEventImageView(EventImageView event) {
-        this.eventImageView = event;
-    }
+	public void setEventChatBottom(EventChatBottom eventChatBottom) {
+		this.eventChatBottom = eventChatBottom;
+	}
 
-    public void addEventChat(EventChat event) {
-        this.eventChat = event;
-    }
-    
-    public void addEventLogin(EventLogin event) {
-        this.eventLogin = event;
-    }
-        
-    public void addEventMain(EventMain event) {
-        this.eventMain = event;
-    }
+	public void addEventImageView(EventImageView event) {
+		this.eventImageView = event;
+	}
 
-    public void addEventMenuLeft(EventMenuLeft event) {
-        this.eventMenuLeft = event;
-    }
-        
-    public EventImageView getEventImageView() {
-        return eventImageView;
-    }
+	public void addEventChat(EventChat event) {
+		this.eventChat = event;
+	}
 
-    public EventChat getEventChat() {
-        return eventChat;
-    }
-    
-    public EventLogin getEventLogin() {
-        return eventLogin;
-    }
-    
-    public EventMain getEventMain() {
-        return eventMain;
-    }
-    
-    public EventMenuLeft getEventMenuLeft() {
-        return eventMenuLeft;
-    }
+	public void addEventLogin(EventLogin event) {
+		this.eventLogin = event;
+	}
 
-    public EventTitleChat getEventTitleChat() {
-        return eventTitleChat;
-    }
+	public void addEventMain(EventMain event) {
+		this.eventMain = event;
+	}
 
-    public void addEventTitleChat(EventTitleChat eventTitleChat) {
-        this.eventTitleChat = eventTitleChat;
-    }
+	public void addEventMenuLeft(EventMenuLeft event) {
+		this.eventMenuLeft = event;
+	}
 
-    public EventChatBody getEventChatBody() {
-        return eventChatBody;
-    }
+	public EventImageView getEventImageView() {
+		return eventImageView;
+	}
 
-    public void addEventChatBody(EventChatBody eventChatBody) {
-        this.eventChatBody = eventChatBody;
-    }
-    
-    
+	public EventChat getEventChat() {
+		return eventChat;
+	}
+
+	public EventLogin getEventLogin() {
+		return eventLogin;
+	}
+
+	public EventMain getEventMain() {
+		return eventMain;
+	}
+
+	public EventMenuLeft getEventMenuLeft() {
+		return eventMenuLeft;
+	}
+
+	public EventTitleChat getEventTitleChat() {
+		return eventTitleChat;
+	}
+
+	public void addEventTitleChat(EventTitleChat eventTitleChat) {
+		this.eventTitleChat = eventTitleChat;
+	}
+
+	public EventChatBody getEventChatBody() {
+		return eventChatBody;
+	}
+
+	public void addEventChatBody(EventChatBody eventChatBody) {
+		this.eventChatBody = eventChatBody;
+	}
+
 }

@@ -7,7 +7,7 @@
 
     <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
     <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -21,7 +21,8 @@
      -->
   </head>
 
-  <body>    <div class="top-banner-root">
+  <body>
+    <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
@@ -50,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\ducan\AppData\Local\Temp\testng-eclipse--1905314345\testng-customsuite.xml</span>
+                    <span>C:\Users\ducan\AppData\Local\Temp\testng-eclipse--34643806\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +104,7 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="testing.AcceptTheFriendRequestTest" class="method navigator-link" hash-for-method="TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02">TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="testing.WebTest" class="method navigator-link" hash-for-method="LoginTest">LoginTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -121,14 +122,14 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">testing.AcceptTheFriendRequestTest</span>
+              <span class="class-name">testing.WebTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02">
-                  </a> <!-- TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02 -->
-                  <span class="method-name">TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02</span>
+                  <a name="LoginTest">
+                  </a> <!-- LoginTest -->
+                  <span class="method-name">LoginTest</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -136,7 +137,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\ducan\AppData\Local\Temp\testng-eclipse--1905314345\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\ducan\AppData\Local\Temp\testng-eclipse--34643806\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -145,7 +146,7 @@
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testing.AcceptTheFriendRequestTest&quot;/&gt;
+      &lt;class name=&quot;testing.WebTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -187,14 +188,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02')
-data.setCell(0, 2, 'testing.AcceptTheFriendRequestTest')
-data.setCell(0, 3, 8967);
+data.setCell(0, 1, 'LoginTest')
+data.setCell(0, 2, 'testing.WebTest')
+data.setCell(0, 3, 41462);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 seconds</span>
+              <span class="suite-total-time">Total running time: 41 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -220,19 +221,19 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">testing.AcceptTheFriendRequestTest</div> <!-- chronological-class-name -->
-              <div class="configuration-method before">
-                <span class="method-name">init</span>
+              <div class="chronological-class-name">testing.WebTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">suiteTest</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-method before -->
+              </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">TC_MODULE_ACCEPT_THE_FRIEND_REQUEST_02</span>
-                <span class="method-start">10 ms</span>
+                <span class="method-name">LoginTest</span>
+                <span class="method-start">2126 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">logout</span>
-                <span class="method-start">8980 ms</span>
-              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">suiteTearDown</span>
+                <span class="method-start">43596 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

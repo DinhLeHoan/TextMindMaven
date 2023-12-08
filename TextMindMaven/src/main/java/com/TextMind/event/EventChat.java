@@ -9,5 +9,5 @@ package com.TextMind.event;
  * @author KHOA
  */
 public interface EventChat {
-    public void sendMessage(String text);
+	public void sendMessage(String text);
 }

@@ -9,5 +9,5 @@ package com.TextMind.event;
  * @author KHOA
  */
 public interface EventChatBody {
-    public void reset();
+	public void reset();
 }

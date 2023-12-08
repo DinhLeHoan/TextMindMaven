@@ -12,5 +12,5 @@ import java.util.ArrayList;
  * @author hoanl
  */
 public interface EventMenuRight {
-    public void logOut();
+	public void logOut();
 }

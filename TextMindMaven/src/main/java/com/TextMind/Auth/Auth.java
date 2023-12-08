@@ -11,17 +11,18 @@ import com.TextMind.entity.User;
  * @author hoanl
  */
 public class Auth {
-    public static User user = null;
-    public static String uIDCurrentChat = "123";
-    public static void clear(){
-        Auth.user = null;
-    }
-    
-    public static boolean isLogin(){
-        return Auth.user != null;
-    }
-    
-    public static boolean isAdmin(){
-        return Auth.user.isIsAdmin();
-    }
+	public static User user = null;
+	public static String uIDCurrentChat = "123";
+
+	public static void clear() {
+		Auth.user = null;
+	}
+
+	public static boolean isLogin() {
+		return Auth.user != null;
+	}
+
+	public static boolean isAdmin() {
+		return Auth.user.isIsAdmin();
+	}
 }

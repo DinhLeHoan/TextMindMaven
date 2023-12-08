@@ -9,5 +9,5 @@ package com.TextMind.event;
  * @author KHOA
  */
 public interface EventChatBottom {
-    public void setTyping(boolean isRemove);
+	public void setTyping(boolean isRemove);
 }

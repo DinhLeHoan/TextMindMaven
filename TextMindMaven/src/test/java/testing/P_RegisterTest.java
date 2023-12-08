@@ -274,7 +274,7 @@ public class P_RegisterTest {
 		registerTest.getTxtUsername().setText("ducanh123");
 		registerTest.getTxtPassword().setText("ducanh123");
 		registerTest.getTxtConfirm().setText("ducanh123");
-		
+
 		registerTest.getBtnSend().doClick();
 
 		try {
@@ -426,7 +426,7 @@ public class P_RegisterTest {
 
 		String code = registerTest.getCode();
 		registerTest.getTxtEmailConfirm().setText(code);
-		
+
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
@@ -494,7 +494,7 @@ public class P_RegisterTest {
 
 		assertEquals(registerTest.getLblError().getText(), "Please fill all input field");
 	}
-	
+
 	@Test
 	public void TC_QLKH_REGISTER_16() {
 		// Chuyển slide Register
@@ -528,7 +528,7 @@ public class P_RegisterTest {
 
 		assertEquals(registerTest.getLblError().getText(), "Please fill all input field");
 	}
-	
+
 	@Test
 	public void TC_QLKH_REGISTER_17() {
 		// Chuyển slide Register
@@ -562,7 +562,7 @@ public class P_RegisterTest {
 
 		assertEquals(registerTest.getLblError().getText(), "Please fill all input field");
 	}
-	
+
 	@Test
 	public void TC_QLKH_REGISTER_18() {
 		// Chuyển slide Register
@@ -596,7 +596,7 @@ public class P_RegisterTest {
 
 		assertEquals(registerTest.getLblError().getText(), "Please fill all input field");
 	}
-	
+
 	@Test
 	public void TC_QLKH_REGISTER_19() {
 		// Chuyển slide Register
@@ -630,6 +630,7 @@ public class P_RegisterTest {
 
 		assertEquals(registerTest.getLblError().getText(), "Please fill all input field");
 	}
+
 	@Test
 	public void TC_QLKH_REGISTER_20() {
 		// Chuyển slide Register
@@ -659,6 +660,7 @@ public class P_RegisterTest {
 
 		assertEquals(registerTest.getLblError().getText(), "Mail is wrong format or being blank");
 	}
+
 	@Test
 	public void TC_QLKH_REGISTER_21() {
 		// Chuyển slide Register
@@ -692,7 +694,8 @@ public class P_RegisterTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		assertEquals(registerTest.getLblError().getText(), "<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
+		assertEquals(registerTest.getLblError().getText(),
+				"<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
 	}
 
 	@Test
@@ -728,8 +731,10 @@ public class P_RegisterTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		assertEquals(registerTest.getLblError().getText(), "<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
+		assertEquals(registerTest.getLblError().getText(),
+				"<html>Password or Username is at least 8 word <br>and contain only alpha bet and number</html>");
 	}
+
 	@Test
 	public void TC_QLKH_REGISTER_23() {
 		// Chuyển slide Register
@@ -876,7 +881,7 @@ public class P_RegisterTest {
 		}
 		assertEquals(registerTest.getLblError().getText(), "Password do not match with confirm");
 	}
-	
+
 	@Test
 	public void TC_QLKH_REGISTER_27() {
 		// Chuyển slide Register
@@ -912,58 +917,60 @@ public class P_RegisterTest {
 		}
 		assertEquals(registerTest.getLblError().getText(), "Verify Code wrong");
 	}
-    @Test
-    public void TC_QLKH_REGISTER_28() {
-    	//Chuyển slide Register
-    	P_Login loginTest = (P_Login) login.getSlide().getList().get(0);
-    	
-	    loginTest.getBtnRegister().doClick();
-	    try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-	    
-    	P_Register registerTest = (P_Register) login.getSlide().getList().get(1);
-    	
-        registerTest.getTxtName().setText("DucAnh");
-        registerTest.getTxtEmail().setText("ducan.hthienbinh.suhuynh@gmail.com");
-        registerTest.getTxtUsername().setText("ducanh123");
-        registerTest.getTxtPassword().setText("ducanh123");
-        registerTest.getTxtConfirm().setText("ducanh123");
-        registerTest.getBtnSend().doClick();;
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        String code = registerTest.getCode();
-        System.out.println(code);
-        registerTest.getTxtEmailConfirm().setText(code);
-        
-        try {
+
+	@Test
+	public void TC_QLKH_REGISTER_28() {
+		// Chuyển slide Register
+		P_Login loginTest = (P_Login) login.getSlide().getList().get(0);
+
+		loginTest.getBtnRegister().doClick();
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		P_Register registerTest = (P_Register) login.getSlide().getList().get(1);
+
+		registerTest.getTxtName().setText("DucAnh");
+		registerTest.getTxtEmail().setText("ducan.hthienbinh.suhuynh@gmail.com");
+		registerTest.getTxtUsername().setText("ducanh123");
+		registerTest.getTxtPassword().setText("ducanh123");
+		registerTest.getTxtConfirm().setText("ducanh123");
+		registerTest.getBtnSend().doClick();
+		;
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		String code = registerTest.getCode();
+		System.out.println(code);
+		registerTest.getTxtEmailConfirm().setText(code);
+
+		try {
 			registerTest.validateInfor();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
-        registerTest.getBtnLogin().doClick();
-        
-        loginTest.getTxtUsername().setText("ducanh123");
-        loginTest.getTxtPassword().setText("ducanh123");
-        loginTest.getBtnLogin().doClick();
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
-        assertEquals( Auth.user.getUsername(), "ducanh123");
-    }	
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		registerTest.getBtnLogin().doClick();
+
+		loginTest.getTxtUsername().setText("ducanh123");
+		loginTest.getTxtPassword().setText("ducanh123");
+		loginTest.getBtnLogin().doClick();
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		assertEquals(Auth.user.getUsername(), "ducanh123");
+	}
 
 }

@@ -12,18 +12,18 @@ import io.socket.client.Socket;
  * @author hoanl
  */
 public class SocketManager {
-    private static Socket socket;
+	private static Socket socket;
 
-    public static Socket getSocket() {
-        if (socket == null) {
-            try {
-                socket = IO.socket("https://texttomind.onrender.com");
+	public static Socket getSocket() {
+		if (socket == null) {
+			try {
+				socket = IO.socket("https://texttomind.onrender.com");
 //                  socket = IO.socket("http://localhost:3000/");
-                  socket.open();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return socket;
-    }
+				socket.open();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return socket;
+	}
 }

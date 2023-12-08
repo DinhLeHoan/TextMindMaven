@@ -6,6 +6,7 @@
  */
 
 package com.TextMind.Helper;
+
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -26,32 +27,28 @@ import javax.swing.Timer;
 public class CurvesPanel extends GradientPanel {
 	private RenderingHints hints;
 	private int counter = 0;
-        private Timer timer= new Timer(20,new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                repaint();
-            }
-        });
-        
-        public void start(){
-            timer.start();  
-        }
-        
-        public void stop(){
-            timer.stop();
-        }
-        
+	private Timer timer = new Timer(20, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			repaint();
+		}
+	});
+
+	public void start() {
+		timer.start();
+	}
+
+	public void stop() {
+		timer.stop();
+	}
+
 	public CurvesPanel() {
 		hints = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
 				RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-		hints.put(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		hints.put(RenderingHints.KEY_COLOR_RENDERING,
-				RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-		hints.put(RenderingHints.KEY_INTERPOLATION,
-				RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		hints.put(RenderingHints.KEY_RENDERING,
-				RenderingHints.VALUE_RENDER_QUALITY);
+		hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		hints.put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+		hints.put(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -65,44 +62,22 @@ public class CurvesPanel extends GradientPanel {
 		float height = getHeight();
 
 		g2.translate(0, -30);
-		drawCurve(g2,
-				20.0f, -10.0f, 20.0f, -10.0f,
-				width / 2.0f - 40.0f, 10.0f,
-				0.0f, -5.0f,
-				width / 2.0f + 40, 1.0f,
-				0.0f, 5.0f,
-				50.0f, 5.0f, false);
+		drawCurve(g2, 20.0f, -10.0f, 20.0f, -10.0f, width / 2.0f - 40.0f, 10.0f, 0.0f, -5.0f, width / 2.0f + 40, 1.0f,
+				0.0f, 5.0f, 50.0f, 5.0f, false);
 		g2.translate(0, 30);
 
 		g2.translate(0, height - 60);
-		drawCurve(g2,
-				30.0f, -15.0f, 50.0f, 15.0f,
-				width / 2.0f - 40.0f, 1.0f,
-				15.0f, -25.0f,
-				width / 2.0f, 1.0f / 2.0f,
-				0.0f, 25.0f,
-				15.0f, 6.0f, false);
+		drawCurve(g2, 30.0f, -15.0f, 50.0f, 15.0f, width / 2.0f - 40.0f, 1.0f, 15.0f, -25.0f, width / 2.0f, 1.0f / 2.0f,
+				0.0f, 25.0f, 15.0f, 6.0f, false);
 		g2.translate(0, -height + 60);
 
-		drawCurve(g2,
-				height - 35.0f, -5.0f, height - 50.0f, 10.0f,
-				width / 2.0f - 40.0f, 1.0f,
-				height - 35.0f, -25.0f,
-				width / 2.0f, 1.0f / 2.0f,
-				height - 20.0f, 25.0f,
-				25.0f, 4.0f, true);
+		drawCurve(g2, height - 35.0f, -5.0f, height - 50.0f, 10.0f, width / 2.0f - 40.0f, 1.0f, height - 35.0f, -25.0f,
+				width / 2.0f, 1.0f / 2.0f, height - 20.0f, 25.0f, 25.0f, 4.0f, true);
 	}
 
-	private void drawCurve(Graphics2D g2, 
-			float y1, float y1_offset,
-			float y2, float y2_offset,
-			float cx1, float cx1_offset,
-			float cy1, float cy1_offset,
-			float cx2, float cx2_offset,
-			float cy2, float cy2_offset,
-			float thickness,
-			float speed,
-			boolean invert) {
+	private void drawCurve(Graphics2D g2, float y1, float y1_offset, float y2, float y2_offset, float cx1,
+			float cx1_offset, float cy1, float cy1_offset, float cx2, float cx2_offset, float cy2, float cy2_offset,
+			float thickness, float speed, boolean invert) {
 
 		float width = getWidth();
 		float height = getHeight();
@@ -117,13 +92,14 @@ public class CurvesPanel extends GradientPanel {
 		float ctrl2_x = (float) (offset * cx2_offset) + cx2;
 		float ctrl2_y = (float) (offset * cy2_offset) + cy2;
 
-		CubicCurve2D curve = new CubicCurve2D.Double(start_x, start_y, ctrl1_x, ctrl1_y, ctrl2_x, ctrl2_y, end_x, end_y);
-		
+		CubicCurve2D curve = new CubicCurve2D.Double(start_x, start_y, ctrl1_x, ctrl1_y, ctrl2_x, ctrl2_y, end_x,
+				end_y);
+
 		GeneralPath path = new GeneralPath(curve);
 		path.lineTo(width, height);
 		path.lineTo(0, height);
 		path.closePath();
-		
+
 		Area thickCurve = new Area((Shape) path.clone());
 		AffineTransform translation = AffineTransform.getTranslateInstance(0, thickness);
 		path.transform(translation);
@@ -133,15 +109,13 @@ public class CurvesPanel extends GradientPanel {
 		Color end = new Color(255, 255, 255, 0);
 
 		Rectangle bounds = thickCurve.getBounds();
-		GradientPaint painter = new GradientPaint(0, curve.getBounds().y,
-				invert ? end : start,
-				0, bounds.y + bounds.height,
-				invert ? start : end);
+		GradientPaint painter = new GradientPaint(0, curve.getBounds().y, invert ? end : start, 0,
+				bounds.y + bounds.height, invert ? start : end);
 		Paint oldPainter = g2.getPaint();
 		g2.setPaint(painter);
-		
+
 		g2.fill(thickCurve);
-		
+
 		g2.setPaint(oldPainter);
 	}
 }
