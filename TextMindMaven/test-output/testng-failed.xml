@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testing.P_LoginTest">
+      <class name="testing.LoginAdminTest">
         <methods>
-          <include name="logout"/>
           <include name="init"/>
-          <include name="TC_MODULE_LOGIN_05"/>
-          <include name="TC_MODULE_LOGIN_07"/>
+          <include name="logout"/>
+          <include name="TC_unban_Admin_02"/>
+          <include name="TC_getReport_Admin_01"/>
         </methods>
-      </class> <!-- testing.P_LoginTest -->
+      </class> <!-- testing.LoginAdminTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

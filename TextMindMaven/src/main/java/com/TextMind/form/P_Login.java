@@ -218,6 +218,16 @@ public class P_Login extends javax.swing.JPanel {
 			System.out.println("null");
 		}
 	}
+	
+	
+
+	public javax.swing.JLabel getLblError() {
+		return lblError;
+	}
+
+	public void setLblError(javax.swing.JLabel lblError) {
+		this.lblError = lblError;
+	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
